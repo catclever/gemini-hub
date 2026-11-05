@@ -1,0 +1,16 @@
+{
+  "id": "c39c421e-f051-4722-9434-7409da8d2410",
+  "name": "paper-analyzer",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/paper-analyzer",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-17T07:21:23.414070Z"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "68637ecc-5d1a-49f4-a370-163b70c8decc",
+  "name": "hammerspoon",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Library/Services/hammerspoon",
+          "defaultBranch": "main"
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-06-17T06:51:00.720471Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id":  "1bb543b1-3e56-4bab-ab8c-98e2dcf6fac9",
+  "name":  "/Users/kael/Library/XDG_Exile/gemini",
+  "projectResources":  {
+    "resources":  [
+      {
+        "gitFolder":  {
+          "folderUri":  "file:///Users/kael/Library/XDG_Exile/gemini",
+          "allowWrite":  true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "f4c02af8-85fd-4fcb-8497-cd166f26d80c",
+  "name": "Alfred",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/Application%20Support/Alfred/Alfred.alfredpreferences/workflows"
+      }
+    ]
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-07-09T07:22:19.357198Z"
+}

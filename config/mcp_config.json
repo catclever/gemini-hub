@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "kanban-task-manager": {
+      "command": "uv",
+      "args": [
+        "run",
+        "/Users/kael/.gemini/config/scripts/kanban_mcp_server.py"
+      ],
+      "env": {
+        "PROJECTS_ROOT": "/Users/kael/.gemini/Projects"
+      }
+    },
+    "test-notify": {
+      "command": "uv",
+      "args": [
+        "run",
+        "/Users/kael/.gemini/config/scripts/test_mcp_notify.py"
+      ]
+    }
+  }
+}

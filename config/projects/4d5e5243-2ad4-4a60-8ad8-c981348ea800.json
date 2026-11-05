@@ -1,0 +1,18 @@
+{
+  "id": "4d5e5243-2ad4-4a60-8ad8-c981348ea800",
+  "name": "musicfree",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Projects/musicfree"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {},
+    "v2Migrated": true
+  },
+  "settings": {},
+  "updatedAt": "2026-07-31T08:08:55.553225Z",
+  "isWorkspaceOnly": false
+}

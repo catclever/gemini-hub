@@ -1,0 +1,85 @@
+# ==============================================================================
+# Gemini System Hub & Central Metadata Repository (.gitignore)
+# ==============================================================================
+# This repository manages centralized project knowledge, iron rules, Kanban tasks,
+# global constitution (GEMINI.md), custom skills, scripts, and private plugins.
+# ALL runtime caches, session transcripts, accounts, and credentials MUST BE IGNORED.
+# ==============================================================================
+
+# 1. Default to ignoring everything in root
+/*
+
+# 2. Whitelist essential root documents and directories
+!/.gitignore
+!/GEMINI.md
+!/kb/
+!/Projects/
+!/config/
+
+# ------------------------------------------------------------------------------
+# 3. Refine /config/ whitelist & exclusions
+# ------------------------------------------------------------------------------
+# Ignore all top-level files/dirs in config/ by default
+/config/*
+
+# Whitelist allowed directories and configuration maps in config/
+!/config/plugins/
+!/config/scripts/
+!/config/skills/
+!/config/commands/
+!/config/projects/
+!/config/config.json
+!/config/mcp_config.json
+!/config/skills.json
+
+# Exclude temporary, cache, and backup files inside config/
+config/**/__pycache__/
+config/**/.DS_Store
+config/**/*.pyc
+config/**/node_modules/
+config/**/*.lock
+config/**/.env*
+config/**/*.log
+config/**/scratch/
+config/scripts/*.bak
+
+# ------------------------------------------------------------------------------
+# 4. Refine /Projects/ exclusions
+# ------------------------------------------------------------------------------
+Projects/**/__pycache__/
+Projects/**/.DS_Store
+Projects/**/*.pyc
+Projects/**/.pytest_cache/
+Projects/**/.coverage
+Projects/**/.mutagen/
+
+# ------------------------------------------------------------------------------
+# 5. Refine /kb/ exclusions
+# ------------------------------------------------------------------------------
+kb/**/.DS_Store
+kb/**/__pycache__/
+
+# ------------------------------------------------------------------------------
+# 6. Global Security & Hygiene Blacklist (Redundant Defense)
+# ------------------------------------------------------------------------------
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.lock
+.env*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.accounts/
+.antigravitycli/
+antigravity/
+antigravity-browser-profile/
+antigravity-cli/
+sandbox/
+XDG/
+fake_installation_id
+test_names.py
+test_zellij.sh

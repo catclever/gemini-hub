@@ -1,0 +1,16 @@
+{
+  "id": "a606a08f-2fa1-491d-bdad-ca0bd8afb5a0",
+  "name": "Cartridge",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/Cartridge",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-29T06:28:37.176878Z"
+}

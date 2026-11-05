@@ -1,0 +1,1 @@
+../config/plugins/dev-team/skills/extract-knowledge/SKILL.md

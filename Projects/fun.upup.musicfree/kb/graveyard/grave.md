@@ -1,0 +1,1 @@
+- [QQ Music Custom Panel Red Heart Status Loss](qq_music_heart_status_bug.md): Never use `innerText` on hidden elements to track state, defensively initialize missing caches in event handlers, and use `dissid` as the primary identifier for QQ Music playlists instead of legacy `tid`.

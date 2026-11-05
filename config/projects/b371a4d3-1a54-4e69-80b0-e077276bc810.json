@@ -1,0 +1,15 @@
+{
+  "id":  "b371a4d3-1a54-4e69-80b0-e077276bc810",
+  "name":  "factory",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/workbench/factory"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "v2Migrated":  true
+  },
+  "updatedAt":  "2026-04-28T14:54:31.678746Z"
+}

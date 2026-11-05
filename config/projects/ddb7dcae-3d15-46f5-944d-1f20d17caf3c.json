@@ -1,0 +1,16 @@
+{
+  "id": "ddb7dcae-3d15-46f5-944d-1f20d17caf3c",
+  "name": "talk-with-repo",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/agent_k/apps/talk-with-repo",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-07-17T01:09:11.733475Z"
+}

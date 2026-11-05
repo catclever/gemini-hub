@@ -1,0 +1,16 @@
+{
+  "id":  "f47a877d-0b5f-431b-b36d-da1491c5c8a5",
+  "name":  "Dalembert",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/workbench/ruby_lab/Dalembert"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "v2Migrated":  true
+  },
+  "settings":  {},
+  "isWorkspaceOnly":  false
+}

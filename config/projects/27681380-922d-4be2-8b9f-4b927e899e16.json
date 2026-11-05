@@ -1,0 +1,18 @@
+{
+  "id": "27681380-922d-4be2-8b9f-4b927e899e16",
+  "name": "alist",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/Services/alist"
+      }
+    ]
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-06-12T03:24:56.793213Z"
+}

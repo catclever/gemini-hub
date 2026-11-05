@@ -1,0 +1,15 @@
+{
+  "id": "90cfaf9e-d4b6-4b80-95e0-17356ed92b0a",
+  "name": "inner_vision",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/inner_vision",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-06T05:12:33.776317Z"
+}

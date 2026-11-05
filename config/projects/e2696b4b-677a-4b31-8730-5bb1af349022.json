@@ -1,0 +1,18 @@
+{
+  "id": "e2696b4b-677a-4b31-8730-5bb1af349022",
+  "name": "Services",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/Services"
+      }
+    ]
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-07-08T08:21:43.602015Z"
+}

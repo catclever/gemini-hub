@@ -1,0 +1,22 @@
+{
+  "id":  "b05ac702-2338-44fd-9763-40872fd8bb1c",
+  "name":  "agy-disciple",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/Projects/agy-disciple"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "permissionGrants":  {
+      "allow":  [
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/agy-disciple/)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/agy-disciple/IRON_RULES.md)"
+      ]
+    },
+    "v2Migrated":  true
+  },
+  "settings":  {},
+  "isWorkspaceOnly":  false
+}

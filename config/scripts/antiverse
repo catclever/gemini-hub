@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# antiverse: Antigravity Multi-Agent Session Manager for PVE
+# ==============================================================================
+
+set -eo pipefail
+
+show_help() {
+  cat << 'HELP_EOF'
+Antiverse - Antigravity Agent Session Manager
+
+Usage:
+  antiverse [COMMAND] [ARGS...]
+
+Commands:
+  ls, list             List all active Agent sessions
+  a, attach [TARGET]   Attach to an active session (supports fuzzy/partial match)
+  k, kill [TARGET]     Kill a specific session (supports fuzzy/partial match)
+  clean                Delete all dead / resurrectable sessions from disk
+  run [OPTIONS]        Launch a new task via antiverse-run
+  help, -h, --help     Show this help message
+
+Interactive Shortcuts:
+  Inside any Zellij session, press [Alt + s] to open the floating Session Manager.
+
+Examples:
+  antiverse ls
+  antiverse attach 063
+  antiverse kill 063
+  antiverse clean
+HELP_EOF
+}
+
+get_sessions() {
+  mapfile -t SESSIONS < <(zellij list-sessions -s -n 2>/dev/null || true)
+}
+
+cmd="${1:-}"
+
+case "$cmd" in
+  ls|list)
+    echo "======================================================================"
+    echo "🌌 [Antiverse] Active Agent Sessions on PVE"
+    echo "======================================================================"
+    raw_sessions=$(zellij list-sessions 2>/dev/null || true)
+    if [[ -z "$raw_sessions" || "$raw_sessions" == *"No active zellij sessions found"* ]]; then
+      echo "  (No active agent sessions running)"
+    else
+      echo "$raw_sessions"
+    fi
+    echo "======================================================================"
+    echo "💡 Hint: Use 'antiverse attach <name>' or inside Zellij press [Alt + s]"
+    ;;
+  a|attach)
+    shift || true
+    target="${1:-}"
+    get_sessions
+    if [[ ${#SESSIONS[@]} -eq 0 ]]; then
+      echo "[Antiverse] No active sessions found." >&2
+      exit 1
+    fi
+    
+    if [[ -z "$target" ]]; then
+      if [[ ${#SESSIONS[@]} -eq 1 ]]; then
+        exec zellij attach "${SESSIONS[0]}"
+      else
+        exec zellij attach
+      fi
+    fi
+    
+    matches=()
+    for s in "${SESSIONS[@]}"; do
+      if [[ "$s" == *"$target"* ]]; then
+        matches+=("$s")
+      fi
+    done
+    
+    if [[ ${#matches[@]} -eq 1 ]]; then
+      echo "[Antiverse] Attaching to session '${matches[0]}'..."
+      exec zellij attach "${matches[0]}"
+    elif [[ ${#matches[@]} -gt 1 ]]; then
+      echo "[Antiverse] Multiple sessions match '$target':"
+      for m in "${matches[@]}"; do
+        echo "  - $m"
+      done
+      echo "Please specify a more specific session name."
+      exit 1
+    else
+      echo "[Antiverse Error] No session matches '$target'." >&2
+      exit 1
+    fi
+    ;;
+  k|kill)
+    shift || true
+    target="${1:-}"
+    if [[ -z "$target" ]]; then
+      echo "Usage: antiverse kill <TARGET>" >&2
+      exit 1
+    fi
+    get_sessions
+    matches=()
+    for s in "${SESSIONS[@]}"; do
+      if [[ "$s" == *"$target"* ]]; then
+        matches+=("$s")
+      fi
+    done
+    if [[ ${#matches[@]} -eq 0 ]]; then
+      echo "[Antiverse Error] No active session matches '$target'." >&2
+      exit 1
+    fi
+    for m in "${matches[@]}"; do
+      echo "[Antiverse] Killing session '$m'..."
+      zellij kill-session "$m" 2>/dev/null || true
+      zellij delete-session --force "$m" 2>/dev/null || true
+    done
+    ;;
+  clean)
+    echo "[Antiverse] Cleaning up dead/resurrectable sessions..."
+    zellij delete-all-sessions 2>/dev/null || true
+    echo "[Antiverse] Clean complete."
+    ;;
+  run)
+    shift || true
+    exec /usr/local/bin/antiverse-run "$@"
+    ;;
+  help|-h|--help)
+    show_help
+    ;;
+  "")
+    get_sessions
+    if [[ ${#SESSIONS[@]} -eq 1 ]]; then
+      echo "[Antiverse] 1 active session detected: '${SESSIONS[0]}'. Attaching..."
+      exec zellij attach "${SESSIONS[0]}"
+    else
+      /usr/local/bin/antiverse ls
+    fi
+    ;;
+  *)
+    get_sessions
+    matches=()
+    for s in "${SESSIONS[@]}"; do
+      if [[ "$s" == *"$cmd"* ]]; then
+        matches+=("$s")
+      fi
+    done
+    if [[ ${#matches[@]} -eq 1 ]]; then
+      echo "[Antiverse] Attaching to session '${matches[0]}'..."
+      exec zellij attach "${matches[0]}"
+    else
+      echo "[Antiverse] Unknown command: $cmd" >&2
+      show_help
+      exit 1
+    fi
+    ;;
+esac

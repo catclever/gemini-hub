@@ -1,0 +1,25 @@
+{
+  "id": "23003c39-5fd0-4053-8fd9-38fc423f5d27",
+  "name": "agent_k",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/workbench/agent_k"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "command(mutagen)",
+        "command(ssh Antigravity \"cd /root/workspace/agent_k && sleep 3 && zellij --session Antiverse action new-tab --name '[agent_k] night-shift' -- bash -c 'agy --dangerously-skip-permissions -i < /root/.gemini/Projects/AgentK/commands/night_shift.txt'\")",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/config/plugins/chrome-devtools-plugin)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/config/plugins/chrome-devtools-plugin/skills/chrome-devtools/SKILL.md)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/agent_k/)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/agent_k/git_status.md)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "updatedAt": "2026-06-01T06:55:10.217717Z"
+}

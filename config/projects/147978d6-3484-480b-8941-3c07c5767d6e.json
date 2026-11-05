@@ -1,0 +1,16 @@
+{
+  "id":  "147978d6-3484-480b-8941-3c07c5767d6e",
+  "name":  "gitlab",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/workbench/gitlab"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "v2Migrated":  true
+  },
+  "settings":  {},
+  "isWorkspaceOnly":  false
+}

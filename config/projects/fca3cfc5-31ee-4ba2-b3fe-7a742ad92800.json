@@ -1,0 +1,21 @@
+{
+  "id": "fca3cfc5-31ee-4ba2-b3fe-7a742ad92800",
+  "name": "eagle_plugin",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Projects/eagle_plugin"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/eagle_plugin/git_status.md)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "settings": {},
+  "isWorkspaceOnly": false
+}

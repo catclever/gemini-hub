@@ -1,0 +1,15 @@
+{
+  "id": "90339ac0-117f-4df6-9138-edabc6176261",
+  "name": "ai-spss",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/ai-spss",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-06T11:59:28.567251Z"
+}

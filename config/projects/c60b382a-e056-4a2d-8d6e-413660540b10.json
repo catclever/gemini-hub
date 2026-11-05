@@ -1,0 +1,16 @@
+{
+  "id":  "c60b382a-e056-4a2d-8d6e-413660540b10",
+  "name":  "EnginEdge",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/Projects/EnginEdge"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "v2Migrated":  true
+  },
+  "settings":  {},
+  "isWorkspaceOnly":  false
+}

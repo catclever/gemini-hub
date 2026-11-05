@@ -1,0 +1,21 @@
+{
+  "id": "8b4c996a-4dc1-4c26-95fe-e5e06e51bec1",
+  "name": "ruby_lab",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/workbench/ruby_lab"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/ruby_lab/git_status.md)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/ruby_lab/)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "updatedAt": "2026-06-10T05:18:55.595871Z"
+}

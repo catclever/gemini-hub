@@ -1,0 +1,21 @@
+{
+  "id": "08d301c7-c9ff-4a67-94c1-dcda3a3e687d",
+  "name": "llm_judge",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Library/Services/llm_judge",
+          "defaultBranch": "main"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-05-25T04:52:32.360730Z"
+}

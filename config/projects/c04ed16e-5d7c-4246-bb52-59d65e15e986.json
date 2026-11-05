@@ -1,0 +1,29 @@
+{
+  "id":  "c04ed16e-5d7c-4246-bb52-59d65e15e986",
+  "name":  "reverb-wiki",
+  "projectResources":  {
+    "resources":  [
+      {
+        "gitFolder":  {
+          "folderUri":  "file:///Users/kael/Documents/%E6%B3%9B%E9%92%9B%E5%AE%A2%E8%B5%84%E6%96%99/space/reverb-wiki",
+          "defaultBranch":  "main"
+        }
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "permissionGrants":  {
+      "allow":  [
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/brain/52a6de60-7d35-4a5b-b5d3-e0cc06c868e1/scratch/run.log)"
+      ]
+    },
+    "v2Migrated":  true
+  },
+  "settings":  {
+    "fileAccessPolicy":  "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy":  "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy":  "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode":  "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt":  "2026-06-23T06:19:26.490544Z"
+}

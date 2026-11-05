@@ -1,0 +1,2704 @@
+[
+  {
+    "id": "plant_0000",
+    "zh_name": "孔雀竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "孔雀竹芋（学名：Calathea makoyana）为竹芋科孔雀竹芋屬下的一个种。"
+  },
+  {
+    "id": "plant_0001",
+    "zh_name": "大戟",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "大戟（学名：Euphorbia pekinensis），为大戟科大戟属的植物。分布在朝鲜半岛、日本以及中国大陆等地，生长于海拔400米至2400米地区，常生长在草丛、林缘、山坡、路旁、灌丛、荒地和疏林内，目前已由人工引种栽培。"
+  },
+  {
+    "id": "plant_0002",
+    "zh_name": "軟枝黃蟬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "軟枝黃蟬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0003",
+    "zh_name": "虞美人 (植物)",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "虞美人 (植物)，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0004",
+    "zh_name": "家黑种草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "家黑种草（學名：Nigella sativa；属名是拉丁语“黑色”niger的指小词，种加词意思是“栽培的”），古稱草豉（《本草拾遺》）、少尼子（《回回药方》；阿拉伯語：شونيز，羅馬化：shūnīz/shawnīz）、香黑子（《回回药方》），也叫黑葛縷、黑孜然、茴香花、瘤果黑种草，是毛茛科黑种草属一年生草本植物…"
+  },
+  {
+    "id": "plant_0005",
+    "zh_name": "羅漢松",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "羅漢松，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0006",
+    "zh_name": "砲彈樹",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "砲彈樹，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0007",
+    "zh_name": "巴豆",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "巴豆（學名：Croton tiglium，英語：purging croton）是大戟科巴豆属多年生常绿灌木或乔木，在中药中特指其干燥成熟果实（中药拉丁名：Fructus Crotonis，英語：croton seed）。 巴豆又名巴果、猛子仁、落水金剛、猛樹、廣仔子、江子，广泛生长于中国长江以南各省…"
+  },
+  {
+    "id": "plant_0008",
+    "zh_name": "樹蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "樹蘭（学名：Aglaia odorata）是一种属于楝科樹蘭屬的常绿灌木，小乔木，别名米兰、树兰、小米兰、珠兰、樹仔兰、鱼仔兰等。樹蘭原产中国福建、广东、广西、云南等省，东南亚、臺灣也有分布，常生於低海拔之叢林中，是一种常见的芬芳类观赏植物。"
+  },
+  {
+    "id": "plant_0009",
+    "zh_name": "酒瓶兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "酒瓶兰，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0010",
+    "zh_name": "射干",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "射干（拼音：yè gān，注音：ㄧㄝˋ ㄍㄢ，学名：Iris domestica）为鸢尾科鳶尾属多年生草本植物。《本草经集注·草木下品》云：“此即是乌翣根，庭台多种之，黄色，亦治毒肿。方多作‘夜干’字，今‘射’亦作‘夜’音……又别有射干，相似而花白茎长，似射人之执竿者。”这里的“射人”为古代官名。《本草图经…"
+  },
+  {
+    "id": "plant_0011",
+    "zh_name": "茴香",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "茴香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0012",
+    "zh_name": "珠芽景天",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "珠芽景天，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0013",
+    "zh_name": "王族海棠",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "王族海棠，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0014",
+    "zh_name": "月影",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "月影（学名：Echeveria elegans）是景天科，拟石莲花属的一种植物，原产于墨西哥的山区。这是一种多汁的多年生常绿植物；高度可生长至5-10厘米，群生株幅达50-100厘米；叶片为肉质浅蓝绿色，边缘透明，长5-7.5厘米；冬天和春天开粉红色的花朵，花尖黄色。 它不能在温度低于7°C的环境生存…"
+  },
+  {
+    "id": "plant_0015",
+    "zh_name": "索贊蘆薈",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "索贊蘆薈，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0016",
+    "zh_name": "羽紋竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "羽紋竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0017",
+    "zh_name": "茅香",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "茅香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0018",
+    "zh_name": "黃扇鳶尾",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "黃扇鳶尾，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0019",
+    "zh_name": "沙漠玫瑰 (植物)",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "沙漠玫瑰（學名：Adenium obesum）別稱天寶花、富貴花、沙紅姬花、亞當花、矮性雞蛋花等等，它們屬於夾竹桃科沙漠玫瑰屬。"
+  },
+  {
+    "id": "plant_0020",
+    "zh_name": "User:Hung Ting/條目建立中-01",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "User:Hung Ting/條目建立中-01，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0021",
+    "zh_name": "香蜜百香果",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "香蜜百香果，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0022",
+    "zh_name": "西藏红豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "西藏红豆杉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0023",
+    "zh_name": "香辣蓼",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "香辣蓼，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0024",
+    "zh_name": "香港巴豆",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "香港巴豆，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0025",
+    "zh_name": "宝绿",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "宝绿（学名：Glottiphyllum linguiforme），又称佛手掌、牛舌叶、牛舌花，是番杏科舌叶花属多肉类植物，原产于非洲南部。性喜温暖，耐旱不耐涝，耐热不耐寒。秋、冬开花，花呈金黄色，可作为一种观赏性植物和经济作物进行栽培。"
+  },
+  {
+    "id": "plant_0026",
+    "zh_name": "附子",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "附子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0027",
+    "zh_name": "北美鹅掌楸",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "北美鹅掌楸（学名：Liriodendron tulipifera）为木兰科鹅掌楸属下的一个种。分布在北美東部。"
+  },
+  {
+    "id": "plant_0028",
+    "zh_name": "歐蓍草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "洋蓍草（学名：Achillea millefolium，拼音：shī ㄕ），又名欧蓍、千叶蓍、锯草、西洋蓍草、羽衣草、魔鬼蕁麻，是菊科蓍属的多年生草本植物。分布在蒙古、伊朗、欧洲、俄罗斯、非洲以及中国大陆的东北、内蒙古、新疆等地，生长于海拔200米至2,300米的地区，见于湿草地、荒地和铁路沿线，目前已由人工引种栽培。"
+  },
+  {
+    "id": "plant_0029",
+    "zh_name": "德保苏铁",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "德保蘇鐵（學名：Cycas debaoensis）又名秀叶苏铁、百色苏铁、泮水苏铁，属于苏铁屬的一種植物。為中國國家一級保護植物，是中國的特有種。"
+  },
+  {
+    "id": "plant_0030",
+    "zh_name": "毒麦",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒麦（学名：Lolium temulentum）禾本科黑麦草属的植物。常用作麦类作物遗传学和基因组学研究的模式植物。"
+  },
+  {
+    "id": "plant_0031",
+    "zh_name": "鹿葱",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "鹿葱，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0032",
+    "zh_name": "仙客來屬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "仙客來屬（学名：Cyclamen）曾經是紫金牛科下一属，包含至少24种植物，1981年的克朗奎斯特分类法将其列入报春花科，之後的APG 分类法及APG II 分类法均将其列入紫金牛科中，APG III 分类法中由於紫金牛科被撤销，合并入报春花科中，仙客來屬再次被列入报春花科中。仙客来属花卉花形鲜艳别致…"
+  },
+  {
+    "id": "plant_0033",
+    "zh_name": "秋水仙",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "秋水仙，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0034",
+    "zh_name": "皱叶留兰香",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "皱叶留兰香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0035",
+    "zh_name": "鋪地百里香",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "鋪地百里香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0036",
+    "zh_name": "黃花夾竹桃",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "黃花夾竹桃，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0037",
+    "zh_name": "扁豆",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "扁豆（学名：Lablab purpureus；英語：hyacinth bean、Indian bean、calavance、Egyptian bean、seim），本字是𥣰豆，又称：鹊豆、蛾眉豆、肉豆、稨豆、白豆、眉豆、白扁豆、藊豆、南扁豆、沿篱豆、凉衍豆、羊眼豆、膨皮豆、茶豆、南豆、小刀豆、树豆、藤豆…"
+  },
+  {
+    "id": "plant_0038",
+    "zh_name": "狹葉薰衣草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "狹葉薰衣草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0039",
+    "zh_name": "毒魚豆",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒魚豆（学名：Piscidia piscipula），又名牙買加山茱萸、佛羅里達毒魚木，是豆科毒魚豆屬的一種木本植物。原產於美國佛羅里達州南部、佛羅里達礁島群、德克薩斯州，加勒比地區及拉丁美洲。 西印度群島的原住民發現這種植物的提取物可以令魚麻醉安靜，讓他們可以徒手抓魚。俗名毒魚木、醉魚木也是得名自這種功用…"
+  },
+  {
+    "id": "plant_0040",
+    "zh_name": "水松",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "水松（學名：Glyptostrobus pensilis）为柏科植物。水松主要在中國生長，少數分佈在越南與老撾，為水松屬唯一的現生種，是孑遺植物。"
+  },
+  {
+    "id": "plant_0041",
+    "zh_name": "香水藍唇花",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "香水藍唇花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0042",
+    "zh_name": "马钱子",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "马钱子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0043",
+    "zh_name": "哈特普列薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "哈特普列薄荷（学名：Mentha cervina，英語：Hart's Pennyroyal）为薄荷属下的一个种。它的植株高度为30厘米。这种草本植物与“真正的”普列薄荷有很大联系，其带有浓香。它含有很高浓度的胡薄荷酮，为一种天然的堕胎药。"
+  },
+  {
+    "id": "plant_0044",
+    "zh_name": "牛至",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "牛至（學名：Origanum vulgare），又名滇香薷、俄勒岡、披薩草或野馬鬱蘭，是唇形科牛至属中的一種植物。 牛至和馬鬱蘭同属牛至属，为近亲。后者在中东也叫“甘牛至”（sweet marjoram）。"
+  },
+  {
+    "id": "plant_0045",
+    "zh_name": "驢蹄草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "驢蹄草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0046",
+    "zh_name": "南洋紅豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "南洋紅豆杉（学名：Taxus sumatrana），又名蘇門答臘紅豆杉、臺灣紅豆杉、紫杉、赤柏松、紅杉或西雙版納粗榧，是一種常綠的紅豆杉屬植物。它們分佈在阿富汗、西藏、尼泊爾、越南、印度、緬甸、中國、台灣及巴基斯坦。它們一般生長在海拔400-3100米的亞熱帶森林及高地山脊。在台灣及巴基斯坦都有保存它們…"
+  },
+  {
+    "id": "plant_0047",
+    "zh_name": "變葉木",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "變葉木，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0048",
+    "zh_name": "莲叶桐",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "莲叶桐，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0049",
+    "zh_name": "科西嘉薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "科西嘉薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0050",
+    "zh_name": "金琥",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "金琥，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0051",
+    "zh_name": "北美檫樹",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "北美檫樹（學名：Sassafras albidum）或稱美國檫樹、美洲檫木、白檫、紅檫、黃樟等，為樟科檫樹屬，原產於北美洲東部，以美國緬因州、加拿大安大略省為北界，南至佛羅里達州，西至愛荷華州及德克薩斯州東部，常見於海拔1500公尺左右的落葉林中，北美檫樹原本曾是威斯康辛州的原生植物，但現今此樹種已於該地區消失。"
+  },
+  {
+    "id": "plant_0052",
+    "zh_name": "洋金花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "洋金花（學名：Datura metel）是一种曼陀罗属植物，是中醫學常用的草藥，具有毒性，不能過量服用，誤食4-10粒即可出現瞳孔散大、譫妄等中毒症狀。洋金花多數生長於村邊、路旁、荒地，在濕潤向陽的土地較為常見。此花有可能原產自東印度或美洲，在北美洲視為觀賞植物，而香港則稱之為「香港四大毒草」之一。"
+  },
+  {
+    "id": "plant_0053",
+    "zh_name": "耳墜草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "耳墜草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0054",
+    "zh_name": "鐵筷子屬",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "鐵筷子屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0055",
+    "zh_name": "仙人掌",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "仙人掌，是石竹目仙人掌科（學名：Cactaceae）的植物總稱，為多肉植物，但在園藝界通常將其獨立自一般的多肉植物類型，而稱為「仙人掌與多肉植物」（cactus and succulent plant）。仙人掌具有為貯藏水分而特化为肥厚多汁状的營養器官（莖、葉），大多分佈於美洲，以热带地区最为多见，生境多为沙漠…"
+  },
+  {
+    "id": "plant_0056",
+    "zh_name": "毛建草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "毛建草（学名：Dracocephalum rupestre）又称岩青兰，为唇形科青兰属下的一种多年生草本植物。 毛建草的繁殖主要依靠种子、分株及珠芽等方式。"
+  },
+  {
+    "id": "plant_0057",
+    "zh_name": "咬人狗",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "咬人狗（學名：Dendrocnide meyeniana），又名光背咬人狗，同物異名恆春咬人狗，為荨麻科咬人狗屬的常綠喬木，原生於臺灣（含綠島）與菲律賓的低海拔次生林或林緣，植株上之焮毛，一旦触到，会有很难忍受之疼痛感与灼热感。"
+  },
+  {
+    "id": "plant_0058",
+    "zh_name": "甜菊屬",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "甜菊屬（學名：Stevia）是菊目菊科的一属，擁有約261個草本植物和灌木物種，原產於北美洲西部和南美洲的亞熱帶和熱帶地區。本屬中的物种之一甜葉菊（S. rebaudiana）因其葉子生产甜菊糖而廣為栽種。甜菊糖是常見的甜精和代糖，它的甜味擴散較慢、持續時間比食糖長，但部分高濃度萃取物帶有苦澀或類似甘草口感的餘韻…"
+  },
+  {
+    "id": "plant_0059",
+    "zh_name": "蛾形文心蘭屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "蛾形文心蘭屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0060",
+    "zh_name": "绿玉树",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "绿玉树，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0061",
+    "zh_name": "玛瑙珠",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "玛瑙珠（学名：Solanum diphyllum），又名黄果龙葵，为茄科茄属下的一个种。原产于北部和中部美洲的墨西哥、伯利兹、哥斯达黎加、萨尔瓦多、危地马拉、洪都拉斯和尼加拉瓜。它作为观赏植物在其它亚热带和热带地区广泛栽培，例如南部法国、意大利和台湾。它已在某些地区野化，并在佛罗里达和德克萨斯、美国…"
+  },
+  {
+    "id": "plant_0062",
+    "zh_name": "老翁龍舌蘭",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "老翁龍舌蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0063",
+    "zh_name": "寶冠木",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "寶冠木（学名：Brownea grandiceps）為豆科寶冠木屬下的一種常綠喬木。原產於哥倫比亞，厄瓜多爾，秘魯和委內瑞拉的熱帶亞馬遜雨林裡。以其豔紅、碩大的花序聞名於世。非洲，亞洲和大洋洲的熱帶地區都有引入栽植，溫帶地區適宜溫室栽培。台灣於1960年代引入，至今仍屬希有，花期在三月。"
+  },
+  {
+    "id": "plant_0064",
+    "zh_name": "紋斑竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "紋斑竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0065",
+    "zh_name": "鸡爪槭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "鸡爪槭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0066",
+    "zh_name": "虎刺梅",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "虎刺梅，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0067",
+    "zh_name": "珊瑚櫻",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "珊瑚櫻又稱為玉珊瑚、聖誕果、珊瑚豆、紅珊瑚、野辣茄、耶路撒冷櫻桃，是茄屬下的一種植物，原產地為秘魯和厄瓜多爾。全年開白色花。"
+  },
+  {
+    "id": "plant_0068",
+    "zh_name": "绿玉扇",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "绿玉扇，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0069",
+    "zh_name": "垂葉花燭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "垂葉花燭（学名：Anthurium wendlingeri）為天南星科花燭属下之一種多年生宿根附生草本植物。原生於哥倫比亞、哥斯大黎加、尼加拉瓜與巴拿馬等地熱帶雨林中。習於叢生。"
+  },
+  {
+    "id": "plant_0070",
+    "zh_name": "大花曼陀羅",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "大花曼陀羅（学名：Brugmansia suaveolens）为茄科木曼陀羅屬下的一个种。原產巴西東南岸，但在該地絕跡，卻於新喀里多尼亞成為入侵種。"
+  },
+  {
+    "id": "plant_0071",
+    "zh_name": "鵝鑾鼻燈籠草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "鵝鑾鼻燈籠草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0072",
+    "zh_name": "藍花丹",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "藍花丹，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0073",
+    "zh_name": "香豬殃殃",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "香豬殃殃，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0074",
+    "zh_name": "歐洲烏頭",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "歐洲烏頭（学名：Aconitum napellus）為毛莨科烏頭屬的多年生植物。分布於歐洲，生長在遮陰潮濕的土壤。為耐寒多年生草本，葉互生葉片深裂，為多葉莖，總狀花序高長且密集，由淡紫色的盔形小花組成，於初夏開放。全株有毒，其塊根的根節是植物中最強的神經毒素之一。"
+  },
+  {
+    "id": "plant_0075",
+    "zh_name": "欧洲荚蒾",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "歐洲莢蒾（學名：Viburnum opulus，别名歐洲瓊花、歐洲雪球）为五福花科荚蒾属的一種落葉灌木，高4—5米（13—16英尺），原產於歐洲、北非和中亞，後來作為觀賞植物引入世界其他地區。"
+  },
+  {
+    "id": "plant_0076",
+    "zh_name": "歐洲冬青",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "歐洲冬青（學名Ilex aquifolium）是一種原產於西歐及南歐、西北非洲及西南亞洲的冬青。 歐洲冬青是常綠樹，高達10-25米，樹幹直徑40-80厘米闊，樹皮呈灰色及光滑。葉子長5-12厘米及闊2-6厘米，形狀各有不同。幼樹及低枝上的葉子每邊有3-5條尖刺，交替指向上下；在較高的樹枝上的葉子有很少或沒有尖刺…"
+  },
+  {
+    "id": "plant_0077",
+    "zh_name": "花叶万年青",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "花叶万年青，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0078",
+    "zh_name": "阿開木",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "阿開木，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0079",
+    "zh_name": "芦荟属",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "芦荟属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0080",
+    "zh_name": "山菅",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "山菅（學名：Dianella ensifolia），別稱山菅蘭（貴州植物志）、山貓兒、交剪草（海南植物志）、山蘭花、金交剪（浙江植物志）、山交剪、桔梗蘭、老鼠怕及老鼠砒等，為萱草科山菅屬植物，為多年生草本植物。花期3－7月。生長於平地至中海拔山坡或林下。"
+  },
+  {
+    "id": "plant_0081",
+    "zh_name": "曇花屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "昙花属（學名：Epiphyllum）是仙人掌科的一个属，原生於拉丁美洲。"
+  },
+  {
+    "id": "plant_0082",
+    "zh_name": "马蹄莲",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "马蹄莲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0083",
+    "zh_name": "南美蘇鐵",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "南美蘇鐵（學名：Zamia pumila），分佈在西印度群島和古巴。南美蘇鐵是澤米鐵科第一個被描述的物種，因此成為澤米鐵科及澤米屬的模式種。"
+  },
+  {
+    "id": "plant_0084",
+    "zh_name": "臥牛",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "臥牛，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0085",
+    "zh_name": "毛报春",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "毛报春（学名：Primula ×pubescens）是报春花科报春花属的多年生草本植物，属于欧报春组，是多毛报春(P. hirsuta)和耳叶报春(P. auricula)的自然杂交种。常用作园林观赏花卉。"
+  },
+  {
+    "id": "plant_0086",
+    "zh_name": "皮爾蘭斯蘆薈",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "皮爾蘭斯蘆薈，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0087",
+    "zh_name": "豔紅苞鳳梨",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "豔紅苞鳳梨，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0088",
+    "zh_name": "白屈菜",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "白屈菜，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0089",
+    "zh_name": "高山火絨草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "高山火絨草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0090",
+    "zh_name": "蒔蘿",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "蒔蘿，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0091",
+    "zh_name": "百里香属",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "百里香属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0092",
+    "zh_name": "翠綠龍舌蘭",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "翠綠龍舌蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0093",
+    "zh_name": "碧冬茄",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "碧冬茄，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0094",
+    "zh_name": "紅瑞木",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "紅瑞木，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0095",
+    "zh_name": "烏頭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "烏頭（學名：Aconitum carmichaelii），又名土附子、斷腸、苦烏喙、奚毒、雞毒、莨、毒公、獨白草、草烏，是烏頭屬的一種多年生直立草本，根部含有烏頭鹼、中烏頭鹼、次烏頭鹼，有劇毒。它分布於北半球溫帶，在英國等西方國家用作觀賞植物培育，在中國其子根附子是一味中藥。 其高度可達兩米，開紫色或淡藍色花…"
+  },
+  {
+    "id": "plant_0096",
+    "zh_name": "狭叶龙舌兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "狭叶龙舌兰（学名：Agave angustifolia）是天门冬科、龙舌兰亚科、龙舌兰属的植物。分布于美洲以及中国大陆的南方各省等地，目前已由人工引种栽培。"
+  },
+  {
+    "id": "plant_0097",
+    "zh_name": "辣薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "辣薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0098",
+    "zh_name": "长叶瓦莲",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "长叶瓦莲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0099",
+    "zh_name": "红翠雀花",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "红翠雀花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0100",
+    "zh_name": "木麒麟",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "木麒麟（学名：Pereskia aculeata）为仙人掌科木麒麟属下的一个种，也叫虎刺、叶仙人掌、叶仙。 该物种是仙人掌科的良好砧木，常用于嫁接蟹爪兰等其他仙人掌科植物。"
+  },
+  {
+    "id": "plant_0101",
+    "zh_name": "晃山",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "晃山（學名：Leuchtenbergia principis）又稱光山，由Maximilian Eugen Joseph命名。光山屬裡只有這個種。原產於墨西哥。因為原生地環境是在雜草間，所以在栽培方法上要種植在沒有陽光直射的地方。"
+  },
+  {
+    "id": "plant_0102",
+    "zh_name": "蓖麻",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "蓖麻，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0103",
+    "zh_name": "日輪玉",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "日輪玉（學名：Lithops aucampiae）是番杏科生石花屬下的一種植物，原産於南非德兰士瓦省。1929年由Juanita Aucamp發現於波斯特馬斯堡。外形和色泽像彩色的卵石，品种很多，色彩丰富。紅褐色的葉片上有黑色的花紋。經常脫皮，植株容易繁殖。會於秋季(9月间)開出黃色的花朵。喜好生活於鐵礦石豐富的地區。"
+  },
+  {
+    "id": "plant_0104",
+    "zh_name": "蟹爪兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "蟹爪兰，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0105",
+    "zh_name": "熊果",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "熊果，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0106",
+    "zh_name": "巨人柱",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "巨人柱（學名：Carnegiea gigantea）是仙人掌科巨人柱属（Carnegiea）的唯一物种，也是世界最高的仙人掌品種之一，高度可超過12公尺。原產於墨西哥的索諾拉州、美國亞利桑那州的索諾拉沙漠以及加利福尼亞州的惠普爾山脈和帝國郡。巨人柱的花為亞利桑那州的州花。其学名是为了纪念美国企业家暨慈善家安德鲁…"
+  },
+  {
+    "id": "plant_0107",
+    "zh_name": "菊蒿",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "菊蒿，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0108",
+    "zh_name": "彩虹菊",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "彩虹菊（学名：Dorotheanthus bellidiformis）为菊科彩虹菊屬下的一个种。"
+  },
+  {
+    "id": "plant_0109",
+    "zh_name": "圆锥石头花",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "圆锥石头花（学名：Gypsophila paniculata），別名满天星、宿根滿天星、 锥花丝石竹、圆锥花丝石竹、丝石竹、锥花霞草，为石竹科石头花属的植物。原產於中東歐，多生在固定沙丘石质山坡、河滩、草地或农田中。它作為一種觀賞植物引入世界其他地區，但在美國等地成為入侵物種。"
+  },
+  {
+    "id": "plant_0110",
+    "zh_name": "素方花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "素方花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0111",
+    "zh_name": "栀子",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "栀子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0112",
+    "zh_name": "毒堇",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒堇，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0113",
+    "zh_name": "User:Hung Ting/條目建立中-06",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "User:Hung Ting/條目建立中-06，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0114",
+    "zh_name": "仙客来",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "仙客来（學名：Cyclamen persicum），别名萝卜海棠、兔耳花、兔子花、一品冠、篝火花、翻瓣莲，是報春花科仙客来属多年生草本植物。仙客来是一种普遍种植的鲜花，适合种植于室内花盆，冬季则需温室种植。仙客来的某些栽培品种有浓郁的香气，而有些香气淡或无香气。 “仙客来”一词来自学名Cyclamen的音译…"
+  },
+  {
+    "id": "plant_0115",
+    "zh_name": "芸香",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "芸香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0116",
+    "zh_name": "夏香薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "夏香薄荷（学名：Satureja hortensis）是唇形科香薄荷属的一种芳香植物。 夏香薄荷与同属的冬香薄荷同为欧洲文化中的传统香草，两者用途相近，区别在于夏香薄荷为一年生植物，而冬香薄荷则为多年生植物。此外，冬香薄荷与夏香薄荷相比味道略苦一些。"
+  },
+  {
+    "id": "plant_0117",
+    "zh_name": "景天树",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "景天树（学名：Crassula arborescens），也称蓝鸟花月（中国大陆）、银圆树（英語：Silver Dollar Jade），是景天科青鎖龍屬的一种植物。这是南非西开普省一个特有种。这是一种高度为2到4英尺（0.6至1.2米）的多汁灌木。叶子圆形，灰绿色，表面有一层蓝灰色的粉状物质，形似银币…"
+  },
+  {
+    "id": "plant_0118",
+    "zh_name": "假薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "假薄荷，也称亚洲薄荷（学名：Mentha asiatica），为薄荷属下的一种多年生草本植物，带有薄荷型香味。"
+  },
+  {
+    "id": "plant_0119",
+    "zh_name": "黄芩",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "黄芩，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0120",
+    "zh_name": "葱莲",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "葱莲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0121",
+    "zh_name": "绒叶肖竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "绒叶肖竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0122",
+    "zh_name": "马兜铃",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "马兜铃，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0123",
+    "zh_name": "灯泡肉锥花",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "灯泡肉锥花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0124",
+    "zh_name": "曲序香茅",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "曲序香茅（学名：Cymbopogon flexuosus），又稱東印度香茅，是禾本科香茅屬的一種芳香性植物。"
+  },
+  {
+    "id": "plant_0125",
+    "zh_name": "南美三角酢浆草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "南美三角酢漿草（學名：Oxalis triangularis）是酢漿草科酢漿草屬的一种多年生草本植物，原产南美洲。其种加词triangularis意为“三角形的”，指的是其小叶形状。其叶子根据光线的明暗开合，白天三片叶子呈倒三角形展开，晚上三叶外翻下垂闭合，三面皆呈正三角形，这种受到人喜爱的特点，使它成为极具观赏性的室内盆养植物…"
+  },
+  {
+    "id": "plant_0126",
+    "zh_name": "紫藤属",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "紫藤属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0127",
+    "zh_name": "鈴蘭",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "鈴蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0128",
+    "zh_name": "水杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "水杉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0129",
+    "zh_name": "毛地黄属",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "毛地黄属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0130",
+    "zh_name": "含羞草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "含羞草（學名：Mimosa pudica），由于其独特的生理习性有着众多的别名昵称，如喝呼草、知羞草、怕醜草等。含羞草原产于美洲热带的巴西，是豆科含羞草属的一種多年生草本植物。由於這種植物生長力顽強，所以在不少國家，含羞草都被當成是一種野草 。花語：敏銳，細膩的感觸，纖細的感情。花色有粉紅和紫紅。花期為6月至9月。"
+  },
+  {
+    "id": "plant_0131",
+    "zh_name": "咬人猫",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "咬人貓（學名：Urtica thunbergiana）別稱蕁麻、咬人蕁麻或刺草等，屬蕁麻科蕁麻屬植物，为多年生草本植物，植株高約70－120cm。咬人猫原產於於中國及日本，台灣分布於海拔約500~3000公尺山區之陰暗潮濕林下。咬人猫為蛺蝶科大紅蛺蝶幼蟲的食草及寄主之一。咬人貓莖葉均具有尖銳焮（xìn…"
+  },
+  {
+    "id": "plant_0132",
+    "zh_name": "宮燈長壽花",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "宫灯长寿花（學名：Kalanchoe porphyrocalyx），也叫大宫灯长寿、时金宫灯、大提灯、提灯花、紫萼伽蓝菜，是景天科伽蓝菜属的一个种，原产马达加斯加。宫灯长寿花的栽培品种有单瓣品种'Wendy'、重瓣品种'Sunny Balloon'等。"
+  },
+  {
+    "id": "plant_0133",
+    "zh_name": "兴安薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "兴安薄荷（学名：Mentha dahurica），为薄荷属下的一个种，生长於海拔650米左右的地区，多见於草甸上，分布于亚洲东部，包括俄罗斯、日本和中国大陆的黑龙江、吉林、内蒙古等地。"
+  },
+  {
+    "id": "plant_0134",
+    "zh_name": "银杏",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "银杏，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0135",
+    "zh_name": "单刺仙人掌",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "单刺仙人掌（学名：Opuntia monacantha）是仙人掌科仙人掌属的植物。原产美洲。分布在广西、云南、福建等地，生长于海拔2,000米至3,000米的地区，多生在巴西、乌拉圭、巴拉圭以及阿根廷，目前尚未由人工引种栽培。"
+  },
+  {
+    "id": "plant_0136",
+    "zh_name": "松叶菊",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "松叶菊，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0137",
+    "zh_name": "马桑",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "马桑，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0138",
+    "zh_name": "油桐",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "油桐，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0139",
+    "zh_name": "多肉植物",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "多肉植物，为一非正式植物学概念，指一类具有肥厚多汁组织的植物类群，通常能够在叶、茎或根等器官中贮水，从而应对缺水的气候或土壤条件。此类植物主要见于沙漠等低降雨量的地区及土壤水分持留度低的生境。许多多肉植物还具有其它最大化水分利用效率的适应性特征，例如退化叶片以及景天酸代谢。一些多肉植物由于外观奇特，需水量相对较少…"
+  },
+  {
+    "id": "plant_0140",
+    "zh_name": "胶苦瓜",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "胶苦瓜，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0141",
+    "zh_name": "夢幻草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "夢幻草（学名：Aquilegia × hybrida）為毛茛科耬斗菜屬下多年生宿根草花雜交種。又名西洋耬斗菜，但與成書於十五世紀，中國第一部專門記錄可食用野生植物的著作救荒本草上所記錄的耬斗菜並非同種。夢幻草由業者引進台灣作為觀賞植物的歷史還相當的短，僅始於二十一世紀初期，但隨即備受關注與讚賞。如其名…"
+  },
+  {
+    "id": "plant_0142",
+    "zh_name": "铁线莲状马兜铃",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "铁线莲状马兜铃，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0143",
+    "zh_name": "烏羽玉",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "烏羽玉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0144",
+    "zh_name": "崖柏",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "崖柏（学名：Thuja sutchuenensis）又名崖柏树、四川侧柏，为柏科崖柏属的白垩纪孑遗植物，为常绿乔木。分布在中国大陆的四川等地，生长于海拔1,400米的地区，目前尚未由人工引种栽培。中国重庆开县和城口暨雪宝山自然保护区范围内，分布着约一万株崖柏。 砍伐是崖柏濒危的主要原因之一。"
+  },
+  {
+    "id": "plant_0145",
+    "zh_name": "藻玲玉屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "藻玲玉屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0146",
+    "zh_name": "玫瑰麒麟",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "玫瑰麒麟，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0147",
+    "zh_name": "金刚纂",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "金刚纂，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0148",
+    "zh_name": "神香草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "神香草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0149",
+    "zh_name": "香茅屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "香茅屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0150",
+    "zh_name": "印度金鈕扣",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "金鈕扣（學名：Acmella oleracea），又名千日菊、六神花、印度金钮扣，為菊科金鈕扣屬的植物。金鈕扣的葉子與頭花（頭狀花序）含有一種止痛劑的成分，可以用來緩解牙齒的疼痛，因此又被稱為牙痛草。原產於巴西的熱帶地區，被引種至世界各地栽培，做為觀賞植物與藥草使用。一年生草本植物，在氣候溫暖的地區會變成多年生植物…"
+  },
+  {
+    "id": "plant_0151",
+    "zh_name": "蘆莖樹蘭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "蘆莖樹蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0152",
+    "zh_name": "硬斗柯",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "硬斗柯，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0153",
+    "zh_name": "夾竹桃",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "夾竹桃（學名：Nerium oleander），又名洋夾竹桃或歐洲夾竹桃，是龙胆目夾竹桃科夹竹桃属的唯一一种，为常綠灌木或小喬木，原生于地中海盆地，因為莖部像竹，花朵像桃，因而為名，也是具觀賞價值的中草藥。北非古城沃呂比利斯就是以洋夾竹桃的舊拉丁文名而取名的。"
+  },
+  {
+    "id": "plant_0154",
+    "zh_name": "素馨花",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "素馨花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0155",
+    "zh_name": "牛眼馬錢",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "牛眼馬錢，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0156",
+    "zh_name": "菊三七",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "菊三七，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0157",
+    "zh_name": "多葉蘆薈",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "多葉蘆薈（学名：Aloe polyphylla），又名螺旋蘆薈，俗稱所羅門王碧玉冠，是賴索托德拉肯斯堡山脈特有的一種蘆薈。它們最特別的是其對稱及五尖的螺旋狀。 多葉蘆薈雖然被指是瀕危物種，但卻沒有被列在世界自然保護聯盟紅色名錄內。不過，它們也受到《瀕危野生動植物種國際貿易公約》附錄一保護。"
+  },
+  {
+    "id": "plant_0158",
+    "zh_name": "黑板樹",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "黑板樹，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0159",
+    "zh_name": "袋鼠爪花",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "袋鼠爪花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0160",
+    "zh_name": "藥用鼠尾草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "藥用鼠尾草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0161",
+    "zh_name": "梵天拖鞋蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "梵天拖鞋蘭 （学名：Paphiopedilum × fanaticum），為原生於中國的兩種世界珍稀「銘花」硬葉兜蘭（台灣習稱玉女拖鞋蘭）與麻栗坡兜蘭天然雜交孕育而成的一種珍稀兜蘭屬物種。植株型態與花形花色等特質近於二親本物種，因此中國大陸稱其為 硬葉麻栗坡兜蘭。由於二親本之生態環境與生長海拔高度相當一致…"
+  },
+  {
+    "id": "plant_0162",
+    "zh_name": "大麻属",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "大麻属（学名：Cannabis），是蔷薇目大麻科的一属，其该属内的物种，常見說法只列出尋常大麻（Cannabis sativa）一種，也有將印度大麻（Cannabis indica）、莠草大麻（Cannabis ruderalis）也並列為大麻物種的說法。大麻屬植物可能起源於中亞或南亞地區，也有研究表明大麻可能源自中国西北部…"
+  },
+  {
+    "id": "plant_0163",
+    "zh_name": "海漆属",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "海漆属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0164",
+    "zh_name": "灰幹蘇鐵",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "灰幹蘇鐵，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0165",
+    "zh_name": "紅豆杉科",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "紅豆杉科，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0166",
+    "zh_name": "光果苏铁",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "光果蘇鐵（学名：Cycas thouarsii），也称馬達加斯加蘇鐵，属于苏铁科的一种植物，分布在馬達加斯加及東非熱帶地區，可作為觀賞及藥用植物。"
+  },
+  {
+    "id": "plant_0167",
+    "zh_name": "颠茄",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "颠茄，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0168",
+    "zh_name": "安古蘭 (蘭花)",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "安古蘭（学名：Anguloa clowesii），为蘭科安古蘭属下的一个品种。多年生草本。俗稱鬱金香蘭、搖籃蘭、襁褓娃娃。原產於南美洲安第斯山脈地區。"
+  },
+  {
+    "id": "plant_0169",
+    "zh_name": "大叶决明",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "大叶决明（学名：Senna fruticosa），为豆科决明属下的一種喬木或小灌木。原產美洲熱帶地區。全球熱帶地區幾乎都有引種栽植，作為景觀植物。臺灣約在1990年由馬來西亞引進栽培，目前不算常見。中國仅栽培于广东南部地区。（大葉決明之學名在1982年時由Cassia fruticosa Mill.改成Senna…"
+  },
+  {
+    "id": "plant_0170",
+    "zh_name": "蒺藜",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "蒺藜，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0171",
+    "zh_name": "欧薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "欧薄荷（学名：Mentha longifolia），也称马薄荷（Horsemint），是薄荷属下的一种薄荷，生长於海拔800－1950米的地区，原产于欧洲，播种范围非常广，在中亚、东亚（范围从埃及一直到中国）、非洲北部和南部都有种植。中国大陆的上海和南京種植较多。"
+  },
+  {
+    "id": "plant_0172",
+    "zh_name": "毒漆藤",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒漆藤（学名：Toxicodendron radicans或Rhus toxicodendron英文：Poison Sumac），又名三葉毒藤，是一种分布在北美、亞洲及澳大利亚的有毒植物。大多數人觸碰到時會產生過敏反應。"
+  },
+  {
+    "id": "plant_0173",
+    "zh_name": "白英 (植物)",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "白英 (植物)，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0174",
+    "zh_name": "鹅掌楸",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "鹅掌楸，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0175",
+    "zh_name": "紫茎泽兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "紫茎泽兰，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0176",
+    "zh_name": "百歲蘭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "百歲蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0177",
+    "zh_name": "曼陀罗 (植物)",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "曼陀羅（學名：Datura stramonium；英語：thorn apple）即紫花曼陀罗是茄科類曼陀羅屬植物，俗名醉心花、狗核桃、醉仙桃、疯茄儿、南洋金花、山茄子、凤茄花、朝鮮牽牛花。幾個世紀以來，曼陀羅被用作中醫草藥，以緩解哮喘症狀和作為手術或接骨止痛劑，也是強力迷幻劑和譫妄劑。曼陀羅屬植物在梵語称作Dhattūra达都罗…"
+  },
+  {
+    "id": "plant_0178",
+    "zh_name": "棣棠花",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "棣棠花（學名：Kerria japonica），別名黃度梅､ 蜂棠花､ 地團花､ 金錢花、金旦子花､ 雞蛋花。日語名「山吹」，是蔷薇科蔷薇亚科棣棠花属唯一的一種植物。灌木，花色有着一種獨特的黃色。"
+  },
+  {
+    "id": "plant_0179",
+    "zh_name": "南方红豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "南方红豆杉（学名：Taxus chinensis var. mairei）为红豆杉科红豆杉属红豆杉的变种。"
+  },
+  {
+    "id": "plant_0180",
+    "zh_name": "緋花玉",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "緋花玉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0181",
+    "zh_name": "薄荷屬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "薄荷屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0182",
+    "zh_name": "香草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "香草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0183",
+    "zh_name": "鳳尾蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "鳳尾蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0184",
+    "zh_name": "熊童子",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "熊童子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0185",
+    "zh_name": "厚敦菊屬",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "厚敦菊屬（學名：Othonna），是菊科下的一個屬。主要原生地在非洲西南部。莖部變成肥厚塊狀莖的塊狀莖植物類較受人歡迎。從秋季至冬季，長長的花柄前會開花。有很多在夏季時，葉片會掉光進入休眠期。然而，常見的黃花新月(Othonna capensis)就沒有塊狀莖，夏季也不會掉葉子。"
+  },
+  {
+    "id": "plant_0186",
+    "zh_name": "梨果仙人掌",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "梨果仙人掌又名食用仙人掌（学名：Opuntia ficus-indica）为仙人掌科仙人掌属的植物。分布于吉海及红海沿岸、澳洲大陸全境、毛里求斯、南非、东非、夏威夷以及台湾、云南、广东、四川、福建、贵州、浙江、广西等地，生长于海拔600米至2,900米的地区，多生在热河谷，目前尚未由人工引种栽培。"
+  },
+  {
+    "id": "plant_0187",
+    "zh_name": "沙冬青",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "沙冬青，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0188",
+    "zh_name": "苏铁属",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "苏铁属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0189",
+    "zh_name": "卧茎宫灯长寿",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "卧茎宫灯长寿（學名：Kalanchoe uniflora）是景天科伽蓝菜属的一个种，原产马达加斯加。卧茎宫灯长寿与宫灯长寿花（學名：Kalanchoe porphyrocalyx）近缘，二者都属于宫灯长寿组（Kalanchoe sect. Alatae）或宫灯长寿亚属（Kalanchoe subg.…"
+  },
+  {
+    "id": "plant_0190",
+    "zh_name": "半夏",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "半夏（學名：Pinellia ternata）又名三叶半夏（山西、河南、广西）、三步跳（湖北、四川、贵州、云南）、麻芋果（贵州）、田里心、无心菜、燕子尾、地慈姑、地鹧鸪、地文、和姑、守田（古称）、贝母、痰宮劈歷等，是天南星科半夏属植物。除内蒙古、青海、新疆、西藏外的中国各省份以及朝鲜半岛、日本等地有野生分布…"
+  },
+  {
+    "id": "plant_0191",
+    "zh_name": "麗虹玉",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "麗虹玉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0192",
+    "zh_name": "彩虹竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "彩虹竹芋（学名：Calathea roseopicta）为竹芋科孔雀竹芋屬下的一个种。困近叶缘处有一圈玫瑰色或银白色环形斑纹，如彩虹一般，故名。原产巴西，同属植物分布于南美至中美的热带美洲地区。中国有引种栽培。"
+  },
+  {
+    "id": "plant_0193",
+    "zh_name": "马齿苋",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "马齿苋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0194",
+    "zh_name": "翡翠木",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "翡翠木，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0195",
+    "zh_name": "森林薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "森林薄荷（学名：Mentha laxiflora），是薄荷属下的一个种。"
+  },
+  {
+    "id": "plant_0196",
+    "zh_name": "魚尾椰子",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "魚尾椰子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0197",
+    "zh_name": "新疆千里光",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "新疆千里光（学名：Senecio jacobaea）是菊科千里光属的植物。分布在欧洲、蒙古、俄罗斯、中亚、高加索以及中国大陆的新疆等地，生长于海拔600米至1200米的地区，常生于疏林或草地，目前尚未由人工引种栽培。 新疆千里光在畜牧尤其是牧马业上是一种有害的植物，因为其含有肝毒性的生物碱。其花和全株均有毒性…"
+  },
+  {
+    "id": "plant_0198",
+    "zh_name": "紫葉狼尾草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "紫葉狼尾草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0199",
+    "zh_name": "雪松属",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "雪松属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0200",
+    "zh_name": "银胶菊",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "银胶菊，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0201",
+    "zh_name": "台湾马桑",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "台湾马桑（学名：Coriaria intermedia）为马桑科马桑属的植物。分布于台湾、菲律宾等地，生长于海拔2,500米的地区，多生于灌丛中以及疏林中，目前尚未由人工引种栽培。 其种加词“intermedia”意为“中间的”。 现接受名为日本马桑中间亚种（Coriaria japonica subsp…"
+  },
+  {
+    "id": "plant_0202",
+    "zh_name": "葡萄瓮属",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "葡萄瓮属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0203",
+    "zh_name": "鵝掌芋屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "鵝掌芋屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0204",
+    "zh_name": "蔓綠絨屬",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "蔓綠絨屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0205",
+    "zh_name": "风铃玉",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "风铃玉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0206",
+    "zh_name": "銀合歡",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "銀合歡，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0207",
+    "zh_name": "牽牛花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "牽牛花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0208",
+    "zh_name": "田野薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "田野薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0209",
+    "zh_name": "日中花属",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "日中花属（学名：Mesembryanthemum为番杏科被子植物一个属。该属共108种，均为多肉植物，原产于地中海地区及非洲南部。"
+  },
+  {
+    "id": "plant_0210",
+    "zh_name": "木荷",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "木荷（學名：Schima superba），臺灣話稱杆仔皮（白話字：koaⁿ-á-phôe / koaⁿ-á-phêr），为山茶科木荷属下的一个种，分布于中国大陆南部、台湾、琉球群岛。樹皮有極強的生物鹼白色結晶，屬於有毒植物。可用來毒魚、殺蟲，人應避免觸碰。台灣排灣族人稱之為/sapeljik/、視為毒魚劇物…"
+  },
+  {
+    "id": "plant_0211",
+    "zh_name": "火絨草屬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "火絨草屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0212",
+    "zh_name": "帝冠",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "帝冠（学名：Obregonia denegrii），是一種仙人掌。它們是帝冠屬內唯一物種，原產於墨西哥，以第39任墨西哥總統奧夫·雷貢（Álvaro Obregón）來命名。它們十分稀少，外表像倒轉的松果。小苗時期生長速度很慢，很容易枯萎，只需少量的水份；但生長至成球之後，就會變得比較強健。它們是以種子傳播的…"
+  },
+  {
+    "id": "plant_0213",
+    "zh_name": "唇萼薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "唇萼薄荷（学名：Mentha pulegium），又称普列薄荷（Pennyroyal）、除蚤薄荷、胡薄荷，为薄荷属下的一个种。碾碎的唇萼薄荷会有类似绿薄荷的浓香气味。它也是一种传统的烹饪调料、草药和堕胎药。"
+  },
+  {
+    "id": "plant_0214",
+    "zh_name": "樹蘭亞科",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "樹蘭亞科（學名：Epidendroideae）是蘭科中最大的亞科，內含576屬，15000種，比兰科其他亞科內的物種總和還要多。其中，石斛族（dendrobieae）、腋花蘭亞族（pleurothallidinae）、文心蘭亞族（oncidiinae）所含的物種尤其多，且在系统發生學和生物地理學意義上都分布较广…"
+  },
+  {
+    "id": "plant_0215",
+    "zh_name": "石莲",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "石莲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0216",
+    "zh_name": "星草梅",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "美吐根（学名：Gillenia trifoliata），英語又稱作bowman's root。是蔷薇科星草梅属的一种多年生植物，其种加词“trifoliata”意为“三叶的”。开白色不规则星形小花。适合在湿润肥沃但排水良好的微酸性土壤种植。"
+  },
+  {
+    "id": "plant_0217",
+    "zh_name": "蘆薈",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "蘆薈，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0218",
+    "zh_name": "五爪木",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "五爪木（学名：Osmoxylon lineare），為五加科蘭嶼八角金盤屬下一種常綠灌木。園藝栽培一般株高0.5~1公尺，原生地高可達5公尺。馬來西亞與菲律賓為五爪木原生地。五爪木屬名Osmoxylon由希臘文osme（香）與xylon（木）二字組合而成，意指本屬有部份種類的木材具香味。種名 lineare為拉丁文…"
+  },
+  {
+    "id": "plant_0219",
+    "zh_name": "雞冠刺桐",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "雞冠刺桐，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0220",
+    "zh_name": "雪白兜蘭",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "雪白兜蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0221",
+    "zh_name": "宁夏枸杞",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "宁夏枸杞（學名：Lycium barbarum）是茄科、枸杞属的一種落葉灌木，原產於中國华北、西北和西南地區，主要人工種植地區為中國宁夏，根據2018年的相關報道，宁夏的种植面积占全中国种植总面积的46%。"
+  },
+  {
+    "id": "plant_0222",
+    "zh_name": "松叶佛甲草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "松叶佛甲草（学名：Sedum mexicanum），又名：墨西哥佛甲草、松葉景天，为景天科佛甲草属下的一个种。"
+  },
+  {
+    "id": "plant_0223",
+    "zh_name": "金花石蒜",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "金花石蒜，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0224",
+    "zh_name": "柱状南洋杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "柱状南洋杉（学名：Araucaria columnaris）也称柱冠南洋杉、大库克松，一种原产于大洋洲新喀里多尼亞的乔木，作为园林观赏植物被引入世界各地。"
+  },
+  {
+    "id": "plant_0225",
+    "zh_name": "粗肋草屬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "粗肋草屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0226",
+    "zh_name": "茉莉花",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "茉莉花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0227",
+    "zh_name": "伊藤杂种",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "伊藤杂种是芍药科芍药属植物中牡丹和芍药的杂交种，以日本育种家伊藤（Ltoh）命名。已育成的有100多个品种。 伊藤杂种是三倍体，其茎秆挺拔、花头直立，花色多样。花期较长，开花时间介于牡丹与芍药之间，常作为鲜切花，也常用于园林绿化和盆栽种植。"
+  },
+  {
+    "id": "plant_0228",
+    "zh_name": "留蘭香",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "留蘭香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0229",
+    "zh_name": "姑婆芋",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "姑婆芋（學名：Alocasia odora）又名海芋，是一种屬於天南星科海芋屬的多年生草本植物，分佈於日本、臺灣、中南半島、阿萨姆邦、孟加拉国、婆罗洲。 印度東北的曼尼普尔邦當地名稱「Hoomu」。姑婆芋在越南北部可入藥以治療感冒，名稱「雷」（Ray）。"
+  },
+  {
+    "id": "plant_0230",
+    "zh_name": "吊兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "吊兰（学名：Chlorophytum comosum）又名钓兰、挂兰、兰草、折鹤兰，歐美國家稱蜘蛛草（spider plant），日本称折鶴蘭，是相當常見的垂掛式观叶植物，原產於南非。"
+  },
+  {
+    "id": "plant_0231",
+    "zh_name": "苍耳",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "苍耳，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0232",
+    "zh_name": "流星毬蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "流星毬蘭（学名：Hoya multiflora），又名火箭毬蘭、蜂出巢。為蘿藦科毬蘭属下的一種常綠蔓狀灌木。其种加词“multiflora”意为“多花的”。原生於中國雲南、中南半島、印尼以及菲律賓等地。"
+  },
+  {
+    "id": "plant_0233",
+    "zh_name": "加州月桂",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "加州月桂（学名：Umbellularia californica），又名傘桂，是屬於樟科加州月桂屬的一種大喬木。其种加词“californica”意为“美国加利福尼亚的”。原產於美國加利福尼亞州的海岸森林，小部分延伸至俄勒岡州內，在俄勒岡州稱它為俄勒岡香桃木（Oregon Myrtle）。 加州月桂屬…"
+  },
+  {
+    "id": "plant_0234",
+    "zh_name": "橡膠紫茉莉",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "橡膠紫茉莉（学名：Cryptostegia grandiflora），俗稱橡膠藤，是多年生的木本和藤本植物，原產於馬達加斯加西南部。這是一種在澳大利亞北部受關注的野草，此外也被引入到其他大多數熱帶和亞熱帶地區。由於其誘人的花瓣和其乳膠能被製成具商業品質的橡膠而得名。 種子會在雨季的第一場雨後發芽，直到雨季開始前…"
+  },
+  {
+    "id": "plant_0235",
+    "zh_name": "薰衣草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "薰衣草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0236",
+    "zh_name": "全缘钓宫灯",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "全缘钓宫灯（學名：Kalanchoe manginii），也叫红提灯、姬紅提灯、紅姬提灯，是景天科伽蓝菜属肉質植物，原产于马达加斯加，作為觀賞植物栽培。其杂交栽培品种钓鱼竿宫灯、小宫灯长寿花也常见栽培。"
+  },
+  {
+    "id": "plant_0237",
+    "zh_name": "虎尾蘭",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "虎尾蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0238",
+    "zh_name": "西洋接骨木",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "西洋接骨木，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0239",
+    "zh_name": "华氏小菊苣",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "华氏小菊苣（Microseris walteri）是一种澳大利亚特有的多年生草本植物，开黄花，块根可食用，是三种被称为茉农菊或山药雏菊的植物之一，另外两种是Microseris scapigera和Microseris lanceolata 。   华氏小菊苣广泛分布在澳大利亚南部地区，包括维多利亚州…"
+  },
+  {
+    "id": "plant_0240",
+    "zh_name": "澳洲蘇鐵",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "澳洲蘇鐵，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0241",
+    "zh_name": "云南红豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "云南红豆杉（学名：Taxus yunnanensis），为红豆杉科红豆杉属下的一个植物种。种加词 yunnanensis 意为“云南的”。"
+  },
+  {
+    "id": "plant_0242",
+    "zh_name": "虎眼萬年青屬",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "虎眼萬年青屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0243",
+    "zh_name": "钓宫灯",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "钓宫灯，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0244",
+    "zh_name": "海杧果属",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "海杧果属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0245",
+    "zh_name": "褐斑伽蓝",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "褐斑伽蓝，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0246",
+    "zh_name": "除虱草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "除虱草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0247",
+    "zh_name": "羊躑躅",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "羊躑躅，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0248",
+    "zh_name": "長春花",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "長春花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0249",
+    "zh_name": "Talk:大花犀角",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "Talk:大花犀角，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0250",
+    "zh_name": "柠檬薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "柠檬薄荷（学名：Mentha citrata），也被称为柑橘薄荷、佛手柑薄荷、酸橙薄荷、柠檬留兰香，在USA中部也被称为加州小薄荷（Yerba Buena），原为薄荷属植物水薄荷的一个变种。整株植物光滑，帶有黃色腺體點綴，呈深綠色，通常捎帶紫色，特別是在葉子邊緣處。葉邊呈鋸齒狀。紫色花萼上有非常明顯的黃色的腺體線…"
+  },
+  {
+    "id": "plant_0251",
+    "zh_name": "粉团蔷薇",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "粉团蔷薇，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0252",
+    "zh_name": "马利筋",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "马利筋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0253",
+    "zh_name": "台灣一葉蘭",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "臺灣一葉蘭（学名：Pleione formosana,臺羅：Tâi-uân it-hio̍h-lân），又名台湾独蒜兰、台灣慈姑蘭、山慈姑，是樹蘭亞科一叶兰属下的一个种。是生存於中高海拔地區的台灣原生種，於阿里山、溪頭地區有相當數量的野生族群分布，也是知名的觀賞植物。花期主要為春夏兩季，入秋之後以球莖冬眠…"
+  },
+  {
+    "id": "plant_0254",
+    "zh_name": "木薯",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "木薯（學名：Manihot esculenta），又称树薯，是一種大戟科木薯属植物，原產於南美洲。广泛种植于尼日利亚、泰国、巴西、印度尼西亚等100多个国家或地区, 是全球第六大粮食作物, 也是第三大能量来源。"
+  },
+  {
+    "id": "plant_0255",
+    "zh_name": "印度大麻",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "印度大麻（學名：Cannabis indica），俗称籼稻大麻，是大麻屬下的一個品種，學者對於它是否是一種獨立物種，尚有爭議，目前多被視為是尋常大麻（Cannabis sativa）的亚种，甚至只是一個栽培品系，連亞種、變種都不是。 莖、葉與花含有豐富的四氫大麻酚（THC），可用於醫學與娛樂性藥物使用。"
+  },
+  {
+    "id": "plant_0256",
+    "zh_name": "粉防己",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "粉防己，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0257",
+    "zh_name": "芸香属",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "芸香属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0258",
+    "zh_name": "雞母珠",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "雞母珠，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0259",
+    "zh_name": "金杯藤",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "金杯藤，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0260",
+    "zh_name": "金鳥赫蕉",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "金鳥赫蕉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0261",
+    "zh_name": "丁香屬",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "丁香属（學名：Syringa）是木犀科的一属落叶灌木或小乔木。该属多種植物的統稱为丁香花。 丁香属物种自然分布于欧洲东南部及亚洲，包含13种，包括欧丁香、红丁香、紫丁香、荷花丁香（暴马丁香）、蓝丁香、花叶丁香、小叶巧玲花等原种、变种和杂交种。 丁香属植物的株型或树冠部多呈圆球形。单叶对生，卵圆形，圆锥花序…"
+  },
+  {
+    "id": "plant_0262",
+    "zh_name": "香蒲",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "香蒲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0263",
+    "zh_name": "类叶升麻属",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "类叶升麻属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0264",
+    "zh_name": "紅刺露兜樹",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "紅刺露兜樹，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0265",
+    "zh_name": "香球蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "香球蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0266",
+    "zh_name": "黄脉爵床",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "黄脉爵床，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0267",
+    "zh_name": "除虱草属",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "除虱草属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0268",
+    "zh_name": "龙舌兰",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "龙舌兰，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0269",
+    "zh_name": "迷迭香",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "迷迭香，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0270",
+    "zh_name": "加拿大紫荊",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "加拿大紫荊（学名：Cercis canadensis）是豆科紫荊屬的一種大型灌木或小喬木，原產於北美洲東部，從加拿大安大略省南部往南至美國佛羅里達州北部。因為原生於美國東部地區且具有紅色的花苞，在美國稱為Eastern Redbud（東部紫荊）。 其种加词“canadensis”意为“加拿大的”。"
+  },
+  {
+    "id": "plant_0271",
+    "zh_name": "彩雲閣",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "彩雲閣（学名：Euphorbia trigona）又名龍骨、龍骨柱、三角大戟等等。為大戟科大戟屬下之多肉植物。原產於非洲中部地區。雖然外形與仙人掌科植物相似，不過彩雲閣的刺與植株皮層一體，而非仙人掌科植物所特有的一個單獨個體/器官-刺座，所以並非仙人掌科植物。兼具形色之美的彩雲閣，除園藝造景、盆栽觀賞之外…"
+  },
+  {
+    "id": "plant_0272",
+    "zh_name": "毒番石榴",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒番石榴（学名：Hippomane mancinella），又名马疯大戟木，是一種属於大戟科烏桕族的喬木植物，原生於美國佛羅里達州、巴哈馬群島、加勒比海、中美洲及南美洲北部等新热带界地區，有劇毒。其纹理细密的黄褐色木材常被用来做家具。"
+  },
+  {
+    "id": "plant_0273",
+    "zh_name": "礼文薄雪草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "礼文薄雪草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0274",
+    "zh_name": "浪葉花燭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "浪葉花燭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0275",
+    "zh_name": "素馨属",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "素馨属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0276",
+    "zh_name": "苏铁",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "苏铁，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0277",
+    "zh_name": "東北紅豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "東北紅豆杉（学名：Taxus cuspidata），又稱紫杉、日本紅豆杉、赤柏松、紫柏松、朱樹。其木材紋理細緻、色澤美麗且具有香味，被視為良好的建築及家俱用材，比重約為0.51，心材呈紅褐色，在古日本被用來作為大官及神職人員的朝笏，因此又名「一位」。東北紅豆杉可入藥，藥名為「紫杉」 ，大量服用會導致心跳停止。"
+  },
+  {
+    "id": "plant_0278",
+    "zh_name": "海芋",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "海芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0279",
+    "zh_name": "火龙果",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "火龙果，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0280",
+    "zh_name": "叠苞竹芋属",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "叠苞竹芋属（学名：Calathea）是竹芋科下的一个属，为多年生草本植物。分布于热带美洲。"
+  },
+  {
+    "id": "plant_0281",
+    "zh_name": "日本山椒",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "日本山椒（學名：Zanthoxylum piperitum），又名山椒（日語：山椒／さんしょう，羅馬化：sanshō）、胡椒木、椒皮木（韓語：초피나무／椒皮木，羅馬化：chopi-namu），是芸香科花椒屬的一種落葉灌木，原生於日本、韓國。這種植物的嫩葉、花朵到果實，幾乎所有部位都帶有獨特的清爽香氣與麻辣口感…"
+  },
+  {
+    "id": "plant_0282",
+    "zh_name": "翼花蛇鞭柱",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "翼花蛇鞭柱，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0283",
+    "zh_name": "金紅骨竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "金紅骨竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0284",
+    "zh_name": "晃玉",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "晃玉（學名：Euphorbia obesa），又名布紋球、奧貝莎，屬大戟科大戟屬的一個物種，原產於南非開普省，它被廣泛種植在世界各地，但在野生環境中，因為過度採集及生長緩慢，而且生產種子數量少而導致瀕臨滅絕，被列在CITES附錄二中。"
+  },
+  {
+    "id": "plant_0285",
+    "zh_name": "薑薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "薑薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0286",
+    "zh_name": "厚葉龍舌蘭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "厚葉龍舌蘭（学名：Agave victoriae-reginae），又名維多利亞女王龍舌蘭、女王龍舌蘭或皇后龍舌蘭，俗稱笹之雪、箭山積雪、鬼脚掌或雪簧草，是一種細小的龍舌蘭屬植物。它們最特別的是在彷彿浮雕的葉子上有白色的紋。其名字是為紀念維多利亞女王。"
+  },
+  {
+    "id": "plant_0287",
+    "zh_name": "霸王鞭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "霸王鞭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0288",
+    "zh_name": "台湾马醉木",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "台湾马醉木（学名：Pieris taiwanensis Hayata）为杜鹃花科马醉木属下的一个种。別名為台灣梫木、台灣桂木。是常綠性的矮灌木，主要生長環境為向陽坡面。全世界馬醉木屬的植物有十種，台灣只有一種，即為台灣馬醉木。是少數台灣原生物種從低海拔一直到三千多公尺海拔都有分布的物種，北部在低海拔山區即有出現…"
+  },
+  {
+    "id": "plant_0289",
+    "zh_name": "大豕草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "大豕草（学名：Heracleum mantegazzianum），其名稱直譯自英語的giant hogweed，是伞形科独活属的一種一稔的多年生開花草本植物。 在紐西蘭，本物種常被錯誤認作欧防风或野大㦸。 原产于歐亞大陸高加索及中亚地区，在19世纪作为一园艺植物被引入英国，20世紀進入拉脫維亞及欧洲等地得以擴散…"
+  },
+  {
+    "id": "plant_0290",
+    "zh_name": "月桂",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "月桂（学名：Laurus nobilis），又稱月桂樹、桂冠樹、甜月桂、月桂冠，是調味料月桂葉的來源。原產於地中海沿岸及小亞細亞一帶灌木岩石區，現已遍佈世界各地。 叶片深绿色，椭圆形，革质，味苦，清香。干燥后，苦味减少，香气增强，可以用作调料，即“香叶”。 古代希腊人用月桂的小枝条編織成桂冠，授予皮提亞運動會的胜利者…"
+  },
+  {
+    "id": "plant_0291",
+    "zh_name": "毛曼陀罗",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毛曼陀罗，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0292",
+    "zh_name": "栗蕨",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "栗蕨（學名：Histiopteris incisa）為碗蕨科栗蕨屬下的一個種。是一種常見的蕨類植物，分佈於全球熱帶及亞熱帶地區。通常出現在潮濕的環境，並能生長佔據一大片面積。栗蕨每個羽片的最基部裂片外觀類似蝙蝠翅膀，這也是其英文俗名 bat's wing fern 的由來，在台灣常以外觀類似蝴蝶來形容。"
+  },
+  {
+    "id": "plant_0293",
+    "zh_name": "龍舌蘭屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "龍舌蘭屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0294",
+    "zh_name": "User:Hung Ting/條目建立中-08",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "User:Hung Ting/條目建立中-08，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0295",
+    "zh_name": "宽叶苏铁",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "寬葉蘇鐵（学名：Cycas balansae）又稱雲南蘇鐵、巴兰萨苏铁、十万大山苏铁，是蘇鐵屬的一個物種，原產中國廣西西南部及雲南南部，也生長在越南北部。它生長在高山雨林，較耐寒。"
+  },
+  {
+    "id": "plant_0296",
+    "zh_name": "條紋水塔花",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "條紋水塔花（学名：Billbergia vittata）为凤梨科水塔花属下一個極具特色的物种，原產於巴西東部。"
+  },
+  {
+    "id": "plant_0297",
+    "zh_name": "东北薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "东北薄荷（学名：Mentha sachalinensis），也称库页薄荷（Sachalin mint），是脣形科薄荷属的植物，生长於海拔170－1100米的地区，多见於河湖旁、潮湿草地，分布於俄罗斯、日本和中国大陆的东北省区黑龙江、吉林、辽宁、内蒙古等远东地带，故称为东北薄荷。种加词sachalinensis意为…"
+  },
+  {
+    "id": "plant_0298",
+    "zh_name": "羊角拗",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "羊角拗，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0299",
+    "zh_name": "非洲堇屬",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "非洲堇屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0300",
+    "zh_name": "万年青",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "万年青（学名：Rohdea japonica）是万年青属下的一種，是多年生常绿草本植物，又名蒀、千年蒀、开喉剑、九节莲、冬不凋、冬不凋草、铁扁担、乌木毒、白沙草、斩蛇剑等，原产於中国南方和日本，是很受欢迎的优良观赏植物，在中国有悠久的栽培历史。 万年青叶翠绿，四季常青，冬季时绿色的叶子配上红色的果实…"
+  },
+  {
+    "id": "plant_0301",
+    "zh_name": "有毒植物",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "有毒植物所含毒素可能引起人類或其他動物中毒甚至死亡。有些动物會在食用後將毒素儲存在體內，作為抵禦天敵的手段之一。"
+  },
+  {
+    "id": "plant_0302",
+    "zh_name": "量天尺",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "量天尺，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0303",
+    "zh_name": "馬尾杉屬",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "馬尾杉屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0304",
+    "zh_name": "紅豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "紅豆杉，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0305",
+    "zh_name": "豹紋竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "豹紋竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0306",
+    "zh_name": "迎春花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "迎春花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0307",
+    "zh_name": "月桂葉",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "月桂葉是由月桂的具有獨特芳香的樹葉。新鮮採擇或脫水乾燥後的月桂葉都常作為調味應用於地中海烹飪中，例如煲湯、燜、燉、煙熏等。新鮮的月桂葉性質溫和，脫水後其香味會變得濃烈。中国烹饪中则常用干燥的月桂叶作为香料，通称香叶。"
+  },
+  {
+    "id": "plant_0308",
+    "zh_name": "油杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "油杉（拉丁语：Keteleeria fortunei）是油杉属下的一个物种，主要分布在越南北部、香港和中国福建、广东、广西、贵州、湖南、江西、云南及浙江。种名fortunei以19世纪苏格兰园艺学家Robert Fortune的名字命名。"
+  },
+  {
+    "id": "plant_0309",
+    "zh_name": "海马齿",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "海马齿（学名：Sesuvium portulacastrum）为番杏科海马齿属的植物。分布于全球热带和亚热带海岸、台湾岛以及中国大陆的广东、东沙岛、福建、海南等地，一般生于近海岸的沙地上。"
+  },
+  {
+    "id": "plant_0310",
+    "zh_name": "天仙子 (植物)",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "天仙子（學名：Hyoscyamus niger）又名莨菪，旧称菲沃斯，为茄科植物。其种加词“niger”意为“黑色的”。"
+  },
+  {
+    "id": "plant_0311",
+    "zh_name": "水薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "心葉水薄荷（学名：Clinopodium brownei (Sw.) Kuntze），是是唇形科薄荷屬的多年生開花植物。它生長在潮濕的地方薄荷属下的一种多年生草本開花植物，其原产于欧洲（除了最北部），也生长于非洲的西北部、亚洲的西南部。"
+  },
+  {
+    "id": "plant_0312",
+    "zh_name": "黃蟬",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "黃蟬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0313",
+    "zh_name": "繡球屬",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "繡球屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0314",
+    "zh_name": "大叶肉托果",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "大叶肉托果（学名：Semecarpus gigantifolia），又名台东漆树，漆树科肉托果属的一种常绿乔木，树液有毒。分布于菲律宾、台湾岛等地，多生在海岸，目前尚未由人工引种栽培。"
+  },
+  {
+    "id": "plant_0315",
+    "zh_name": "酒瓶兰属",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "酒瓶兰属，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0316",
+    "zh_name": "梓叶槭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "梓叶槭（学名：Acer catalpifolium）是无患子科槭属的落叶大乔木，为中国的特有植物。分布于中国大陆的四川等地，生长于海拔400米至1,000米的地区，见于阔叶林中，目前尚未由人工引种栽培。 梓叶槭为中国国家II级保护植物，极小种群野生植物。"
+  },
+  {
+    "id": "plant_0317",
+    "zh_name": "觀葉植物",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "觀葉植物，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0318",
+    "zh_name": "珊瑚油桐",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "珊瑚油桐，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0319",
+    "zh_name": "矮疣球",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "矮疣球，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0320",
+    "zh_name": "薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0321",
+    "zh_name": "太平丸",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "太平丸（学名：Echinocactus horizonthalonius，英語：Devil's-Head Cactus），又名花王丸，金琥屬中植株最細小的品種，此屬亦只有這種開盤狀的花，产于美国西南部和墨西哥北部。是目前國際上的觀賞植物市場中最流行的一種仙人球。"
+  },
+  {
+    "id": "plant_0322",
+    "zh_name": "側金盞花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "側金盞花（學名：Adonis amurensis），別名福壽草、福壽花、元日草、早春花、冰涼花、冰了花、冰凌花、冰里花、頂冰花、冰郎花、朔日草，屬於側金盞花屬多年生草本植物，種小名amurensis来自中國黑龍江（Amur）的英文名，主要分布於中國東北、韓國、日本、西伯利亞。花期在2月到4月的早春寒冷時期…"
+  },
+  {
+    "id": "plant_0323",
+    "zh_name": "馬纓丹",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "馬纓丹，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0324",
+    "zh_name": "緬梔花",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "緬梔花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0325",
+    "zh_name": "白仙女文心蘭",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "白仙女文心蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0326",
+    "zh_name": "鐵線蕨",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "鐵線蕨，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0327",
+    "zh_name": "石栗",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "石栗，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0328",
+    "zh_name": "银扇草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "银扇草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0329",
+    "zh_name": "掌叶花烛",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "鵝掌花烛（学名：Anthurium pedatoradiatum）为天南星科花烛属下的一个品种。鵝掌花燭原產地為墨西哥南部的維拉克魯茲（Veracruz）、恰帕斯（Chiapas）、 巴斯科（Tabasco）等州，分布於海平面到海拔近800公尺處。"
+  },
+  {
+    "id": "plant_0330",
+    "zh_name": "澳洲薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "澳洲薄荷（学名：Mentha australis），为薄荷属下的一种薄荷，它生长在澳洲的东部，具体分布在除西澳大利亚州以外的其他州和地区。"
+  },
+  {
+    "id": "plant_0331",
+    "zh_name": "垂序商陆",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "垂序商陆（学名：Phytolacca americana），又名美洲商陆、美商陸、花商陸、野胭脂、白鸡腿，为商陆科商陆属下的一个植物种。  该植物全株有毒，易與山牛蒡或人參混淆，原产于北美洲。"
+  },
+  {
+    "id": "plant_0332",
+    "zh_name": "大麻 (植物)",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "大麻（學名：Cannabis sativa）是大麻科大麻属植物的物种之一，可能是大麻属的唯一物種，中國古稱麻、枲、苴、漢麻、火麻或黃麻，又稱为大麻草、寻常大麻、苜蓿大麻。大麻使用者惯称Sativa（与indica（印度大麻）相对比）。 本种外表高大瘦长、叶子长而狭窄，因為含有大麻素成份，可作為醫療與娛樂性藥物使用…"
+  },
+  {
+    "id": "plant_0333",
+    "zh_name": "女王鬱金",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "女王鬱金（学名：Curcuma petiolata）为薑科薑黃属下的一个种。 多年生宿根草本球根花卉。女王鬱金原生地至目前應尚不十分明確，但大區塊東南亞地區的說法是沒有異議。台灣特有生物研究保育中心台灣野生植物資料庫有關鬱金的資料上則沒有提供相關說明。"
+  },
+  {
+    "id": "plant_0334",
+    "zh_name": "绣球花",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "绣球花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0335",
+    "zh_name": "短葉絲蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "短葉絲蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0336",
+    "zh_name": "灰薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "灰薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0337",
+    "zh_name": "蘋果薄荷",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "蘋果薄荷，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0338",
+    "zh_name": "野藍薊",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "野藍薊，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0339",
+    "zh_name": "棒叶落地生根",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "棒叶落地生根（學名：Kalanchoe delagoensis）又名棒叶不死鸟、洋吊钟、细叶落地生根、轮叶落地生根、窄叶落地生根、狭叶落地生根、蝎虎掌，日语名锦蝶，为景天科伽藍菜屬的一个种，原產非洲馬達加斯加。洋吊鐘生命力強韌，耐旱，繁殖能力強，葉緣可以長出不定芽，脫落後遇到合適的環境便會發育成新一棵植株…"
+  },
+  {
+    "id": "plant_0340",
+    "zh_name": "落地生根",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "落地生根，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0341",
+    "zh_name": "朱蓮",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "朱蓮（學名：Kalanchoe sexangularis）為景天科伽蓝菜属的物種。為多年生常綠亞灌木肉質植物，原產於非洲東南部。"
+  },
+  {
+    "id": "plant_0342",
+    "zh_name": "網紋草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "網紋草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0343",
+    "zh_name": "美叶苏铁",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "美叶苏铁，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0344",
+    "zh_name": "水仙属",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "水仙屬（学名：Narcissus），是多年生单子叶草本植物，属于天门冬目石蒜科。本屬植物原生地為中欧、地中海沿岸和北非，共有800多個原生種，其中10餘种观赏价值極高，經常應用於園藝栽培。 中國廣泛栽培之水仙（中國水仙、漳州水仙）是多花水仙變種之一，學名為Narcissus tazetta var.…"
+  },
+  {
+    "id": "plant_0345",
+    "zh_name": "风车莲",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "风车莲，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0346",
+    "zh_name": "石蒜",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "石蒜，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0347",
+    "zh_name": "鉤吻",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "鉤吻，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0348",
+    "zh_name": "香水草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "香水草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0349",
+    "zh_name": "大花四照花",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "大花四照花（學名：Cornus florida），又名大花山茱萸、多花狗木，是山茱萸科的一種木本植物。原產於北美洲東部，從美國緬因州南部往西經加拿大安大略省南部至美國堪薩斯州東部；南至佛羅里達州北部及德克薩斯州東部。另外在墨西哥東部的新萊昂州及韋拉克魯斯州也有出產一個亞種。 大花四照花是美國北卡羅萊那州及維吉尼亞州的州花。"
+  },
+  {
+    "id": "plant_0350",
+    "zh_name": "心叶日中花",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "心叶日中花（学名：Mesembryanthemum cordifolium），又名心葉日中花、太陽玫瑰，为番杏科露草属下的一种多年生常绿草本。原产非洲南部。"
+  },
+  {
+    "id": "plant_0351",
+    "zh_name": "波士頓腎蕨",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "波士頓腎蕨（学名：Nephrolepis exaltata），又稱波士頓蕨，是腎蕨屬下的一種多年生蕨類植物，原產於世界各地的濕熱帶地區，後來成為一種園藝植物。"
+  },
+  {
+    "id": "plant_0352",
+    "zh_name": "黄花棘豆",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "黄花棘豆，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0353",
+    "zh_name": "翠錦竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "翠錦竹芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0354",
+    "zh_name": "南天竹",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "南天竹（學名：Nandina domestica），又名南天竺、红天竺，属小檗科南天竹属，原產於中國、日本。因樹形優美是普受喜愛的觀賞樹種。 南天竹果實為著名中藥「天笠子」，可鎮咳、治哮喘及百日咳。"
+  },
+  {
+    "id": "plant_0355",
+    "zh_name": "藿香薊",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "藿香薊，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0356",
+    "zh_name": "海杧果",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "海杧果（學名：Cerbera manghas，台湾作海檬果）又名海芒果、山檨仔、海檨仔、猴歡喜、黃金茄、山杧果、牛金茄、牛心荔、黄金调、山杭果、香军树、水漆等，屬夾竹桃科海杧果屬。海杧果為常綠小喬木。由於葉片及果實外形貌似芒果，及主要生長地為熱帶沿海的砂地上或近海的河流兩岸，因而為名。 全株含有白色有毒乳液…"
+  },
+  {
+    "id": "plant_0357",
+    "zh_name": "樹馬齒莧",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "樹馬齒莧（學名：Portulacaria afra），又名馬齒莧樹、銀杏木、金枝玉葉、小葉燕子掌、幸運樹，是龍樹科马齿苋樹属植物，原產於南非。"
+  },
+  {
+    "id": "plant_0358",
+    "zh_name": "羅勒",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "羅勒，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0359",
+    "zh_name": "歐洲紅豆杉",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "欧洲红豆杉（學名：Taxus baccata），红豆杉科红豆杉属常绿乔木。植株高10-20m，胸径达2米。叶线形，深绿色，长1-4cm，螺旋状着生，基部扭转排成二列。假种皮肉质、杯状、红色；种子坚果状，位于假种皮中。原产欧洲及北非西部、伊拉克、亚洲西南部。這植物大部分有毒，食用其葉子可致死。欧洲红豆杉是雌雄异株的树…"
+  },
+  {
+    "id": "plant_0360",
+    "zh_name": "歐芹",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "歐芹（學名：Petroselinum crispum），別稱香芹、巴西利、巴西里、洋香菜、洋芫荽、番芫荽、荷蘭芹，是伞形科欧芹属的二年生草本植物，原产地中海沿岸，為常見蔬菜和香草，具有清爽的香味和鲜綠色。古罗马时代起用于烹调，也是世界上用得最广的一种香草。对地质和气候的适应性高，栽培也容易，故世界各地都有栽培…"
+  },
+  {
+    "id": "plant_0361",
+    "zh_name": "毛马齿苋",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "毛马齿苋（学名：Portulaca pilosa）是马齿苋科马齿苋属的植物。分布于美洲热带地区、印度尼西亚、菲律宾、马来西亚、台湾以及中国大陆的福建、海南、广西、广东、西沙群岛、云南等地，多生长在海边沙地以及开阔地。"
+  },
+  {
+    "id": "plant_0362",
+    "zh_name": "紅雀珊瑚",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "紅雀珊瑚，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0363",
+    "zh_name": "星果鳳梨",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "星果鳳梨（学名：Portea petropolitana），為鳳梨科菠蒂亞属下的一个种。多年生常綠草本。原產於巴西東南部及南美洲的热带雨林，是典型的附生植物,生長在岩石或是海岸沙地上。"
+  },
+  {
+    "id": "plant_0364",
+    "zh_name": "生石花屬",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "生石花屬，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0365",
+    "zh_name": "观赏植物",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "观赏植物，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0366",
+    "zh_name": "小銀芋",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "小銀芋（学名：Calathea rufibarba 'Silver Compacta）為竹芋科肖竹芋屬下的一個園藝栽培種，多年生草本。葉叢生，長橢圓形。葉面銀灰色，中肋及側脈為淺綠，葉背及葉柄則是紅褐色。葉柄具短毛茸，在同屬中顯得相當特殊。"
+  },
+  {
+    "id": "plant_0367",
+    "zh_name": "苦楝",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "苦楝，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0368",
+    "zh_name": "毒瓜",
+    "theme": "执念与虚妄",
+    "emotion_tags": "obsession, illusion",
+    "description": "毒瓜（学名：Diplocyclos palmatus），又名双轮瓜，为葫芦科毒瓜属下的一种一年生草本植物。原產於馬來西亞和周邊地區以及澳大利亞北部的雨林中。其中澳大利亚的毒瓜分布海拔最高為1,000米（3,300英尺）。此外現在在中國南方也有其蹤跡，在这里其果實在八月至十月閒成熟，果皮呈黄绿色或红色…"
+  },
+  {
+    "id": "plant_0369",
+    "zh_name": "车窝草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "车窝草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0370",
+    "zh_name": "華麗石斛蘭",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "華麗石斛蘭，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0371",
+    "zh_name": "瑪撒拉",
+    "theme": "沉思与清冷",
+    "emotion_tags": "solitude, philosophical",
+    "description": "瑪撒拉（英語：masala；印地語：मसाला；孟加拉語：মশলা；烏爾都語：مصاله；尼泊爾語：मसाला），或譯為馬薩拉、瑪莎拉，是印度次大陸的一種由多種香料混合起來的調味料。 馬薩拉其實是一個泛稱，有不同的款式，可以有乾身的、或糊狀的。它的成份亦視乎種類（例如：Garam Masala、Vindaloo…"
+  },
+  {
+    "id": "plant_0372",
+    "zh_name": "女王竹芋",
+    "theme": "静默与时光",
+    "emotion_tags": "silence, time",
+    "description": "女王竹芋（学名：Calathea louisae cv.Maui Queen）為竹芋科肖竹芋屬下的一個園藝栽培種，多年生草本。葉片橢圓，尖端漸尖，綠色葉面上之中脈兩側分布有白色魚尾狀斑紋。女王竹芋性喜溫暖、濕潤的環境。適宜室內盆栽觀賞。"
+  },
+  {
+    "id": "plant_0373",
+    "zh_name": "藍雪花",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "藍雪花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0374",
+    "zh_name": "茵芋",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "茵芋，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0375",
+    "zh_name": "愛之蔓",
+    "theme": "净化与自我和解",
+    "emotion_tags": "peace, relief",
+    "description": "愛之蔓（學名：Ceropegia woodii）是一種蘿摩科的開花植物，主要分佈於南非、史瓦濟蘭與辛巴威。它有時候會被當作Ceropegia linearis的亞種，被記為「C. linearis subsp. woodii」。它的別名包括吊燈花、鴿蔓花、吊金錢、蠟花、木藤與心蔓等等。"
+  },
+  {
+    "id": "plant_0376",
+    "zh_name": "菊水",
+    "theme": "沉思与清冷",
+    "emotion_tags": "detachment, coldness",
+    "description": "菊水，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0377",
+    "zh_name": "攀枝花苏铁",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "攀枝花蘇鐵（學名：Cycas panzhihuaensis）又称把关河苏铁，属于苏铁屬的一種植物。為國家一級保護植物，是中國的特有種。"
+  },
+  {
+    "id": "plant_0378",
+    "zh_name": "一把伞南星",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "一把伞南星（學名：Arisaema erubescens）为天南星科天南星属的植物，有毒。在中药材中称为天南星。"
+  },
+  {
+    "id": "plant_0379",
+    "zh_name": "长寿花",
+    "theme": "静默与时光",
+    "emotion_tags": "patience, ancient",
+    "description": "长寿花，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0380",
+    "zh_name": "艾草",
+    "theme": "净化与自我和解",
+    "emotion_tags": "healing, clarity",
+    "description": "艾草，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0381",
+    "zh_name": "風信子",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "風信子，属于《心灵花园》植物档案。"
+  },
+  {
+    "id": "plant_0382",
+    "zh_name": "柱葉大戟",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "柱葉大戟（学名：Euphorbia cylindrifolia），又名圓椎葉大戟或筒葉麒麟，是馬達加斯加特有的一種大戟屬植物。它們生長在亞熱帶或熱帶的乾旱森林及叢林，但受到環境破壞的影響。"
+  },
+  {
+    "id": "plant_0383",
+    "zh_name": "桐油树",
+    "theme": "边界与防御",
+    "emotion_tags": "protection, isolation",
+    "description": "桐油树（学名：Jatropha curcas），又名麻风树、痲瘋樹、南洋油桐、黄肿树、假白榄等，为大戟科落叶灌木。其发源地在加勒比海的岛上，但葡萄牙商人把它引进了非洲和亚洲各地，现已分布在全世界的热带和亚热带地区。 桐油树的种仁含油率很高，达到40%以上，经过加工适用于生产生物柴油。在印度，桐油树被选为出产生物柴油的主要原料之一…"
+  },
+  {
+    "id": "plant_0384",
+    "zh_name": "乌头属",
+    "theme": "执念与虚妄",
+    "emotion_tags": "unreachable, looping",
+    "description": "乌头属又名附子属（学名：Aconitum）是一种属于毛茛科的开花植物的属，这个属有250多个种。又名萴（zè）。 这些多年生植物主要生活在北半球山地潮湿的草地上。它们的叶子呈深绿色，没有托叶。叶子呈掌状，分五至七瓣。每瓣又分三片，边缘粗糙锋利。叶子在茎上交错或者螺旋排列，下部的叶子有长的柄。 乌头属植物在直立的主干的顶端有一簇总状花序的蓝色的…"
+  },
+  {
+    "id": "plant_0385",
+    "zh_name": "土荆芥",
+    "theme": "边界与防御",
+    "emotion_tags": "guarded, sharp",
+    "description": "土荆芥（学名：Dysphania ambrosioides），又名臭杏、臭草、杀虫芥、鸭脚草。是苋科刺藜属的植物。"
+  }
+]

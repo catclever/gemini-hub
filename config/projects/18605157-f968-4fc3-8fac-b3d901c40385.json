@@ -1,0 +1,22 @@
+{
+  "id": "18605157-f968-4fc3-8fac-b3d901c40385",
+  "name": "fun.upup.musicfree",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/Services/taichi/apps/fun.upup.musicfree"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/fun.upup.musicfree/)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "settings": {},
+  "updatedAt": "2026-08-02T13:50:01.990523Z",
+  "isWorkspaceOnly": false
+}

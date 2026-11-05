@@ -1,0 +1,16 @@
+{
+  "id":  "b7afd12f-dae4-44e6-9039-8f195d53df40",
+  "name":  "Qled",
+  "projectResources":  {
+    "resources":  [
+      {
+        "folderUri":  "file:///Users/kael/Projects/Qled"
+      }
+    ]
+  },
+  "permissionGrants":  {
+    "v2Migrated":  true
+  },
+  "settings":  {},
+  "isWorkspaceOnly":  false
+}

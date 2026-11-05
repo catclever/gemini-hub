@@ -1,0 +1,24 @@
+{
+  "id": "b332d8d5-0edf-4f7a-aac3-83a1c2d86470",
+  "name": "photo_sync",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/photo_sync",
+          "defaultBranch": "main"
+        }
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "command(ssh PhotoFactory \"find /home/kael/photo_sync -name '*.yml'\")"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "settings": {},
+  "isWorkspaceOnly": false
+}

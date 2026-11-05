@@ -1,0 +1,36 @@
+{
+  "id": "6545a743-1290-4ac1-ae58-c751df1b287f",
+  "name": "Finnegan",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Projects/Finnegan"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "command(go build)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/Finnegan/design/)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/Finnegan/git_status.md)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/Finnegan/kb/)",
+        "command(ssh Antigravity \"gh pr diff 1 --repo catclever/Finnegan\")",
+        "command(ssh Antigravity 'bash -s' <<'EOF')",
+        "read_file(/Users/kael/.gemini/Projects/Finnegan/)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/Finnegan/)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/Finnegan/IRON_RULES.md)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "sandboxMode": true,
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_AUTO",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS",
+    "permissionPreset": "AGENT_PERMISSION_PRESET_AUTO"
+  },
+  "updatedAt": "2026-06-04T02:30:20.727266Z"
+}

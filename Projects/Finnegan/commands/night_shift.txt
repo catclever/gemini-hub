@@ -1,0 +1,52 @@
+/goal 宿主已下班。立刻接管对话，进入【夜间狂暴模式】。
+
+### 1. 任务背景与核心架构方案
+今晚需要完成两大核心系统级重构，将 Babel 与光束网络彻底解耦为高内聚、通用化的体系：
+
+#### 【任务一】通用 Babel 模块与分层门禁体系
+- **Task ID**: `universal_babel_module_and_layered_gatekeepers_131`
+- **核心需求**:
+  1. **Go 后端**:
+     - 建立 `core/models/babel.go`：定义统一的 `BabelCard`（包括 `ID`, `Origin`, `Title`, `Content`, `SourceURL`, `OriginalText`, `TranslatedText`, `AuthorName`, `AuthorAvatar`, `EchoOf`, `MatchedAnchor`, `EchoReason`, `ReplyCount`, `RepostCount`, `LikeCount`, `CreatedAt`）。
+     - 将原 `modules/bugu/models/babel.go` 替换为引用 `core/models/babel.go`。
+     - 建立通用的 Babel 翻译与门禁流水线（`core/babel/` 或 `modules/babel/`）：
+       - **通用底座（Universal Base）**: 基础垃圾过滤（防空、防乱码、防纯链接引流）+ LLM 跨语言翻译引擎（检测非母语则调用 Gemini Flash 翻译为中文）。
+       - **分层门禁策略（Layered Gatekeepers）**:
+         - Bugu 专属门禁：长文 Markdown 段落提纯 + 严格 4 维思辨锚点共鸣打分（未命中则抛弃）。
+         - Bluesky 专属门禁：短推文语义语境共鸣 + 关键词/hashtag 轻量锚点提取（不要求写复杂哲学理由） + 社交垃圾账号过滤。
+     - Wails 事件正名：统一标准化为 `babel:card_spawned` 与 `babel:session_completed`（保留旧事件名别名兼容）。
+  2. **TS/Svelte 前端**:
+     - 抽离 `frontend/src/modules/babel/`（包括 `types.ts`, `babelSession.ts`）：
+       - 将 Babel 卡片排队与视口自适应编排从 `modules/bugu/buguSession.ts` 中彻底解耦。
+       - Bugu 与 Bluesky 统一通过通用的 `babelSession` 调度。
+     - 统一使用 `BabelCardBody.svelte` 进行卡片渲染。
+
+#### 【任务二】通用星空光束引擎与错峰流光动画
+- **Task ID**: `universal_cosmic_ray_network_staggered_cascade_132`
+- **核心需求**:
+  1. **代码合并与几何抽取**:
+     - 抽取 `frontend/src/lib/beamMath.ts`：收拢三次贝塞尔曲线及 2px 吸附（Docking Inset）计算，消除 80% 重复代码。
+     - 将 `BuguRayNetwork.svelte` 与 `SynapseRayNetwork.svelte` 合并为单一通用的 `frontend/src/components/cards/CosmicRayNetwork.svelte`。
+  2. **解决“所有连线同步生硬点亮”体验问题**:
+     - 实现**瀑布式错峰级联发光 (Staggered Cascading)**：多条连线依次延迟（每根递延 80ms~120ms）流淌点亮。
+     - **光斑流淌脉冲 (Traveling Photon Pulse)**：能量粒子从母卡沿曲线流向目标卡片，激发端点光晕（Aperture Bloom）。
+     - 主题色彩注入：`origin === 'atproto'` 或标签突触为冰蓝（`#38bdf8`），`origin === 'bugu'` 为琥珀金（`#f59e0b`）。
+  3. **星空舞台挂载**:
+     - 在 `frontend/src/components/CosmicStage.svelte` 中挂载单一通用的 `<CosmicRayNetwork>`，清理旧组件。
+
+---
+
+### 2. 任务清单
+1. `universal_babel_module_and_layered_gatekeepers_131`
+2. `universal_cosmic_ray_network_staggered_cascade_132`
+
+---
+
+### 3. 行动准则
+1. **Git 检查点规范**: 应用大变动前执行 `git add . && git commit -m "chore(auto): Night Shift checkpoint"`。
+2. **严格测试验证**:
+   - 后端: `go test -v ./...`
+   - 前端: `npm --prefix frontend test` 和 `npm --prefix frontend run build`
+   - 全局构建: `wails build -tags webkit2_41`
+3. **看板同步**: 每完成一个阶段，调用 kanban-task-manager 更新任务状态为 `completed`。
+4. 无需任何人工干预，彻夜自主迭代推进！

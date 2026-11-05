@@ -1,0 +1,491 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# antiverse-run: Standardized Zellij Task Runner for Antiverse on PVE
+# ==============================================================================
+# Features:
+#   1. Session-per-Task: Runs in dedicated, isolated Zellij session by default.
+#   2. Fast Switching: Switch between sessions instantly via [Alt + s] (Session Manager).
+#   3. Model & Effort Tier Governance: Enforces model and thinking effort for agy.
+#   4. Zero-Race Execution: Uses runner scripts to avoid write-chars race conditions.
+#   5. Dual Output: Live terminal display + persistent log at /tmp/antiverse_<name>.log.
+#   6. 2-Hour Active Warm Period: Keeps TUI active for 2 hours for instant revival.
+#   7. Native Zellij EXITED Sleep: Auto-serializes to (EXITED) after 2 hours if unviewed.
+#   8. Tab Mode Fallback: Supports --as-tab to run as a tab in an existing session.
+# ==============================================================================
+
+set -eo pipefail
+
+SESSION=""
+TAB_NAME="[Antiverse] worker"
+TAB_CWD=""
+TIER="balanced"
+IS_AGY=false
+KEEPALIVE=true
+FORCE=false
+FOCUS=true
+AS_TAB=false
+WARM_HOURS=2
+LOG_FILE=""
+COMMAND_ARGS=()
+
+# --- Tier Definitions ---
+# Pro / Max: Heavy architecture, complex debugging, night shift
+MODEL_PRO="gemini-3.1-pro"
+EFFORT_PRO="high"
+
+# Dev / Balanced: Daily feature implementation, tests, bugfixes
+MODEL_DEV="gemini-3.8-flash"
+EFFORT_DEV="high"
+
+# Ops / Fast: Operational scripts, packaging, git sync, quick tasks
+MODEL_OPS="gemini-3.8-flash"
+EFFORT_OPS="medium"
+
+show_help() {
+  cat << 'HELP_EOF'
+Usage: antiverse-run [OPTIONS] [-- <COMMAND>...]
+
+Options:
+  -n, --name <NAME>       Task / Session name (default: "[Antiverse] worker")
+  -s, --session <SESSION> Zellij session name (default: same as --name)
+  -c, --cwd <DIR>         Working directory (default: current directory or /root/Projects)
+  -t, --tier <TIER>       Model & effort tier for agy:
+                            - pro|max      (gemini-3.1-pro, effort: high)
+                            - dev|balanced (gemini-3.8-flash, effort: high) [default]
+                            - ops|fast     (gemini-3.8-flash, effort: medium)
+  --warm-hours <HOURS>    Hours to keep session active before auto-sleeping to (EXITED) (default: 2)
+  --as-tab                Run as a tab in existing session instead of isolated session
+  --agy                   Run in autonomous AGY mode (auto-injects flags, model & effort)
+  --force                 Kill / clean existing session or tab with the same name before launching
+  --no-keepalive          Close session/tab immediately when command exits (default: keepalive)
+  --no-focus              Do not switch user focus to the new tab (only applicable in --as-tab)
+  --log <PATH>            Custom log file path (default: /tmp/antiverse_<safe_name>.log)
+  -h, --help              Show this help message
+
+Examples:
+  # 1. Launch task in dedicated isolated session with 2-hour warm period (Default):
+  antiverse-run --name '[Finnegan] dev-063' --cwd /root/Projects/Finnegan --agy -p "Implement feature"
+
+  # 2. Launch Ops task with custom script:
+  antiverse-run --name '[psy_garden] ops' --tier ops --cwd /root/Projects/psy_garden -- ./deploy.sh
+
+  # 3. Launch with custom 4-hour warm period:
+  antiverse-run --name '[Finnegan] dev-long' --warm-hours 4 --agy -p "Big refactor"
+
+  # 4. Launch as a tab inside session 'Antiverse':
+  antiverse-run --as-tab --session Antiverse --name '[psy_garden] env' -- ./start_services.sh
+HELP_EOF
+}
+
+# Parse options
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -n|--name)
+      TAB_NAME="$2"
+      shift 2
+      ;;
+    -c|--cwd)
+      TAB_CWD="$2"
+      shift 2
+      ;;
+    -s|--session)
+      SESSION="$2"
+      shift 2
+      ;;
+    -t|--tier)
+      TIER="$2"
+      shift 2
+      ;;
+    --warm-hours)
+      WARM_HOURS="$2"
+      shift 2
+      ;;
+    --as-tab)
+      AS_TAB=true
+      shift
+      ;;
+    --agy)
+      IS_AGY=true
+      shift
+      ;;
+    --force)
+      FORCE=true
+      shift
+      ;;
+    --no-keepalive)
+      KEEPALIVE=false
+      shift
+      ;;
+    --no-focus)
+      FOCUS=false
+      shift
+      ;;
+    --log)
+      LOG_FILE="$2"
+      shift 2
+      ;;
+    -h|--help)
+      show_help
+      exit 0
+      ;;
+    --)
+      shift
+      COMMAND_ARGS=("$@")
+      break
+      ;;
+    *)
+      COMMAND_ARGS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+# Ensure Zellij is available
+if ! command -v zellij >/dev/null 2>&1; then
+  echo "[Antiverse Error] 'zellij' command not found in PATH." >&2
+  exit 1
+fi
+
+# Resolve Tier Settings
+case "$TIER" in
+  pro|max)
+    SELECTED_MODEL="$MODEL_PRO"
+    SELECTED_EFFORT="$EFFORT_PRO"
+    TIER_LABEL="pro ($MODEL_PRO, effort: $EFFORT_PRO)"
+    ;;
+  dev|balanced|standard)
+    SELECTED_MODEL="$MODEL_DEV"
+    SELECTED_EFFORT="$EFFORT_DEV"
+    TIER_LABEL="balanced ($MODEL_DEV, effort: $EFFORT_DEV)"
+    ;;
+  ops|fast|middle|medium)
+    SELECTED_MODEL="$MODEL_OPS"
+    SELECTED_EFFORT="$EFFORT_OPS"
+    TIER_LABEL="ops ($MODEL_OPS, effort: $EFFORT_OPS)"
+    ;;
+  *)
+    echo "[Antiverse Warning] Unknown tier '$TIER', falling back to 'balanced'" >&2
+    SELECTED_MODEL="$MODEL_DEV"
+    SELECTED_EFFORT="$EFFORT_DEV"
+    TIER_LABEL="balanced ($MODEL_DEV, effort: $EFFORT_DEV)"
+    ;;
+esac
+
+# Resolve Working Directory
+if [ -z "$TAB_CWD" ]; then
+  TAB_CWD="$PWD"
+fi
+if [ "$TAB_CWD" = "/" ] || [ ! -d "$TAB_CWD" ]; then
+  if [ -d "/root/Projects" ]; then
+    TAB_CWD="/root/Projects"
+  fi
+fi
+
+# Resolve Log File & Target Session
+SAFE_NAME=$(echo "$TAB_NAME" | sed -e 's/[^a-zA-Z0-9_-]/_/g')
+if [ -z "$LOG_FILE" ]; then
+  LOG_FILE="/tmp/antiverse_${SAFE_NAME}.log"
+fi
+
+if [ "$AS_TAB" = true ]; then
+  TARGET_SESSION="${SESSION:-Antiverse}"
+else
+  TARGET_SESSION="${SESSION:-$TAB_NAME}"
+fi
+
+# Resolve Warm Period Seconds (default 2 hours = 7200s)
+WARM_PERIOD_SECONDS=$(( ${WARM_HOURS:-2} * 3600 ))
+
+# Resolve Command & Guard against unparameterized agy
+FINAL_CMD=()
+IS_AGY_TASK=false
+
+if [ "$IS_AGY" = true ]; then
+  IS_AGY_TASK=true
+  FINAL_CMD=("agy" "--remote-control" "--dangerously-skip-permissions" "--model" "$SELECTED_MODEL" "--effort" "$SELECTED_EFFORT")
+  FINAL_CMD+=("${COMMAND_ARGS[@]}")
+
+elif [ "${#COMMAND_ARGS[@]}" -gt 0 ]; then
+  FIRST_ARG="${COMMAND_ARGS[0]}"
+
+  # Check if first argument is bare agy
+  if [ "$FIRST_ARG" = "agy" ] || [ "$(basename "$FIRST_ARG")" = "agy" ]; then
+    IS_AGY_TASK=true
+    HAS_MODEL=false
+    HAS_EFFORT=false
+    HAS_REMOTE=false
+    HAS_DANGER=false
+
+    for arg in "${COMMAND_ARGS[@]}"; do
+      case "$arg" in
+        --model) HAS_MODEL=true ;;
+        --effort) HAS_EFFORT=true ;;
+        --remote-control) HAS_REMOTE=true ;;
+        --dangerously-skip-permissions) HAS_DANGER=true ;;
+      esac
+    done
+
+    FINAL_CMD=("agy")
+    if [ "$HAS_REMOTE" = false ]; then
+      FINAL_CMD+=("--remote-control")
+    fi
+    if [ "$HAS_DANGER" = false ]; then
+      FINAL_CMD+=("--dangerously-skip-permissions")
+    fi
+    if [ "$HAS_MODEL" = false ]; then
+      FINAL_CMD+=("--model" "$SELECTED_MODEL")
+    fi
+    if [ "$HAS_EFFORT" = false ]; then
+      FINAL_CMD+=("--effort" "$SELECTED_EFFORT")
+    fi
+
+    # Append remaining args excluding the initial 'agy'
+    for (( i=1; i<${#COMMAND_ARGS[@]}; i++ )); do
+      FINAL_CMD+=("${COMMAND_ARGS[i]}")
+    done
+
+  # Check if running a runner script that wraps agy (e.g., /tmp/run_*.sh)
+  elif [[ "$FIRST_ARG" =~ /tmp/run_.*\.sh ]] || [[ "$FIRST_ARG" =~ run_.*\.sh ]]; then
+    IS_AGY_TASK=true
+    FINAL_CMD=("${COMMAND_ARGS[@]}")
+  else
+    FINAL_CMD=("${COMMAND_ARGS[@]}")
+  fi
+else
+  FINAL_CMD=("${COMMAND_ARGS[@]}")
+fi
+
+if [ "${#FINAL_CMD[@]}" -eq 0 ]; then
+  echo "[Antiverse Error] No command specified to run." >&2
+  show_help
+  exit 1
+fi
+
+# Generate Safe Runner Script
+RUNNER_SCRIPT="/tmp/antiverse_runner_${SAFE_NAME}.sh"
+CMD_STRING=$(printf '%q ' "${FINAL_CMD[@]}")
+
+cat << EOF > "$RUNNER_SCRIPT"
+#!/usr/bin/env bash
+# Generated Antiverse runner for: $TAB_NAME
+[ -f /etc/profile ] && source /etc/profile 2>/dev/null || true
+[ -f /root/.bashrc ] && source /root/.bashrc 2>/dev/null || true
+[ -f "\$HOME/.bashrc" ] && source "\$HOME/.bashrc" 2>/dev/null || true
+
+cd "$TAB_CWD" || exit 1
+
+echo "======================================================================"
+echo "🚀 [Antiverse] Starting Task: $TAB_NAME"
+echo "🕒 Started: \$(date '+%Y-%m-%d %H:%M:%S')"
+echo "📂 Working Dir: $TAB_CWD"
+echo "🎯 Tier: $TIER_LABEL"
+echo "📋 Log File: $LOG_FILE"
+echo "💡 Tip: Press [Alt + s] to open Session Manager anytime."
+echo "======================================================================"
+echo ""
+
+# Run command directly in foreground with PTY-aware teeing via script
+if command -v script >/dev/null 2>&1; then
+  script -q -e -f -a "$LOG_FILE" -c "$CMD_STRING"
+  CMD_EXIT=\$?
+else
+  $CMD_STRING 2>&1 | tee -a "$LOG_FILE"
+  CMD_EXIT=\$?
+fi
+
+# Level 1: Crash Recovery (If agy crashed abnormally, auto-revive up to 3 times)
+if [ "$IS_AGY_TASK" = "true" ]; then
+  RETRY_COUNT=0
+  MAX_RETRIES=3
+  while [ \$CMD_EXIT -ne 0 ] && [ \$RETRY_COUNT -lt \$MAX_RETRIES ]; do
+    RETRY_COUNT=\$((RETRY_COUNT + 1))
+    echo ""
+    echo "======================================================================"
+    echo "⚠️ [Antiverse] agy 异常退出 (Exit Code: \$CMD_EXIT)"
+    echo "🔄 [Auto-Revive] 正在尝试原地自动复活会话 (Attempt \$RETRY_COUNT/\$MAX_RETRIES)..."
+    echo "======================================================================"
+    sleep 3
+    if command -v script >/dev/null 2>&1; then
+      script -q -e -f -a "$LOG_FILE" -c "agy -c --dangerously-skip-permissions"
+      CMD_EXIT=\$?
+    else
+      agy -c --dangerously-skip-permissions 2>&1 | tee -a "$LOG_FILE"
+      CMD_EXIT=\$?
+    fi
+  done
+fi
+
+echo ""
+echo "======================================================================"
+echo "🏁 [Antiverse] Command finished with exit code: \$CMD_EXIT"
+echo "🕒 Ended: \$(date '+%Y-%m-%d %H:%M:%S')"
+echo "======================================================================"
+
+# Level 2: Smart Guided Interactive Shell with 2-Hour Active Warm Period & EXITED Sleep
+if [ "$KEEPALIVE" = "true" ]; then
+  KEEP_SECONDS=$WARM_PERIOD_SECONDS
+  WARM_UNTIL=\$(date -d "+\${KEEP_SECONDS} seconds" '+%H:%M:%S' 2>/dev/null || date -v "+\${KEEP_SECONDS}S" '+%H:%M:%S' 2>/dev/null || echo "${WARM_HOURS}小时后")
+
+  echo ""
+  echo "======================================================================"
+  if [ "$IS_AGY_TASK" = "true" ]; then
+    echo "💬 Antigravity 会话历史与上下文已完整持久化保存。"
+    echo "👉 直接按 [回车 Enter]：立即原地复活 Antigravity (agy -c)"
+  else
+    echo "💬 进程已停止。"
+    echo "👉 直接按 [回车 Enter]：重新启动该命令"
+  fi
+  echo "👉 或直接输入任意 Shell 命令执行，输入 'exit' 立即进入休眠"
+  echo "☕ 活跃保温期：会话将保持活跃交互至 \${WARM_UNTIL} (${WARM_HOURS}小时)"
+  echo "💤 休眠策略：保温期结束且无客户端连接时，自动转入 (EXITED) 休眠落盘"
+  echo "💡 提示：按 [Alt + s] 可随时切换到其他正在运行的任务 Session"
+  echo "======================================================================"
+
+  START_TIME=\$(date +%s)
+  CHECK_STEP=10
+
+  while true; do
+    NOW=\$(date +%s)
+    ELAPSED=\$((NOW - START_TIME))
+    REMAINING=\$((KEEP_SECONDS - ELAPSED))
+
+    # Check active clients attached to this session
+    CURRENT_CLIENTS=0
+    if command -v zellij >/dev/null 2>&1; then
+      CURRENT_CLIENTS=\$(zellij --session "$TARGET_SESSION" action list-clients 2>/dev/null | tail -n +2 | grep -c "^[0-9]" || true)
+    fi
+
+    # If timeout expired AND no client is currently connected: Graceful sleep into EXITED
+    if [ \$REMAINING -le 0 ] && [ "\$CURRENT_CLIENTS" -le 0 ]; then
+      echo ""
+      echo "======================================================================"
+      echo "💤 [Antiverse] ${WARM_HOURS} 小时保温期已过且无活跃连接，会话自动转入 EXITED 休眠态。"
+      echo "💾 完整日志已保留在: $LOG_FILE"
+      echo "🔄 随时可通过 'antiverse attach \"$TARGET_SESSION\"' 原地复活查看！"
+      echo "======================================================================"
+      if command -v zellij >/dev/null 2>&1; then
+        zellij --session "$TARGET_SESSION" action save-session 2>/dev/null || true
+        sleep 1
+        zellij kill-session "$TARGET_SESSION" 2>/dev/null || true
+      fi
+      exit 0
+    fi
+
+    # Determine prompt read timeout
+    PROMPT_TIMEOUT=\$CHECK_STEP
+    if [ \$PROMPT_TIMEOUT -gt \$REMAINING ] && [ \$REMAINING -gt 0 ]; then
+      PROMPT_TIMEOUT=\$REMAINING
+    fi
+    if [ \$PROMPT_TIMEOUT -le 0 ]; then
+      PROMPT_TIMEOUT=10
+    fi
+
+    if [ \$REMAINING -gt 0 ]; then
+      REM_MIN=\$((REMAINING / 60))
+      PROMPT_STR="[Antiverse] (保温剩余: \${REM_MIN}分) 敲回车复活/输入命令 > "
+    else
+      PROMPT_STR="[Antiverse] (正在查看中/保温已达限) 敲回车复活/输入命令 > "
+    fi
+
+    if read -t "\$PROMPT_TIMEOUT" -r -p "\$PROMPT_STR" USER_INPUT; then
+      if [ -z "\$USER_INPUT" ]; then
+        if [ "$IS_AGY_TASK" = "true" ]; then
+          echo "[Antiverse] 正在原地复活 Antigravity (agy -c)..."
+          if command -v script >/dev/null 2>&1; then
+            script -q -e -f -a "$LOG_FILE" -c "agy -c --dangerously-skip-permissions" || true
+          else
+            agy -c --dangerously-skip-permissions || true
+          fi
+        else
+          echo "[Antiverse] 正在重新启动命令..."
+          if command -v script >/dev/null 2>&1; then
+            script -q -e -f -a "$LOG_FILE" -c "$CMD_STRING" || true
+          else
+            \$CMD_STRING || true
+          fi
+        fi
+        START_TIME=\$(date +%s)
+      elif [ "\$USER_INPUT" = "exit" ] || [ "\$USER_INPUT" = "quit" ]; then
+        echo "[Antiverse] 正在保存会话并转入 EXITED 休眠态..."
+        if command -v zellij >/dev/null 2>&1; then
+          zellij --session "$TARGET_SESSION" action save-session 2>/dev/null || true
+          sleep 1
+          zellij kill-session "$TARGET_SESSION" 2>/dev/null || true
+        fi
+        exit 0
+      else
+        eval "\$USER_INPUT" || true
+        START_TIME=\$(date +%s)
+      fi
+    else
+      # Periodic tick to re-evaluate client attachment & remaining timeout
+      :
+    fi
+  done
+fi
+EOF
+
+chmod +x "$RUNNER_SCRIPT"
+
+# ------------------------------------------------------------------------------
+# Dispatch Execution: Isolated Session (Default) vs Tab Mode
+# ------------------------------------------------------------------------------
+if [ "$AS_TAB" = true ]; then
+  # Tab Mode: Inside an existing shared session
+  if ! zellij list-sessions -s -n 2>/dev/null | grep -Fxq "$TARGET_SESSION"; then
+    echo "[Antiverse] Session '$TARGET_SESSION' does not exist. Creating..."
+    (cd "$TAB_CWD" && zellij attach -b "$TARGET_SESSION" 2>/dev/null || true)
+    sleep 0.5
+  fi
+
+  # Handle --force (Close existing tab with identical name)
+  if [ "$FORCE" = true ]; then
+    if zellij --session "$TARGET_SESSION" action query-tab-names 2>/dev/null | grep -Fxq "$TAB_NAME"; then
+      echo "[Antiverse] Force enabled: Closing existing tab '$TAB_NAME'..."
+      zellij --session "$TARGET_SESSION" action go-to-tab-name "$TAB_NAME" 2>/dev/null || true
+      sleep 0.2
+      zellij --session "$TARGET_SESSION" action close-tab 2>/dev/null || true
+      sleep 0.3
+    fi
+  fi
+
+  echo "[Antiverse] Creating tab '$TAB_NAME' in session '$TARGET_SESSION'..."
+  TAB_ID=$(zellij --session "$TARGET_SESSION" action new-tab --layout compact --name "$TAB_NAME" --cwd "$TAB_CWD" -- "$RUNNER_SCRIPT")
+
+  if [ "$FOCUS" = true ]; then
+    sleep 0.2
+    zellij --session "$TARGET_SESSION" action go-to-tab-name "$TAB_NAME" 2>/dev/null || true
+  fi
+
+  echo "[Antiverse] Successfully launched tab '$TAB_NAME' in session '$TARGET_SESSION' (ID: $TAB_ID)."
+  echo "[Antiverse] Logs streaming to: $LOG_FILE"
+
+else
+  # Default: Session-per-Task (Isolated Session)
+  # Handle --force (Clean existing session with identical name)
+  if [ "$FORCE" = true ]; then
+    if zellij list-sessions -s -n 2>/dev/null | grep -Fxq "$TARGET_SESSION"; then
+      echo "[Antiverse] Force enabled: Cleaning existing session '$TARGET_SESSION'..."
+      zellij kill-session "$TARGET_SESSION" 2>/dev/null || true
+      zellij delete-session --force "$TARGET_SESSION" 2>/dev/null || true
+      sleep 0.3
+    fi
+  fi
+
+  echo "[Antiverse] Launching dedicated session '$TARGET_SESSION' (Warm Period: ${WARM_HOURS}h)..."
+  # Note: Do NOT use --close-on-exit when keepalive is enabled, allowing native Zellij EXITED resurrection
+  if [ "$KEEPALIVE" = "false" ]; then
+    (cd "$TAB_CWD" && zellij attach -b --close-on-exit "$TARGET_SESSION" -- "$RUNNER_SCRIPT")
+  else
+    (cd "$TAB_CWD" && zellij attach -b "$TARGET_SESSION" -- "$RUNNER_SCRIPT")
+  fi
+
+  echo "======================================================================"
+  echo "🚀 [Antiverse] Successfully launched isolated session '$TARGET_SESSION'."
+  echo "📺 Monitor session:  antiverse attach '$TARGET_SESSION'"
+  echo "                    (or: zellij a '$TARGET_SESSION')"
+  echo "💡 Fast switch:     Press [Alt + s] inside any Zellij window"
+  echo "☕ Warm Period:     ${WARM_HOURS} hours active before auto-sleeping to (EXITED)"
+  echo "📋 Logs:            tail -f $LOG_FILE"
+  echo "======================================================================"
+fi

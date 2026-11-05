@@ -1,0 +1,2 @@
+- 2026-10-10T03:56:32Z: `./build_app.sh` with `BypassSandbox: true` (Status: Success)
+- 2026-10-10: `./build_app.sh` run successfully with `BypassSandbox: true`

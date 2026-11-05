@@ -1,0 +1,34 @@
+{
+  "id": "99e58c90-7e98-4002-9785-a0473d1593f3",
+  "name": "psy_garden",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Projects/psy_garden"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/psy_garden/IRON_RULES.md)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/psy_garden/git_status.md)",
+        "write_file(/Users/kael/Library/XDG_Exile/gemini/Projects/psy_garden/cmd/pve_pipeline_launcher.sh)",
+        "command(/Users/kael/.gemini/Projects/psy_garden/cmd/pve_pipeline_launcher.sh)",
+        "read_file(/Users/kael/.gemini/Projects/psy_garden/)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/psy_garden/IRON_RULES.md)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/psy_garden/kb/plant_database.json)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "sandboxMode": true,
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_AUTO",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS",
+    "permissionPreset": "AGENT_PERMISSION_PRESET_AUTO"
+  },
+  "updatedAt": "2026-06-05T06:49:00.687923Z"
+}

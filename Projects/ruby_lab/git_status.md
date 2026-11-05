@@ -1,0 +1,3 @@
+- `/Users/kael/workbench/ruby_lab`: Root workspace is NOT a git repository. It is a container for multiple independent git repositories.
+- `amber` (`/root/Projects/ruby_lab/amber`): Independent Git repository on branch `master`. Latest commit: Amber 2.0 Agentic State Machine, DSL, and Multi-Tier Sandbox. Working tree clean.
+- Other sub-projects (`llm_json`, `ruby_chat`, `ruby_llm`, `file-agent`, `ruby_psy`, `descartes`, `ruby_keyword`) are managed as independent repositories.

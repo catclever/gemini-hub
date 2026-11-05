@@ -1,0 +1,18 @@
+{
+  "id": "fa02032f-b0dc-418e-a05d-854b290c5448",
+  "name": "Scripts",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/Scripts"
+      }
+    ]
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-07-08T09:36:32.641579Z"
+}

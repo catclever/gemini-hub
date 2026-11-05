@@ -1,0 +1,13 @@
+{
+  "id": "10f9424b-6f89-4a88-a187-91b620607db0",
+  "name": "gemini",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/kael/Library/XDG_Exile/gemini"
+      }
+    ]
+  },
+  "settings": {},
+  "isWorkspaceOnly": false
+}

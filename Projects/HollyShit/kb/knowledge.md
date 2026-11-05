@@ -1,0 +1,12 @@
+# Project Knowledge Index
+
+This file acts as a directory map index for specific project knowledge fragments stored in the `.agent/kb/` directory.
+
+| File Path | Description | When to Read |
+| :--- | :--- | :--- |
+| [kb/sequence_flow_matcher.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/sequence_flow_matcher.md) | Design and implementation details of the Conditional Sequence Flow Matcher & Phase 4 HiPPO Unet. | When modifying flow matching networks, manifold scaling, or ODE inference. |
+| [kb/phase5_multistream_mamba_planner.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/phase5_multistream_mamba_planner.md) | Phase 5 Multi-Stream Mamba Planner with Orthogonal Knowledge Resonance and Elastic Time-Warped Legendre Basis Expansion. | When modifying Phase 5 Mamba architecture, multi-stream knowledge injection, or Phase 5 datasets/training. |
+| [kb/modular_bicameral_architecture.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/modular_bicameral_architecture.md) | Master blueprint for the Modular Bicameral Architecture: Frozen TinyBERT & CNN Translator bookends, Paired/Multi-Stream Mamba + Flow Matching Right Brain, independent post-thought KnowledgeSelector, and Universal Fixed LeftBrainCrystallizer (for prose & code). | When designing or implementing the next-generation Left Brain, Right Brain, or KnowledgeSelector modules. |
+| [kb/phase5_right_brain_v2_polar_lookback.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/phase5_right_brain_v2_polar_lookback.md) | Phase 5 Right-Brain v2 (#036–#039) architecture & optimization record: per-dimension manifold whitening, inverse Legendre spatial slot loss, polar band radial-angular decoupling, and CausalContextLookback with Straight-Through Top-1 clause copy. | When modifying MultiStreamRightBrain, ThoughtFlowMatcher, CausalContextLookback, PriorHead, or Stage-1 rollout evaluation. |
+| [kb/graveyard/grave.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/graveyard/grave.md) | Graveyard of discarded architectures, pitfalls, and post-mortems (Deblur Trap, ignore_index tail divergence). | Before proposing architectural modifications to translator, crystallizer, or loss definitions. |
+| [kb/nextgen_translator_blueprint.md](file:///Users/kael/.gemini/Projects/HollyShit/kb/nextgen_translator_blueprint.md) | Architecture blueprint for Next-Gen Gated Residual Anchor & Decoupled Termination Translator. | When re-training or upgrading the continuous-to-text translator module. |

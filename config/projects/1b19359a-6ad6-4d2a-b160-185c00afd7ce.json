@@ -1,0 +1,16 @@
+{
+  "id": "1b19359a-6ad6-4d2a-b160-185c00afd7ce",
+  "name": "xlpb-robot-server-py",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/psy_chat/xlpb-robot-server-py",
+          "defaultBranch": "master",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-04-21T02:19:29.954002Z"
+}

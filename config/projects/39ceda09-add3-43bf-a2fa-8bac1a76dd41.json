@@ -1,0 +1,15 @@
+{
+  "id": "39ceda09-add3-43bf-a2fa-8bac1a76dd41",
+  "name": "ai-ebook",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/ai-ebook",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-04-21T04:14:03.003700Z"
+}

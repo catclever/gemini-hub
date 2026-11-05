@@ -1,0 +1,31 @@
+{
+  "id": "2c925102-fc12-453a-810b-337a947b2863",
+  "name": "taichi_launcher",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/taichi_launcher",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "command(bash build_app.sh)",
+        "command(swift build > build_output.txt 2>&1)",
+        "command(./build_app.sh)",
+        "write_file(/Users/kael/Library/Scripts/taichi/antigravity/topbar_color.js)",
+        "write_file(/Users/kael/Library/Services/taichi)",
+        "read_file(/Users/kael/.gemini/Projects/taichi_launcher/)",
+        "read_file(/Users/kael/Library/Scripts/taichi/antigravity/api.js)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/taichi_launcher)"
+      ]
+    },
+    "v2Migrated": true
+  },
+  "updatedAt": "2026-07-08T08:43:37.622484Z"
+}

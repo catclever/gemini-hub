@@ -1,0 +1,16 @@
+{
+  "id": "fc3092c6-f160-47e5-963b-0fe37f28679d",
+  "name": "/Users/kael/workbench/HollyShit",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/HollyShit",
+          "defaultBranch": "main",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-07-17T01:09:11.734875Z"
+}

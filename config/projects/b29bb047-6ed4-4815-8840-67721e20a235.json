@@ -1,0 +1,15 @@
+{
+  "id": "b29bb047-6ed4-4815-8840-67721e20a235",
+  "name": "ai-scout",
+  "projectResources": {
+    "resources": [
+      {
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/ai-scout",
+          "allowWrite": true
+        }
+      }
+    ]
+  },
+  "updatedAt": "2026-05-25T03:16:46.064736Z"
+}
