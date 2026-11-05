@@ -1,7 +1,7 @@
 ---
 id: init_central_git_repo_and_whitelist_ignore_020
 title: 初始化全量中央中枢 Git 仓库并配置严密白名单 .gitignore
-status: active
+status: completed
 priority: high
 tags:
 - git
