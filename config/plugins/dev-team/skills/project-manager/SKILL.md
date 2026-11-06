@@ -47,15 +47,13 @@ Do NOT store `.agent/`, `task.md`, or metadata inside the project's individual w
 
 ### Knowledge Base (`kb/`)
 - Only store **finalized, active** technical details here (e.g., active DB schemas, API specs, environment setup).
+- **MCP ENFORCEMENT**: You MUST use the `knowledge-manager` MCP tools (`kb_search`, `kb_read`, `kb_record`, `kb_audit`) for all knowledge operations, passing `project` (canonical project name or `$PWD`) just like `kanban-task-manager`. Do NOT use raw file editing tools (`write_file`, `edit_file`) to manually create knowledge files or append indexes (unless operating in an isolated cloud container without MCP mounted).
 - When extracting knowledge from conversations, trigger the `extract-knowledge` skill.
-- Use `kb/knowledge.md` as the primary index map for active knowledge (for legacy compatibility, check if `kb/index.md` exists and rename to `knowledge.md`).
-- **The Graveyard (`kb/graveyard/`)**: This is the Negative Knowledge Base. 
-  - Store post-mortems, failed approaches, and anti-patterns here. 
-  - Each markdown file should describe the context, what was tried, why it failed, and what NOT to do.
-  - Maintain an index at `kb/graveyard/grave.md` containing a one-sentence summary of each anti-pattern (check and migrate legacy `index.md` if present).
 - **Consumption & Verification Workflow**:
-  - **Design Pre-Presentation Audit**: Before presenting ANY proposal, architecture, or plan to the user, verify against `kb/knowledge.md` and `kb/graveyard/grave.md`. Redesign internally if any conflict or anti-pattern is detected.
-  - **Sub-Agent Task Synthesis**: Before dispatching tasks, synthesize relevant knowledge into concrete requirements (do NOT blindly paste raw markdown files into the prompt), and explicitly instruct the sub-agent which `kb/` documents it can read.
+  - **Context Loading & Reading**: Use `kb_search(project=..., query=..., scope="active"|"grave"|"all")` to find relevant schemas, or `kb_read(project=..., path=...)` to safely fetch a document.
+  - **Design Pre-Presentation Audit**: Before presenting ANY proposal, architecture, or plan to the user, you MUST run `kb_audit(project=..., proposal=...)`. If any conflict or anti-pattern is detected, redesign and fix the issue internally before presenting it to the user.
+  - **Atomic Knowledge Recording**: Use `kb_record(project=..., scope="active"|"grave", title=..., summary=..., content=..., filename=...)` to automatically format Frontmatter and synchronize index files (`kb/knowledge.md` or `kb/graveyard/grave.md`).
+  - **Sub-Agent Task Synthesis**: Before dispatching tasks, query project knowledge via `kb_search`, synthesize relevant points into concrete requirements (do NOT blindly paste raw markdown files into the prompt), and explicitly instruct the sub-agent which specific `kb/` documents it can read.
 
 ### Task Management (`tasks/`)
 - **MCP ENFORCEMENT**: You are STRICTLY FORBIDDEN from using raw file editing tools (`write_to_file`, `replace_file_content`, etc.) to create or update task markdown files. You MUST exclusively use the `kanban-task-manager` MCP tools (`list_tasks`, `create_task`, `update_task_status`, `update_task_content`).

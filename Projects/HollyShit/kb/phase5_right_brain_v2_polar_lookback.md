@@ -104,3 +104,6 @@
      - 在 `compute_spatial_slot_loss` 中，使用径向解耦重构 `x_pred_iso = reconstruct_spatial_slots(from_bands((zp_b / rp) * rt.detach()))` 计算 `slot_cos_loss`、`slot_diff_cos_loss` 以及 32 槽位句长阶跃包络损失 `env_slot_loss = 1 - cos(x_pred_iso[..., 0], x_gt[..., 0])`，同时在 `compute_branch_loss` 赢家选择中加入 `0.5 * (1 - env_cos_k)`，在不产生任何高频半径塌缩的前提下精确锁定句尾 `<EOS>` 槽位。
    - **`predict_prior` 中 Channel-0 与词汇通道（`1..31`）分离极坐标插值**：
      - 对 `mh_b[..., :1]` 与 `lb_b[..., :1]` 沿 32 个频段（`dim=-2`）独立执行极坐标插值，对 `mh_b[..., 1:]` 与 `lb_b[..., 1:]` 沿频段内 31 个词汇通道（`dim=-1`）独立执行极坐标插值，彻底切断词汇夹角对句长包络通道的交叉干扰。
+   - **Pairwise Top-1 vs. Sink 拷贝置信度与自喂养温度钳制（防 18 句分母稀释与 Step 2,000+ 自喂养退化）**：
+     - 在 `CausalContextLookback.forward` 中，当 `attn_copy` 通过 Straight-Through Top-1 选定最优上文子句 $j^*$ 后，改用成对二元对决 `attn_peak = torch.sigmoid(max_clause_logit - sink_clause_logit) * vm_col * has_prev` 替代 18 路 Softmax 的单槽位峰值 `attn_clause.amax()`，杜绝长上文其余 15~17 句分母指数项把拷贝门控 `gate_lb` 稀释至 `0.45~0.55`（根治 `qa#383582 c2` 与 `qa#405886 c1` 在过渡步门控被冲淡、$\sigma_{\text{sem}}$ 暴涨至 `0.56~1.00` 的问题）；
+     - 在 `sample_next_clauses`（Step 2,000 启动的计划自喂养）中将采样温度钳制为 `eff_temp = min(temperature, 0.35)`，配合废除反归一化后的 `z_out / z_out.std()`，杜绝 Step 2,000 后高噪单样本与 `<PAD>` 偏移回灌进训练主干流。

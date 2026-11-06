@@ -1,5 +1,15 @@
 {
   "mcpServers": {
+    "knowledge-manager": {
+      "command": "uv",
+      "args": [
+        "run",
+        "/Users/kael/.gemini/config/scripts/knowledge_mcp_server.py"
+      ],
+      "env": {
+        "PROJECTS_ROOT": "/Users/kael/.gemini/Projects"
+      }
+    },
     "kanban-task-manager": {
       "command": "uv",
       "args": [

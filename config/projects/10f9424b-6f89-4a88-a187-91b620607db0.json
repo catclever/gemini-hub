@@ -4,9 +4,14 @@
   "projectResources": {
     "resources": [
       {
-        "folderUri": "file:///Users/kael/Library/XDG_Exile/gemini"
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Library/XDG_Exile/gemini"
+        }
       }
     ]
+  },
+  "permissionGrants": {
+    "v2Migrated": true
   },
   "settings": {},
   "isWorkspaceOnly": false

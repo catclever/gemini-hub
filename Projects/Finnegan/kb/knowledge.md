@@ -634,3 +634,37 @@ The `<home>` directory is fully self-managed by Finnegan:
   - Frontend dynamically hydrates manifests on mount via `GetModuleManifests()` (`hydrateModuleManifests` in `promotionRegistry.ts`) and dynamically imports external card UI bundles from `/api/plugins/<name>/ui.js` (`loadExternalPluginCardComponents` in `cardRegistry.ts`).
 
 
+
+## 28. WebCapture 网页解析服务与形态路由架构 (Tasks 163, 164, 165)
+
+### 28.1 全局 Jina 基础设施下沉 (Task 163)
+- **配置模型 (core/config/config.go)**:
+  - JinaConfig 包含 APIKey 与 BaseURL（默认缺省为 https://r.jina.ai/）。
+  - 支持 JINA_API_KEY 环境变量作为后备。
+  - core/keywords 与 modules/bugu 统一继承并降级回退至此全局 Jina 配置。
+
+### 28.2 WebCapture 管道与二元形态路由器 (Task 164)
+- **包路径**: Finnegan/core/webcapture
+  - fetcher.go: 依赖 Jina Reader 请求目标网址 Markdown。
+  - **快速熔断防御 (Fail-Fast)**:
+    - 401/403 触发 ErrPageProtected；
+    - 429/5xx、Cloudflare 盾或人机验证触发 ErrBlocked；
+    - 字符数小于 30 触发 ErrEmptyContent；
+    - 只要触发快速熔断，立即中断并返回结构化错误，100% 杜绝向磁盘写脏数据。
+  - router.go:
+    - **对话白名单域名**: share.gemini.google/*, gemini.google.com/share/*, chatgpt.com/share/*, claude.ai/share/*, perplexity.ai/page/* 统一映射为 chat_log；
+    - **内容启发式规则**: 调用 chatlog.IsChatLog(md) 检测多轮问答对话流，命中则映射为 chat_log；
+    - **常规文章回退**: 其余页面统一映射为 note。
+- **Wails 绑定与落盘**:
+  - app_webcapture.go 暴露 CaptureURL(urlStr string) (*Card, error)。
+  - 自动向 Scattering/ 写入 <time>-<slug>.chat_log.md 或 <time>-<slug>.note.md。
+  - 发射 bus.EventThoughtCaptured 通知前端与 CosmicStage。
+
+### 28.3 OmniBar 纯 URL 嗅探与连续输入交互 (Task 165)
+- **严格触发边界 (frontend/src/lib/webcapture.ts)**:
+  - 仅当输入文本为唯一独立的 URL (^https?://[^\s]+$) 且无图片附件时才触发 CaptureURL。
+  - 若为图文混排（如带有个人感想、多词、附加图片），则绝不拦截，正常走原有 thought / chat_log 捕获流程。
+- **连续输入体验**:
+  - 抓取中提示 正在解析网页内容...；
+  - 成功或失败均有明确 Toast 反馈；
+  - 无论成功失败，输入框清空后均在 50ms 内自动重新获取焦点 (focus())，供用户无缝键入后续批注或灵感。

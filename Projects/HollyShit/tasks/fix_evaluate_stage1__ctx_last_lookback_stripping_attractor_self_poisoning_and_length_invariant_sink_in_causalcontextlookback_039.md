@@ -50,3 +50,12 @@ Documented the complete mathematical principles, bug post-mortems, and architect
 - [`kb/phase5_right_brain_v2_polar_lookback.md`](file:///Users/kael/.gemini/Projects/HollyShit/kb/phase5_right_brain_v2_polar_lookback.md)
 - [`kb/graveyard/grave.md`](file:///Users/kael/.gemini/Projects/HollyShit/kb/graveyard/grave.md#L56-L100) (§5 & §6)
 - [`kb/knowledge.md`](file:///Users/kael/.gemini/Projects/HollyShit/kb/knowledge.md)
+
+## Goal
+Fix `_ctx_last(ctx)` dropping `z_lookback` & `gate_lb`, fix `evaluate_stage1` attractor pool self-poisoning, replace per-head band-split soft copy with Straight-Through Top-1 clause copy (`attn_copy`) & pairwise Top-1 vs Sink gate (`attn_peak`), remove destructive post-denorm `z_out / z_out.std(dim=-1)` scaling in `ThoughtFlowMatcher.sample()`, and add radially-decoupled PCA Channel-0 clause-length envelope supervision (`chan0_loss` & `env_slot_loss`).
+
+## Commits
+- `aa27050`: preserve `z_lookback` & `gate_lb` in `_ctx_last(ctx)`
+- `1e28eef`: prevent attractor pool self-poisoning & use Straight-Through Top-1 lookback copy
+- `6fed567`: polar band prior interpolation & standalone `mu_head` supervision
+- `8be21c3`: remove post-denorm `std` scaling in `sample()`, add radially-decoupled Channel-0 envelope loss (`chan0_loss`, `env_slot_loss`), decouple Channel-0 / lexical polar blend in `predict_prior`, and use pairwise Top-1 vs Sink copy confidence (`attn_peak`) + `eff_temp <= 0.35` in `sample_next_clauses`
