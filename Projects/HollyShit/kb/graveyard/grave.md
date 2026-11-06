@@ -94,3 +94,6 @@
   - **Stage-1 评估默认开启自动上下文吸引子（`--eval_attractors auto`）与防自反馈污染 (#039)**：
     - `_ctx_last(ctx)` 必须完整保留 `"z_lookback"` 与 `"gate_lb"`，严禁在评估首句 `c1` 与 Diversity 采样时剥离回看状态；
     - 评估闭环滚动时，候选吸引子池 `pool_z / pool_w` 必须严格锁定为真实上文子句 `0 .. ctx_len - 1`，**严禁将模型自身刚生成的预测子句 `z_next / ids[0]` 追加进吸引子池**（否则 `c2..c8` 会以 $\cos \approx 0.99$ 命中 `c1` 的自生成噪声并陷入自激复读死循环）。
+  - **严禁对反归一化后的物理子句向量执行 `z_out / z_out.std(dim=-1)` 强行缩放 & 必须显式监督 PCA Channel-0 句长包络 (#039)**：
+    - 物理 HiPPO 空间具有高达 60 倍的标准差各向异性（PCA Channel 0 的 `z_std = 6.381` 且 `z_mean` 非零，而第 1..31 词汇通道 `z_std ≈ 0.10`）；中等长度子句（13~17 字）在物理空间的真实全维标准差天然为 `z_gt.std(dim=-1) ≈ 0.55`。若在 `self.denormalize(z)` 之后除以 `z_out.std(dim=-1)`，会将 `self.z_mean`（Channel 0 上的 `<PAD>` 偏移）连带放大 $\approx 1.82$ 倍，注入 $+0.82 \mu_z$ 的虚假 `<PAD>` 能量，直接导致物理空间 `cos(GT)` 跌至负值并迫使左脑在第 4~5 字提前截断（如 `这群人度`、`勇士科尔：敦`）！
+    - 在 `compute_polar_band_loss`、`compute_spatial_slot_loss` 与 `compute_branch_loss` 中，必须对径向解耦后的单位频段向量 `u_pred_b = z_pred_b / r_pred` 显式监督第 0 号通道（`chan0_loss` 与 32 槽位阶跃包络 `env_slot_loss`），并在 `predict_prior` 中将 Channel 0（`[..., :1]`）与词汇通道（`[..., 1:]`）分离做极坐标插值，严禁跨频段角度余弦直接对频段半径 $r_k$ 求导或让词汇夹角污染句长包络。

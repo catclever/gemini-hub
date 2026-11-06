@@ -73,3 +73,34 @@
 2. **自动白化余弦上下文吸引子与防自激污染（[`evaluate_stage1`](file:///Users/kael/workbench/HollyShit/training/train_phase5_right_brain_stage1.py#L548-L685)）**：
    - 默认启用 `--eval_attractors auto`：当未加载外部 `KnowledgeSelector` 时，自动使用白化子句余弦（`0.6 * sim_sem + 0.4 * sim_full >= 0.25`）从真实上文子句池 `0 .. ctx_len - 1` 召回 Top-$M$ 吸引子辅助左脑结晶器消除 32 维 PCA 截断误差；
    - **严禁将模型自生成的预测子句追加进吸引子池 `pool_z / pool_w`**，彻底杜绝闭环滚动时 `c2..c8` 命中 `c1` 噪声引发的自激复读死循环。
+
+---
+
+## 六、 反归一化后 `std` 强行缩放陷阱与 PCA Channel-0 句长包络正交监督 (`#039` 进阶修复)
+
+1. **现象特征（Step 1,500–2,000 从头训练里程碑与残余句中截断）**：
+   - 从头训练至 Step 1,500–2,000 时，模型首次在 18 句长上文阅读理解 `qa#405886` 上彻底摆脱首句复读，精准定位文末 3 句标准答案并在 `c3` 准确触发停止（`stop=0.832`）：
+     - `c1`: `wht_cos=0.686, cos(GT)=0.412 | 这群人度` / `这群人饱`
+     - `c2`: `wht_cos=0.981, cos(GT)=0.982 | 而是知道今天是江守、朝先宇、`
+     - `c3`: `wht_cos=0.935, cos(GT)=0.648 | 静三个走出天化池的日子才刻意来迎接。`
+   - 在 `qa#383582` 上同样精准在 `c3` 停止（`c1`: `wht_cos=0.988 | 目前东西决四个队主主练对轮换使用的态度：`，`c2`: `wht_cos=0.529, cos(GT)=-0.139 | 勇士科尔：敦`，`c3`: `wht_cos=0.970 | 手里这些人还能用的忙都赶跟再用用。`）。
+   - **核心异常**：为什么 `wht_cos` 已达 `+0.529 ~ +0.961`，但物理空间 `cos(GT)` 却剧烈跌落至 `-0.139 ~ +0.464`，且在 `qa#405886 c1`（`这群人度`）、`qa#383582 c2`（`勇士科尔：敦`）和 `qa#653766`（`她将能制作0`）上发生 4~6 字截断？
+2. **两大数学根因**：
+   - **根因 A — `ThoughtFlowMatcher.sample()` 反归一化后强行除以 `z_out.std(dim=-1)` 注入 `<PAD>` 偏移**：
+     - 在物理 HiPPO 空间中，`z_std[min/mean/max] = 0.078 / 0.338 / 6.381`（PCA Channel 0 的标准差高达 `6.381`，且均值 `z_mean` 承载平均 `<PAD>` 偏移；而其余 31 个词汇通道标准差仅 `~0.10`）。
+     - 对于接近数据集平均长度（13~17 字）的子句，其白化空间 Channel 0 接近 $0$（即物理值接近 `z_mean`），因此真实物理子句向量 `z_gt` 的全维标准差天然为 `z_gt.std(dim=-1) ≈ 0.50 ~ 0.65`，**绝非 `1.0`**！
+     - 旧版 `sample()` 在 `z_out = self.denormalize(z)`（`z * z_std + z_mean`）之后，又执行了 `z_out = z_out / z_out.std(dim=-1)`，相当于将整个物理向量连同 `z_mean` 强行乘以 $\frac{1}{0.55} \approx 1.82$ 倍：
+       $$\tilde{z}_{\text{out}} = 1.82(z \cdot \sigma_z + \mu_z) = (1.82 z)\cdot \sigma_z + \underbrace{0.82 \mu_z}_{\text{巨幅 } \langle\text{PAD}\rangle \text{ 偏移污染！}}$$
+       这不仅破坏了 `denormalize(normalize(z_gt)) == z_gt` 的恒等性（把精确真值扭曲并注入 $+0.82 \mu_z$ 的 `<PAD>` 能量），而且在自回归闭环滚动时经 `fm.normalize(z_out)` 反馈回右脑，直接把 `cos(GT)` 拉成负值并迫使左脑在第 4~5 字提前终止！
+   - **根因 B — 白化空间中 PCA Channel 0（句长/`<EOS>` 包络通道）梯度权重被稀释至 $<3\%$**：
+     - 在白化空间 `z_norm` 中，每个频段的 32 个通道方差均为 $1$，PCA Channel 0（`d=0`）仅占 $\frac{1}{32} = 3.125\%$ 的维度（在 `compute_spatial_slot_loss` 中因 `0.75 * lex_cos + 0.25 * full_cos` 更被稀释至 **$0.78\%$**）；
+     - 但反归一化乘上 `z_std = 6.381` 后，PCA Channel 0 占据物理向量 `z_clause` **超过 $80\%$ 的能量**，并唯一决定左脑结晶器在 32 个槽位中何处放置 `<EOS>/<PAD>` 阶跃边界！
+     - 此外，在 `predict_prior` 中若将 Channel 0 与第 $1..31$ 词汇通道混在同一个 32 维向量里做 `F.normalize` 极坐标插值，当词汇通道夹角较小（$\cos < 1$）时，归一化分母会无端放大 Channel 0 的幅度。
+3. **根治方案（[`ThoughtFlowMatcher`](file:///Users/kael/workbench/HollyShit/model/bicameral_right_brain.py#L560-L1005) & [`MultiStreamRightBrain.predict_prior`](file:///Users/kael/workbench/HollyShit/model/bicameral_right_brain.py#L1755-L1800)）**：
+   - **废除 `sample()` 中破坏物理尺度的 `z_out / z_out.std(dim=-1)`**：
+     - 在白化空间仅做温和的极值安全钳制 `z_rms.clamp(min=0.35, max=2.5)`（正常子句 100% 无损通过），随后直接返回 `self.denormalize(z)`，严格保证物理空间与白化空间的往返恒等性（实测各向异性 `z_gt.std=0.52` 下 `cos(GT)=1.0000, wht_cos=1.0000`）。
+   - **径向解耦（$\frac{\partial}{\partial r_k} \equiv 0$）的 PCA Channel-0 句长包络显式监督**：
+     - 在 `compute_polar_band_loss` 中，对去半径单位频段向量的第 0 号通道 `u_pred_0 = z_pred_b[..., 0] / r_pred` 显式施加方向 MSE + 余弦监督 `chan0_loss`；
+     - 在 `compute_spatial_slot_loss` 中，使用径向解耦重构 `x_pred_iso = reconstruct_spatial_slots(from_bands((zp_b / rp) * rt.detach()))` 计算 `slot_cos_loss`、`slot_diff_cos_loss` 以及 32 槽位句长阶跃包络损失 `env_slot_loss = 1 - cos(x_pred_iso[..., 0], x_gt[..., 0])`，同时在 `compute_branch_loss` 赢家选择中加入 `0.5 * (1 - env_cos_k)`，在不产生任何高频半径塌缩的前提下精确锁定句尾 `<EOS>` 槽位。
+   - **`predict_prior` 中 Channel-0 与词汇通道（`1..31`）分离极坐标插值**：
+     - 对 `mh_b[..., :1]` 与 `lb_b[..., :1]` 沿 32 个频段（`dim=-2`）独立执行极坐标插值，对 `mh_b[..., 1:]` 与 `lb_b[..., 1:]` 沿频段内 31 个词汇通道（`dim=-1`）独立执行极坐标插值，彻底切断词汇夹角对句长包络通道的交叉干扰。
