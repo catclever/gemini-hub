@@ -90,7 +90,6 @@
         "read_file(/Users/kael/Library/XDG_Exile/gemini/kb/.wardrobe.md)",
         "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/agy_meta.py)",
         "command(echo)",
-        "read_file(/Users/kael/Library/XDG_Exile/gemini/config/scripts/jules_watchdog.sh)",
         "read_file(/Users/kael/Library/XDG_Exile/gemini/mcp/kanban-task-manager/list_tasks.json)",
         "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/builtin/skills/agy-customizations/SKILL.md)",
         "mcp(kanban-task-manager/update_task_content)",

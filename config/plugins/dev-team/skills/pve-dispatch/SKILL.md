@@ -4,54 +4,30 @@ description: "SOP for delegating tasks to REMOTE agents on the PVE server. Use t
 ---
 # PVE Remote Dispatch SOP
 
-This skill defines how the Lead Architect (Main Agent) should orchestrate agents (like `dev` or `ops`) for projects running on a remote PVE server, while the Main Agent itself is running on the local Mac.
+This skill defines how the Lead Architect (Main Agent) should orchestrate agents (like `dev` or `ops`) for projects running on the remote PVE server, while the Main Agent itself is running on the local Mac.
 
 ## When to use this skill
-Use this skill whenever delegating tasks to remote compute resources (PVE or Google Jules).
+Use this skill whenever delegating tasks to remote PVE compute resources (`Project-Environment: PVE-Native` or explicitly requested by the user).
 
 ## Dispatch Routing Strategy
 
-Before dispatching, check if the current project has a GitHub remote repository (`git remote get-url origin` containing `github.com`):
+Before dispatching, evaluate the scope and interactivity requirements of the task:
 
-### Mode A: Google Jules Dispatch (Priority 1: GitHub Projects)
+### Mode A: Descartes Unattended Watchdog (Well-Scoped, Single-Module Tasks)
 > [!TIP]
-> **Zero Mutagen Sync**: Jules runs in Google Cloud VMs directly connected to GitHub. You DO NOT need Mutagen sync for GitHub projects! PVE acts solely as an unattended 7x24h watchdog (fully immune to Mac sleep/lid-close).
+> **Headless & Worktree-Isolated**: For well-scoped, single-module coding tasks that do not require interactive plan approval or arbitrary shell commands, delegate to the `descartes-dispatch` skill (`descartes_watchdog.sh`).
 
-1. **Pre-Flight Git Sync (Mac)**: Ensure local changes are committed and pushed to GitHub:
-   ```bash
-   git status  # If unpushed, git add . && git commit -m "chore: save before jules dispatch" && git push
-   ```
-2. **Dispatch via Jules Watchdog**:
-   Run the Jules watchdog script on PVE in the background using SSH Stdin stream (`bash -s` with Heredoc). This avoids nested Shell escaping conflicts and completely eliminates disk temporary files:
-   ```bash
-   ssh Antigravity 'bash -s' << 'EOF'
-   bash ~/.gemini/config/scripts/jules_watchdog.sh \
-     -t "<Task_ID>" \
-     -r "<owner/repo>" \
-     -b "<branch>" \
-     -p "<Prompt>" \
-     -d "<project_dir>" \
-     [--autonomous]  # Optional: Default OFF for daytime tasks. Append only if user requests zero-intervention.
-   EOF
-   ```
-   *Mode Selection Rules*:
-   - **Standard Mode (Default for Daytime)**: Omits `--autonomous`. Preserves human-in-the-loop plan reviews (`requirePlanApproval: true`). If Jules enters `AWAITING_PLAN_APPROVAL` or `AWAITING_USER_FEEDBACK`, it waits for user input.
-   - **Autonomous Mode (`--autonomous`)**: Activates three lines of defense:
-     1. *Defense 1*: Pre-suppresses plan stops (`requirePlanApproval: false`).
-     2. *Defense 2*: Auto-approves plan via `:approvePlan` if `AWAITING_PLAN_APPROVAL` occurs.
-     3. *Defense 3*: Auto-replies with best-practice directive via `:sendMessage` if `AWAITING_USER_FEEDBACK` occurs (max 3 retries).
-   *Note: If `-d` is specified, the watchdog will automatically commit and push dirty files to remote before dispatching, aborting if synchronization fails.*
-   *For Night Shift / Autonomous runs, append both `--autonomous` and `--auto-merge`.*
-3. **Wait for System Wakeup**:
-   Wait for `/tmp/<Task_ID>.signal` to output `DONE: PR Created: <PR_URL>`.
-4. **Deliverables & Merge**:
-   - Provide the PR URL to the user or record it in `tasks/<Task_ID>.md`.
-   - Once merged on GitHub, Mac simply runs `git pull` to sync.
+1. **When to Choose Mode A**:
+   - The task targets a single module or concern and can be completed within ~30–50 ReAct turns.
+   - An independent verification command (`--verify "<test cmd>"`) on the whitelist (`cargo`, `pytest`, `npm`, `go test`, etc.) can validate the outcome.
+   - All relevant code is committed on the PVE project repository (`/root/Projects/<project>`).
+2. **Execution**:
+   - Read and follow the `descartes-dispatch` skill (`~/.gemini/config/plugins/dev-team/skills/descartes-dispatch/SKILL.md`) to dispatch `descartes_watchdog.sh` over SSH in an isolated git worktree (`descartes/<Task_ID>`).
 
 ---
 
-### Mode B: Bifrost PVE `agy` Dispatch (Priority 2: Private / Non-GitHub PVE Projects)
-Use this mode ONLY if the project is NOT on GitHub and `IRON_RULES.md` contains `Project-Environment: PVE-Native`.
+### Mode B: Bifrost PVE `agy` Dispatch (Interactive, Large, or Open-Ended PVE Tasks)
+Use this mode for multi-file refactors, exploratory debugging, tasks requiring full shell access, or interactive sessions on PVE-Native projects.
 
 1. **Prerequisite**: Tasks must be physically logged via `kanban-task-manager` MCP.
 2. **Assign via Local Watchdog Script (Mac)**: 

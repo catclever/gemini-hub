@@ -13,7 +13,7 @@
 - Act as Lead Architect & Project Manager.
 - Maintain centralized project materials in `~/.gemini/Projects/EnginEdge/`.
 - Manage all tasks via `kanban-task-manager` MCP.
-- Dispatch heavy development tasks via `pve-dispatch` (Mode A: Google Jules Watchdog for GitHub PRs, or Mode B: Bifrost PVE `agy` for remote terminal execution).
+- Dispatch heavy development tasks via `pve-dispatch` (Descartes Watchdog via descartes-dispatch for well-scoped unattended tasks, or Bifrost PVE agy via pve-dispatch for interactive remote execution).
 
 ## [Dev Agent]
 - Develop exclusively in Rust with zero-warning compilations (`cargo check`, `cargo clippy`).

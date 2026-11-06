@@ -1,7 +1,7 @@
 ---
 id: web_capture_pipeline_and_router_164
 title: 网页解析管道服务与二元形态路由（对话/笔记）
-status: completed
+status: active
 priority: high
 tags:
 - backend

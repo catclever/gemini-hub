@@ -8,57 +8,61 @@ When the user indicates they are leaving work or explicitly triggers the "Night 
 
 ## Routing: Choose the Execution Engine
 
-Check the project remote origin (`git remote get-url origin`):
-- **Path A (GitHub Projects)**: Use the **Jules Autonomous Pipeline (Headless, Zero-Mutagen, Auto-Merge)**.
-- **Path B (Private / PVE-Native Projects)**: Use the **Antiverse Zellij Pipeline (PVE `agy` + Mutagen)**.
+Select the overnight execution path based on the nature of the remaining tasks:
+- **Path A (Well-Scoped Unattended Task Queue)**: Use the **Descartes Autonomous Pipeline (`descartes_watchdog.sh --auto-merge`)** for serial, well-scoped coding tasks with deterministic test verification.
+- **Path B (Interactive / Complex Master Controller Handoff)**: Use the **Antiverse Zellij Protocol (`antiverse-run`)** for open-ended, multi-agent, or complex orchestration sessions on PVE.
 
 ---
 
-## Path A: Jules Cloud Autonomous Pipeline (GitHub Projects)
+## Path A: Descartes Autonomous Pipeline (`descartes_watchdog.sh --auto-merge`)
 
 > [!TIP]
-> **Complete Sleep / Lid-Close Immunity**: Jules runs in Google Cloud VMs. PVE acts purely as an unattended headless watchdog. No Zellij tabs required.
+> **Complete Sleep / Lid-Close Immunity**: `descartes_watchdog.sh` runs directly on PVE in isolated git worktrees (`descartes/<Task_ID>`) without requiring Mac connectivity or GitHub round-trips.
 
-### Step 1: Pre-Handoff Checkpoint & Push (Mac)
-Ensure all local work is committed and pushed so Jules starts with the absolute latest code:
+### Step 1: Pre-Handoff Checkpoint & Sync (PVE)
+Ensure all work is synced and committed on PVE (`/root/Projects/<project>`) so each worktree starts from a clean, up-to-date base branch:
 ```bash
-git status
-git add . && git commit -m "chore(auto): Pre-handoff Night Shift checkpoint"
-git push origin main
+ssh Antigravity "cd /root/Projects/<project> && git status --short && git add . && git commit -m 'chore(auto): Pre-handoff Night Shift checkpoint' || true"
 ```
 
-### Step 2: Queue Remaining Tasks to Jules with `--autonomous` and `--auto-merge`
-Compile pending tasks from `tasks/` into an automated sequential pipeline on PVE.
+### Step 2: Queue Remaining Tasks to Descartes with `--verify` and `--auto-merge`
+Compile pending well-scoped tasks from `tasks/` into an automated serial pipeline on PVE.
 > [!IMPORTANT]
-> **Mandatory Autonomous Flags**: In Night Shift mode, tasks MUST be invoked with both `--autonomous` (arming Defenses 1, 2, 3 to prevent plan/clarification stalls) and `--auto-merge` (automatic squash merge once CI passes).
+> **Serial Execution & Mandatory Verification**: Because the Descartes Hub is shared, tasks MUST run serially at night (never in parallel) and include both `--verify "<test cmd>"` and `--auto-merge` (automatic squash merge into the base branch once verification passes).
 
 Launch the unattended runner in background on PVE:
 ```bash
-ssh Antigravity "nohup bash -c '
-  for task in <TASK_LIST>; do
-    bash ~/.gemini/config/scripts/jules_watchdog.sh \
-      -t \"\$task\" \
-      -r \"<owner/repo>\" \
-      -p \"<Prompt>\" \
-      -d \"<project_dir>\" \
-      --autonomous \
-      --auto-merge
-    if [ \$(cat /tmp/\${task}.signal | grep -c \"DONE\") -eq 0 ]; then
-      echo \"Task \$task failed, stopping pipeline.\"
-      break
-    fi
-  done
-' > /tmp/jules_night_shift.log 2>&1 &"
+ssh Antigravity 'bash -s' << 'EOF'
+cat > /tmp/descartes_night_runner.sh << 'RUNNER'
+declare -A PROMPTS=(
+  ["<task_a>"]="<Prompt A>"
+  ["<task_b>"]="<Prompt B>"
+)
+for task in <task_a> <task_b>; do
+  bash ~/.gemini/config/scripts/descartes_watchdog.sh \
+    -t "$task" \
+    -d "/root/Projects/<project>" \
+    -p "${PROMPTS[$task]}" \
+    --verify "<test cmd>" \
+    --auto-merge
+  if [ "$(grep -c DONE /tmp/${task}.signal)" -eq 0 ]; then
+    echo "Task $task failed, stopping pipeline."
+    break
+  fi
+done
+RUNNER
+nohup bash /tmp/descartes_night_runner.sh > /tmp/descartes_night_shift.log 2>&1 &
+EOF
 ```
 
 ### Step 3: Inform Princess & Rollback Safety
-Inform Princess that Night Shift is handed off to Jules with automated PR merging.
-- **Next Morning**: Princess simply opens Mac and runs `git pull` to receive all merged work.
-- **Rollback Guarantee**: Each PR is merged via Squash. If any task is suboptimal, it can be 100% cleanly reverted via a single `git revert <commit_hash>`.
+Inform Princess that Night Shift is handed off to the Descartes autonomous pipeline with automated squash merging.
+- **Next Morning**: Princess reviews `git log` on PVE (or via Mutagen sync on Mac) to inspect all merged commits.
+- **Rollback Guarantee**: Each task is merged as a single squash commit (`feat(descartes): <Task_ID>`). Any suboptimal task can be 100% cleanly reverted via `git revert <commit_hash>`, and any failed task leaves its `descartes/<Task_ID>` branch intact for review.
 
 ---
 
-## Path B: Antiverse Zellij Protocol (Private / PVE-Native Projects)
+## Path B: Antiverse Zellij Protocol (`antiverse-run`)
 
 **THE PVE NEXUS ARCHITECTURE:** 
 All overnight tasks, master controllers, and dispatched subagents are launched as **dedicated, isolated Zellij sessions** via `antiverse-run` (e.g., `[<project_name>] night`, `[<project_name>] dev-<task_id>`). Each workload is completely sandboxed, and Princess or the overnight controller can inspect or switch between them effortlessly via `antiverse a <target>` or pressing `Alt + s` (Zellij Session Manager).

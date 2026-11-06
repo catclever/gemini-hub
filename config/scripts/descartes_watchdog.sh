@@ -6,10 +6,10 @@
 # Descartes/Dalembert hub; local tools confined to the CWD jail), inside an
 # isolated git worktree + branch `descartes/<Task_ID>`.
 #
-# Replaces jules_watchdog.sh as the autonomous coding dispatcher. No GitHub
-# dependency: this script NEVER pushes, pulls or fetches.
+# Autonomous coding dispatcher for PVE projects. No GitHub dependency: this
+# script NEVER pushes, pulls or fetches.
 #
-# Contract shared with jules_watchdog.sh / pve_watchdog.sh:
+# Contract shared with pve_watchdog.sh:
 #   - args:    -t <Task_ID> -d <Project_Dir> -p <Prompt>
 #   - signal:  /tmp/<Task_ID>.signal   (first line starts with
 #              IN_PROGRESS / DONE / FAILED)
@@ -305,6 +305,17 @@ cd "$WT_PATH" || fail WORKTREE_FAILED "cannot cd into ${WT_PATH}"
 write_signal "IN_PROGRESS: ${TASK_ID} ${BRANCH}"
 
 # ------------------------------ run enginedge ---------------------------------
+# [Bug Fix Documentation]
+# 1. Problem: When `enginedge run` executes inside the temporary git worktree
+#    (`/tmp/descartes_worktrees/<PROJECT_NAME>/<TASK_ID>`), deriving the project
+#    name from `basename $PWD` resolves to `<TASK_ID>` instead of `<PROJECT_NAME>`,
+#    breaking canonical project knowledge base resolution.
+# 2. Resolution: Explicitly export `ENGINEDGE_META_DIR="$HOME/.gemini/Projects/${PROJECT_NAME}"`
+#    before invoking `enginedge run`.
+# 3. Caveats: Ensure `PROJECT_NAME` is always derived from `MAIN_DIR` (the root
+#    of the main git repository) prior to entering the worktree.
+export ENGINEDGE_META_DIR="$HOME/.gemini/Projects/${PROJECT_NAME}"
+
 ENGINE_CMD=("$ENGINEDGE" run "--task=$PROMPT")
 if [ -n "$PROFILE" ]; then
     ENGINE_CMD=("${ENGINE_CMD[@]}" "--profile=$PROFILE")

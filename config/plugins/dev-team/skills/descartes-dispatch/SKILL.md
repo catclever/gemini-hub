@@ -1,22 +1,20 @@
 ---
 name: descartes-dispatch
-description: "SOP for handing heavy, well-scoped coding tasks on PVE projects (/root/Projects/<project>) to the Descartes + EnginEdge watchdog (descartes_watchdog.sh), async/unattended, as the Jules replacement. Do NOT use for vague/exploratory work, cross-repo or large refactors, tasks needing human plan approval, or Mac-local projects."
+description: "SOP for handing heavy, well-scoped coding tasks on PVE projects (/root/Projects/<project>) to the Descartes + EnginEdge watchdog (descartes_watchdog.sh), async/unattended. Do NOT use for vague/exploratory work, cross-repo or large refactors, tasks needing human plan approval, or Mac-local projects."
 ---
-# Descartes Dispatch SOP (Jules Replacement)
+# Descartes Dispatch SOP
 
 How the Lead Architect (Main Agent, on Mac) delegates a task to `descartes_watchdog.sh` on PVE. The watchdog creates an isolated git worktree, runs the EnginEdge cloud agent (`enginedge run`), optionally verifies, commits to branch `descartes/<Task_ID>`, and signals the result. **No GitHub needed** (no push/pull).
 
-## Engine Selection (Parallel Period)
-Jules stays valid for now; do not remove or rewrite Jules flows.
+## Engine Selection
 
 | Engine | Where / Model | Best for | Limits |
 | :--- | :--- | :--- | :--- |
-| **Descartes** (this skill) | PVE only; cloud `deepseek-v4.1-flash`, ≤30 ReAct turns | Small/medium single-module tasks, async or night queue, non-GitHub projects | Weaker model, no plan approval, whitelisted tools, shared Hub |
-| **Jules** (`pve-dispatch` Mode A) | Google Cloud, Gemini 3.1 Pro | Harder GitHub-project tasks, plan review wanted | Needs GitHub push/PR |
+| **Descartes** (this skill) | PVE only; cloud `deepseek-v4.1-flash`, ≤50 ReAct turns | Small/medium single-module tasks, async or night queue, non-GitHub projects | Lighter model, no plan approval, whitelisted tools, shared Hub |
 | **PVE agy** (`pve-dispatch` Mode B) | PVE Zellij, Antigravity TUI | Interactive/large/exploratory work on PVE-Native projects | Heavier, needs Mutagen |
 | **Local dev subagent** (`dev-manager`) | Mac, full toolset | Exploration, multi-file refactors, anything needing a real shell | Occupies Mac session |
 
-**Rule of thumb**: well-scoped + unattended → Descartes; needs stronger reasoning on GitHub → Jules; open-ended → PVE agy or local dev.
+**Rule of thumb**: well-scoped + unattended → Descartes; open-ended or heavier multi-file work → PVE agy (`pve-dispatch`) or local dev (`dev-manager`).
 > [!NOTE]
 > Descartes currently runs on **PVE only**. Mac-local mode is deferred.
 
@@ -74,7 +72,7 @@ Then **wait for `/tmp/<Task_ID>.signal`** (poll: `ssh Antigravity 'cat /tmp/<Tas
 | `MERGE_CONFLICT` | `--auto-merge` rolled back, branch kept → resolve manually during acceptance |
 | `UNEXPECTED_EXIT` | Trap fired → read log tail; check PVE disk/process state; then retry |
 
-Same task failing 3 times → stop retrying, mark `failed_needs_human` and escalate (reroute to Jules / PVE agy / local dev).
+Same task failing 3 times → stop retrying, mark `failed_needs_human` and escalate (reroute to PVE agy via `pve-dispatch` or local dev via `dev-manager`).
 
 ## Acceptance Flow (Main Agent; run git on PVE inside `<project_dir>`)
 1. Read the log: `ssh Antigravity 'tail -n 100 /tmp/descartes_<Task_ID>.log'`.
@@ -85,7 +83,7 @@ Same task failing 3 times → stop retrying, mark `failed_needs_human` and escal
 6. **Update Kanban via MCP** (`update_task_status`). Only the Main Agent does this; the executing agent never touches task files.
 
 ## Night Shift Example (serial, stop on first non-DONE)
-Mirrors `night-shift` Path A; swaps in Descartes with `--auto-merge`. The Hub is shared, so **never run in parallel at night**.
+Mirrors `night-shift` Path A using Descartes with `--auto-merge`. The Hub is shared, so **never run in parallel at night**.
 ```bash
 ssh Antigravity 'bash -s' << 'EOF'
 cat > /tmp/descartes_night_runner.sh << 'RUNNER'
@@ -106,7 +104,7 @@ EOF
 Morning: Princess syncs and reviews `git log`; each task is one squash commit, revertable with `git revert <sha>`. Failed/skipped tasks leave a `descartes/<Task_ID>` branch for review.
 
 ## Capability Limits (Be Honest With Princess)
-- Model: cloud `deepseek-v4.1-flash` — **weaker than Jules (Gemini 3.1 Pro)**. Default **50 ReAct turns** per run (customizable via `--max-turns`). **No human plan-approval step.**
+- Model: cloud `deepseek-v4.1-flash` — **lighter than frontier Pro-tier models (`PVE agy` / `local dev`)**. Default **50 ReAct turns** per run (customizable via `--max-turns`). **No human plan-approval step.**
 - Agent tools: `list_files`, `read_file`, `grep_search`, `write_file`, `append_file`, `get_outline`, `read_symbol`, `replace_symbol`, `run_verification`. Cloud intelligence: `github_repo_survey`, `github_code_search`, `doc_fetcher`, `spec_inspector`, `knowledge_store`. No arbitrary shell.
 - Large files / test suites: for files >3KB, avoid single massive `write_file` calls (which risk LLM token output truncation). Write initial skeleton then chunk with `append_file` or `replace_symbol`.
 - `run_verification` whitelist: `cargo`, `npm|pnpm|yarn|bun`, `pytest`, `python -m`, `bundle exec`, `go test|vet`, `make test|check`; forbids `& | ; > < \ ` $` and newlines.
@@ -119,7 +117,7 @@ Morning: Princess syncs and reviews `git log`; each task is one squash commit, r
 - [ ] Acceptance command given (also passed as `--verify`) and is on the whitelist.
 - [ ] Out-of-scope stated ("do not touch X").
 - [ ] Single repo; no big-bang refactor; no secrets/config files needed.
-- [ ] Anything failing the above → split it, or use Jules / PVE agy / local dev.
+- [ ] Anything failing the above → split it, or use PVE agy (`pve-dispatch`) / local dev (`dev-manager`).
 
 **Bad**: "Refactor the auth system and make it cleaner, update everything that uses it."
 **Good**: "In `src/auth/token.py`, add `refresh_token(token: str) -> str` that reuses `decode()` and `encode()` in the same file; add 3 pytest cases in `tests/test_token.py` (valid, expired, malformed). Do NOT modify other modules or `pyproject.toml`. Done when `pytest tests/test_token.py` passes."
