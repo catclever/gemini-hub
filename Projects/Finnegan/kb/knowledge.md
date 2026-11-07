@@ -668,3 +668,4 @@ The `<home>` directory is fully self-managed by Finnegan:
   - 抓取中提示 正在解析网页内容...；
   - 成功或失败均有明确 Toast 反馈；
   - 无论成功失败，输入框清空后均在 50ms 内自动重新获取焦点 (focus())，供用户无缝键入后续批注或灵感。
+- [ChatLog Card Inline Markdown & Safe Link Handling](chatlog_inline_markdown.md): Documenting the inline-only Markdown parsing mechanism, participant-aware turn isolation, non-speaker filtering, and LLM malformed bold healing in ChatLog cards.

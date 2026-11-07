@@ -11,7 +11,15 @@ Use this skill whenever delegating tasks to remote PVE compute resources (`Proje
 
 ## Dispatch Routing Strategy
 
-Before dispatching, evaluate the scope and interactivity requirements of the task:
+Before dispatching, evaluate the scope, GitHub backing, and interactivity requirements of the task across three execution modes:
+
+| Mode | Watchdog Script | Engine | Best For |
+| :--- | :--- | :--- | :--- |
+| **Mode A** | `descartes_watchdog.sh` | Descartes + EnginEdge (`deepseek-v4.1-flash`) | Well-scoped, single-module tasks (≤50 turns), worktree-isolated, **no GitHub needed** |
+| **Mode B** | `remote_watchdog.sh` | Google Cloud Remote Agent (`agy --remote-agent`) | Heavy/multi-file tasks on **GitHub-backed** projects with `flock` multi-account rotation & PR delivery |
+| **Mode C** | `pve_watchdog.sh` | Bifrost PVE Local `agy` (Zellij TUI) | Interactive/open-ended PVE-Native tasks requiring local PVE toolchains, databases, or services |
+
+---
 
 ### Mode A: Descartes Unattended Watchdog (Well-Scoped, Single-Module Tasks)
 > [!TIP]
@@ -26,8 +34,41 @@ Before dispatching, evaluate the scope and interactivity requirements of the tas
 
 ---
 
-### Mode B: Bifrost PVE `agy` Dispatch (Interactive, Large, or Open-Ended PVE Tasks)
-Use this mode for multi-file refactors, exploratory debugging, tasks requiring full shell access, or interactive sessions on PVE-Native projects.
+### Mode B: Google Remote Agent Watchdog (`remote_watchdog.sh` — Heavy / Multi-File GitHub Tasks)
+Use this mode for heavy coding or multi-file refactoring tasks on GitHub-backed projects where PVE dispatches an isolated Google Cloud Remote Agent (`agy --remote-agent`) using `flock`-guarded account switching (`agy-account switch`).
+
+1. **Mandatory Pre-Dispatch Context Distillation Checklist**:
+   Because the Cloud Remote Agent executes in an isolated cloud sandbox, you MUST prepare its context before dispatching:
+   - [ ] Log the task in Kanban via `kanban-task-manager` MCP (`create_task` / `update_task_status`).
+   - [ ] Query project knowledge via `kb_search(project="<project>", query="...")` and distill key architectural rules and caveats directly into `<Prompt>`.
+   - [ ] `remote_watchdog.sh` automatically appends `[Global]` and `[Dev Agent]` from `~/.gemini/Projects/<project>/IRON_RULES.md` on PVE if not already present in `<Prompt>`.
+2. **Account Selection (`--account`)**:
+   - PVE supports multi-account token switching via `/usr/local/bin/agy-account switch <account>`, protected by `/tmp/agy_account_switch.lock` (`flock` mutex with 8-second OAuth token binding hold):
+     - `kaelina1029@gmail.com` (or substring `kaelina1029`)
+     - `saint.archangel.satan@gmail.com` (or substring `saint.archangel`)
+3. **Dispatch on PVE via SSH**:
+   ```bash
+   ssh Antigravity 'bash -s' << 'EOF'
+   nohup bash ~/.gemini/config/scripts/remote_watchdog.sh \
+     -t "<Task_ID>" \
+     -r "catclever/<project>" \
+     -d "/root/Projects/<project>" \
+     -b "main" \
+     -a "kaelina1029@gmail.com" \
+     --tier "dev" \
+     --autonomous \
+     --auto-merge \
+     -p "<Distilled Prompt + Acceptance Criteria>" \
+     > /dev/null 2>&1 &
+   EOF
+   ```
+   - Omit `-d` if dispatching a Pure-Remote repository that has no `/root/Projects/<project>` clone on PVE.
+   - Monitor progress via `/tmp/<Task_ID>.signal`, `/tmp/remote_<Task_ID>.log`, or attach to the Zellij session `ssh Antigravity -t "zellij a '[<project>] remote-<Task_ID>'"`.
+
+---
+
+### Mode C: Bifrost PVE `agy` Dispatch (Interactive, Local-Service, or Open-Ended PVE Tasks)
+Use this mode for exploratory debugging, tasks requiring PVE-local hardware/services/containers, or interactive sessions on PVE-Native projects.
 
 1. **Prerequisite**: Tasks must be physically logged via `kanban-task-manager` MCP.
 2. **Assign via Local Watchdog Script (Mac)**: 

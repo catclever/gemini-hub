@@ -9,8 +9,9 @@ When the user indicates they are leaving work or explicitly triggers the "Night 
 ## Routing: Choose the Execution Engine
 
 Select the overnight execution path based on the nature of the remaining tasks:
-- **Path A (Well-Scoped Unattended Task Queue)**: Use the **Descartes Autonomous Pipeline (`descartes_watchdog.sh --auto-merge`)** for serial, well-scoped coding tasks with deterministic test verification.
-- **Path B (Interactive / Complex Master Controller Handoff)**: Use the **Antiverse Zellij Protocol (`antiverse-run`)** for open-ended, multi-agent, or complex orchestration sessions on PVE.
+- **Path A (Well-Scoped Unattended Task Queue — No GitHub Required)**: Use the **Descartes Autonomous Pipeline (`descartes_watchdog.sh --auto-merge`)** for serial, single-module coding tasks with deterministic test verification.
+- **Path B (Heavy / Multi-File GitHub Task Queue — Cloud Sandbox + PR Auto-Merge)**: Use the **Google Remote Agent Autonomous Pipeline (`remote_watchdog.sh --autonomous --auto-merge -a <account>`)** for heavier multi-file features or refactors on GitHub-backed projects (`catclever/<project>`), leveraging PVE `flock`-guarded multi-account rotation (`kaelina1029@gmail.com` / `saint.archangel.satan@gmail.com`).
+- **Path C (Interactive / Complex Master Controller Handoff)**: Use the **Antiverse Zellij Protocol (`antiverse-run`)** for open-ended, multi-agent, or PVE-local service orchestration sessions on PVE.
 
 ---
 
@@ -62,7 +63,55 @@ Inform Princess that Night Shift is handed off to the Descartes autonomous pipel
 
 ---
 
-## Path B: Antiverse Zellij Protocol (`antiverse-run`)
+## Path B: Google Remote Agent Autonomous Pipeline (`remote_watchdog.sh --autonomous --auto-merge -a <account>`)
+
+> [!TIP]
+> **Cloud-Scale Execution with Multi-Account Quota Isolation**: `remote_watchdog.sh` launches Google Antigravity Remote Agents (`agy --remote-agent`) from PVE, automatically injects `IRON_RULES.md`, guards `/usr/local/bin/agy-account switch` with a `flock` mutex, enforces Defenses 1–3 against stalls, and squash-merges PRs on GitHub.
+
+### Step 1: Distill Context & Select Account
+1. Query `kb_search` for the target project and synthesize architectural constraints into each task prompt.
+2. Choose the PVE Google account (`-a kaelina1029@gmail.com` or `-a saint.archangel.satan@gmail.com`), or alternate accounts across tasks in the queue.
+
+### Step 2: Launch Overnight Remote Agent Pipeline on PVE
+```bash
+ssh Antigravity 'bash -s' << 'EOF'
+cat > /tmp/remote_night_runner.sh << 'RUNNER'
+declare -A PROMPTS=(
+  ["<task_a>"]="<Distilled Prompt A>"
+  ["<task_b>"]="<Distilled Prompt B>"
+)
+declare -A ACCOUNTS=(
+  ["<task_a>"]="kaelina1029@gmail.com"
+  ["<task_b>"]="saint.archangel.satan@gmail.com"
+)
+for task in <task_a> <task_b>; do
+  bash ~/.gemini/config/scripts/remote_watchdog.sh \
+    -t "$task" \
+    -r "catclever/<project>" \
+    -d "/root/Projects/<project>" \
+    -b "main" \
+    -a "${ACCOUNTS[$task]}" \
+    --tier "dev" \
+    --autonomous \
+    --auto-merge \
+    -p "${PROMPTS[$task]}"
+  if [ "$(grep -c DONE /tmp/${task}.signal)" -eq 0 ]; then
+    echo "Remote Task $task failed, stopping pipeline."
+    break
+  fi
+done
+RUNNER
+nohup bash /tmp/remote_night_runner.sh > /tmp/remote_night_shift.log 2>&1 &
+EOF
+```
+*(Omit `-d "/root/Projects/<project>"` when running against a Pure-Remote repository.)*
+
+### Step 3: Inform Princess & Rollback Safety
+Inform Princess that the overnight Remote Agent pipeline is active on PVE. Each completed task produces a GitHub PR (`remote/<Task_ID>`) that is squash-merged into `main` and synced back to PVE (`git pull --rebase`).
+
+---
+
+## Path C: Antiverse Zellij Protocol (`antiverse-run`)
 
 **THE PVE NEXUS ARCHITECTURE:** 
 All overnight tasks, master controllers, and dispatched subagents are launched as **dedicated, isolated Zellij sessions** via `antiverse-run` (e.g., `[<project_name>] night`, `[<project_name>] dev-<task_id>`). Each workload is completely sandboxed, and Princess or the overnight controller can inspect or switch between them effortlessly via `antiverse a <target>` or pressing `Alt + s` (Zellij Session Manager).

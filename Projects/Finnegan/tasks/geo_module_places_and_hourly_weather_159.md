@@ -31,3 +31,5 @@ session: conversation://c1672485-6e37-4151-b40f-453866902a63
 - **File Scope**: `modules/geo/*` (100% isolated from other parallel tasks)
 
 - **PR Created**: https://github.com/catclever/Finnegan/pull/23 (`COMPLETED`)
+
+- **Detail Polish**: Enhanced `FetchNearbyLandmarks` in `modules/geo/places.go` so `provider: "auto"` automatically routes to `amap` (in China when `amap_api_key` is set) or `google` (when `google_api_key` is set), falling back to `osm`.

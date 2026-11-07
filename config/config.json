@@ -18,7 +18,7 @@
       "installedFrom": {
         "id": "antigravity-plugins-official/plugin/gemini-api",
         "marketplace": "antigravity-plugins-official",
-        "version": "2.3.1"
+        "version": "2.4.0"
       }
     },
     "google-antigravity-sdk": {
@@ -60,10 +60,10 @@
     }
   },
   "userSettings": {
-    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_AUTO",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
     "cliRemoteControlHostname": "PVE-Remote-Worker",
     "enableNotificationsForSpecialEvents": false,
-    "enableTerminalSandbox": true,
+    "enableTerminalSandbox": false,
     "globalPermissionGrants": {
       "allow": [
         "read_url(mp.weixin.qq.com)",
@@ -93,12 +93,20 @@
         "read_file(/Users/kael/Library/XDG_Exile/gemini/mcp/kanban-task-manager/list_tasks.json)",
         "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/builtin/skills/agy-customizations/SKILL.md)",
         "mcp(kanban-task-manager/update_task_content)",
-        "read_file(/Users/kael/Library/XDG_Exile/gemini/config/skills/session-brain-cleanup/SKILL.md)"
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/config/skills/session-brain-cleanup/SKILL.md)",
+        "mcp(knowledge-manager/kb_search)",
+        "mcp(knowledge-manager/kb_read)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/mcp/knowledge-manager/kb_search.json)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/mcp/knowledge-manager/kb_read.json)",
+        "mcp(knowledge-manager/kb_audit)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/mcp/knowledge-manager/kb_record.json)",
+        "mcp(knowledge-manager/kb_record)",
+        "read_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/mcp/knowledge-manager/kb_audit.json)"
       ]
     },
-    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
     "permissionGrantsV2Migrated": true,
-    "permissionPreset": "AGENT_PERMISSION_PRESET_AUTO",
+    "permissionPreset": "AGENT_PERMISSION_PRESET_TURBO",
     "remoteControlEnabled": true,
     "remoteControlHostname": "kaelsmagic-local-silent-jet",
     "sandboxEnabledAtV2Migration": true,

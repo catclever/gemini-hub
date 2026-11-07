@@ -14,8 +14,16 @@ import yaml
 from mcp.server.mcpserver import MCPServer
 from typing import Literal
 
-# Ensure agy_meta can be imported
-sys.path.append(os.path.expanduser("~/.gemini/Projects"))
+# Ensure agy_meta can be imported across Mac, PVE Linux, and Cloud containers
+for _candidate_path in (
+    os.environ.get("PROJECTS_ROOT"),
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Projects")),
+    "/workspace/gemini-hub/Projects",
+    os.path.expanduser("~/.gemini/Projects"),
+):
+    if _candidate_path and _candidate_path not in sys.path:
+        sys.path.append(_candidate_path)
+
 import agy_meta
 
 # Enforced strict schemas
@@ -376,7 +384,10 @@ def update_task_content(
 @mcp.tool()
 def normalize_all_tasks() -> str:
     """Scan all project task markdown files across ~/.gemini/Projects and fix invalid status fields, missing frontmatters, and empty bodies."""
-    projects_root = os.path.expanduser("~/.gemini/Projects")
+    if hasattr(agy_meta, "_resolve_gemini_roots"):
+        projects_root, _ = agy_meta._resolve_gemini_roots()
+    else:
+        projects_root = os.path.expanduser("~/.gemini/Projects")
     pattern = os.path.join(projects_root, "*", "tasks", "*.md")
     files = glob.glob(pattern)
     

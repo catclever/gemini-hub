@@ -10,7 +10,7 @@ description: >-
 This skill enforces strict rules for managing project metadata, knowledge, and tasks in a centralized location.
 
 ## 1. Centralized Management Directory
-All project metadata MUST be stored in `~/.gemini/Projects/<project_name>/`.
+All project metadata MUST be stored in `~/.gemini/Projects/<project_name>/` (or `/workspace/gemini-hub/Projects/<project_name>/` inside a Google Cloud Remote Agent sandbox).
 Do NOT store `.agent/`, `task.md`, or metadata inside the project's individual working directories.
 
 ### Directory Structure
@@ -26,18 +26,31 @@ Do NOT store `.agent/`, `task.md`, or metadata inside the project's individual w
 └── commands/             # Manually injected prompts and quick-actions (User-managed)
 ```
 
+### Project Environment Topologies
+Every registered project operates under one of three explicit environment topologies declared in `IRON_RULES.md` (`Project-Environment`):
+
+| Topology | Source Code Location | Execution & Dispatch Skills | Metadata Location |
+| :--- | :--- | :--- | :--- |
+| **`Local`** | Local Mac directory | `dev-manager`, `ops-manager` | `~/.gemini/Projects/<project_name>/` |
+| **`PVE-Native`** | `/root/Projects/<project_name>` on PVE (mirrored to Mac via Mutagen) | `pve-dispatch` (Mode A `descartes_watchdog.sh`, Mode B `remote_watchdog.sh`, Mode C `pve_watchdog.sh`) | `~/.gemini/Projects/<project_name>/` |
+| **`Pure-Remote`** | GitHub-only (`catclever/<project_name>`), mounted at `/workspace/<project_name>` in Antigravity Cloud Sandbox (zero local clones) | Cloud Remote Project UI or `remote_watchdog.sh` (without `-d`); initialize via **`pure-remote-init`**, migrate from local via **`local-to-remote-migration`** | `/workspace/gemini-hub/Projects/<project_name>/` (synced via `catclever/gemini-hub`) |
+
+- **Initializing a New Pure-Remote Project**: Read and execute the `pure-remote-init` skill (`~/.gemini/config/plugins/dev-team/skills/pure-remote-init/SKILL.md`).
+- **Migrating an Existing Local Repo to Pure-Remote**: Read and execute the `local-to-remote-migration` skill (`~/.gemini/config/plugins/dev-team/skills/local-to-remote-migration/SKILL.md`).
+
 ## 2. Workflows & Lifecycles
 
 ### Git Status Management (`git_status.md`)
 - Whenever a new working directory is introduced, check for a `.git` repository (or parent).
-- If no Git repository is found, STOP and check if the project is a PVE-Native project. If not, ask the user how to handle it.
+- If no Git repository is found, STOP and check if the project is a `PVE-Native` or `Pure-Remote` project. If not, ask the user how to handle it.
 - Record the final decision for each working directory in `git_status.md`.
 
 ### Ironclad Rules (`IRON_RULES.md`)
 - This file contains absolute, non-negotiable rules for the project.
-- **PVE-Native Initialization**: If the user mentions the project is synced to a PVE server or is a remote project, you MUST inject the following exact block into the `## [Global]` section of `IRON_RULES.md`:
+- **PVE-Native Initialization**: If the user mentions the project is synced to a PVE server, you MUST inject the following exact block into the `## [Global]` section of `IRON_RULES.md`:
   > **Environment**: **PVE-Native**. All heavy development tasks MUST be delegated to PVE remote agents using the `pve-dispatch` skill.
   > **Thin-Client Git**: The local Mac is a "Dumb Editor" mirrored to the PVE. Do NOT force initialize `git init` locally. All Git operations (status, commit, history) MUST be delegated exclusively to the remote PVE sub-agents.
+- **Pure-Remote Initialization**: If the project is a cloud-only GitHub project with no local clone, follow the `pure-remote-init` skill to set `Project-Environment: Pure-Remote` and `GitHub-Repo: catclever/<project_name>` in `IRON_RULES.md`.
 - **Namespace Architecture**: To prevent context pollution and role confusion, `IRON_RULES.md` MUST be divided into specific headings:
   - `## [Global]`: Project-wide context (e.g., dual-repo setup, language versions).
   - `## [Main Agent]`: Orchestration rules (e.g., "After local verification, you must trigger ops to sync").
@@ -47,7 +60,7 @@ Do NOT store `.agent/`, `task.md`, or metadata inside the project's individual w
 
 ### Knowledge Base (`kb/`)
 - Only store **finalized, active** technical details here (e.g., active DB schemas, API specs, environment setup).
-- **MCP ENFORCEMENT**: You MUST use the `knowledge-manager` MCP tools (`kb_search`, `kb_read`, `kb_record`, `kb_audit`) for all knowledge operations, passing `project` (canonical project name or `$PWD`) just like `kanban-task-manager`. Do NOT use raw file editing tools (`write_file`, `edit_file`) to manually create knowledge files or append indexes (unless operating in an isolated cloud container without MCP mounted).
+- **MCP ENFORCEMENT**: You MUST use the `knowledge-manager` MCP tools (`kb_search`, `kb_read`, `kb_record`, `kb_audit`) for all knowledge operations, passing `project` (canonical project name, `catclever/<project_name>`, or `$PWD`) just like `kanban-task-manager`. Do NOT use raw file editing tools (`write_file`, `edit_file`) to manually create knowledge files or append indexes (unless operating in an isolated cloud container without MCP mounted).
 - When extracting knowledge from conversations, trigger the `extract-knowledge` skill.
 - **Consumption & Verification Workflow**:
   - **Context Loading & Reading**: Use `kb_search(project=..., query=..., scope="active"|"grave"|"all")` to find relevant schemas, or `kb_read(project=..., path=...)` to safely fetch a document.
@@ -57,7 +70,7 @@ Do NOT store `.agent/`, `task.md`, or metadata inside the project's individual w
 
 ### Task Management (`tasks/`)
 - **MCP ENFORCEMENT**: You are STRICTLY FORBIDDEN from using raw file editing tools (`write_to_file`, `replace_file_content`, etc.) to create or update task markdown files. You MUST exclusively use the `kanban-task-manager` MCP tools (`list_tasks`, `create_task`, `update_task_status`, `update_task_content`).
-- **Project Identifier Resolution**: The `project` parameter in the MCP tools accepts either the canonical project name (e.g. `Finnegan`) or the workspace path (e.g. `$PWD`). The MCP server internally and strictly validates it through `agy_meta.py` to locate `~/.gemini/Projects/<project_name>/tasks/`.
+- **Project Identifier Resolution**: The `project` parameter in the MCP tools accepts the canonical project name (e.g. `Finnegan`), GitHub slug (e.g. `catclever/Finnegan`), or workspace path (e.g. `$PWD` or `/workspace/Finnegan`). The MCP server internally and strictly validates it through `agy_meta.py` to locate `Projects/<project_name>/tasks/`.
 - Do NOT use a single `task.md` file. All tasks are managed via the MCP tools which store them in the centralized absolute path `~/.gemini/Projects/<project_name>/tasks/`.
 - **Task ID (Semantic Slug Only)**: The `task_id` MUST be a pure descriptive snake_case semantic slug (e.g., `card_capture_bugu`, `auth_oauth_login`, `fix_settings_button`). 
   - **FORBIDDEN (Manual Numbering)**: You MUST NOT write sequence numbers (e.g., `_001`, `_042`, `task_1`, `01_`) in `task_id`.

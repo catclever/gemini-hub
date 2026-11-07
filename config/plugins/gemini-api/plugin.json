@@ -1,7 +1,7 @@
 {
   "name": "gemini-api",
   "displayName": "Gemini API",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Build applications with the Gemini Interactions API and Live API, including text, image, video, and speech generation, managed agents, and real-time multimodal streaming.",
   "logo": "https://www.gstatic.com/images/branding/productlogos/gemini_2026/v1/web-96dp/logo_gemini_2026_color_2x_web_96dp.png",
   "suggestedPrompts": [

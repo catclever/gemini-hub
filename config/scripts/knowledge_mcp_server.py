@@ -19,6 +19,7 @@ from mcp.server.mcpserver import MCPServer
 for _candidate_path in (
     os.environ.get("PROJECTS_ROOT"),
     os.path.abspath(os.path.join(os.path.dirname(__file__), "../../Projects")),
+    "/workspace/gemini-hub/Projects",
     os.path.expanduser("~/.gemini/Projects"),
 ):
     if _candidate_path and _candidate_path not in sys.path:

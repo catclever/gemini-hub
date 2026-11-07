@@ -1,7 +1,7 @@
 ---
 id: eval_hy4_aider_polyglot_225_full_029
 title: 全量评测腾讯混元 Hy4 (WorkBuddy) 在官方 Aider Polyglot 225 题全集表现
-status: active
+status: completed
 priority: high
 tags:
 - benchmark

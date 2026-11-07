@@ -10,11 +10,12 @@ How the Lead Architect (Main Agent, on Mac) delegates a task to `descartes_watch
 
 | Engine | Where / Model | Best for | Limits |
 | :--- | :--- | :--- | :--- |
-| **Descartes** (this skill) | PVE only; cloud `deepseek-v4.1-flash`, ≤50 ReAct turns | Small/medium single-module tasks, async or night queue, non-GitHub projects | Lighter model, no plan approval, whitelisted tools, shared Hub |
-| **PVE agy** (`pve-dispatch` Mode B) | PVE Zellij, Antigravity TUI | Interactive/large/exploratory work on PVE-Native projects | Heavier, needs Mutagen |
-| **Local dev subagent** (`dev-manager`) | Mac, full toolset | Exploration, multi-file refactors, anything needing a real shell | Occupies Mac session |
+| **Descartes** (this skill / `pve-dispatch` Mode A) | PVE only; cloud `deepseek-v4.1-flash`, ≤50 ReAct turns | Small/medium single-module tasks, async or night queue, non-GitHub projects | Lighter model, no plan approval, whitelisted tools, shared Hub |
+| **PVE Remote Agent** (`pve-dispatch` Mode B / `remote_watchdog.sh`) | PVE launcher $\rightarrow$ Google Cloud Sandbox (`agy --remote-agent`, `gemini-3.8-flash` / `3.1-pro`) | Heavy/multi-file tasks on GitHub-backed projects, multi-account rotation (`agy-account switch` + `flock`), PR auto-merge | Requires GitHub repo & Remote Project resource mounting |
+| **PVE agy** (`pve-dispatch` Mode C / `pve_watchdog.sh`) | PVE Zellij, Antigravity TUI | Interactive/large/exploratory work needing PVE-local services or hardware | Heavier, needs Mutagen |
+| **Local dev subagent** (`dev-manager`) | Mac, full toolset | Exploration, multi-file refactors, anything needing a local Mac shell | Occupies Mac session |
 
-**Rule of thumb**: well-scoped + unattended → Descartes; open-ended or heavier multi-file work → PVE agy (`pve-dispatch`) or local dev (`dev-manager`).
+**Rule of thumb**: well-scoped + unattended (no GitHub required) → Descartes; heavy multi-file unattended on GitHub-backed repo → PVE Remote Agent (`remote_watchdog.sh`); interactive PVE-local service work → PVE agy (`pve_watchdog.sh`); Mac-local work → `dev-manager`.
 > [!NOTE]
 > Descartes currently runs on **PVE only**. Mac-local mode is deferred.
 
@@ -72,7 +73,7 @@ Then **wait for `/tmp/<Task_ID>.signal`** (poll: `ssh Antigravity 'cat /tmp/<Tas
 | `MERGE_CONFLICT` | `--auto-merge` rolled back, branch kept → resolve manually during acceptance |
 | `UNEXPECTED_EXIT` | Trap fired → read log tail; check PVE disk/process state; then retry |
 
-Same task failing 3 times → stop retrying, mark `failed_needs_human` and escalate (reroute to PVE agy via `pve-dispatch` or local dev via `dev-manager`).
+Same task failing 3 times → stop retrying, mark `failed_needs_human` and escalate (reroute to PVE Remote Agent / PVE agy via `pve-dispatch` or local dev via `dev-manager`).
 
 ## Acceptance Flow (Main Agent; run git on PVE inside `<project_dir>`)
 1. Read the log: `ssh Antigravity 'tail -n 100 /tmp/descartes_<Task_ID>.log'`.
@@ -104,7 +105,7 @@ EOF
 Morning: Princess syncs and reviews `git log`; each task is one squash commit, revertable with `git revert <sha>`. Failed/skipped tasks leave a `descartes/<Task_ID>` branch for review.
 
 ## Capability Limits (Be Honest With Princess)
-- Model: cloud `deepseek-v4.1-flash` — **lighter than frontier Pro-tier models (`PVE agy` / `local dev`)**. Default **50 ReAct turns** per run (customizable via `--max-turns`). **No human plan-approval step.**
+- Model: cloud `deepseek-v4.1-flash` — **lighter than frontier Pro-tier models (`PVE Remote Agent` / `PVE agy` / `local dev`)**. Default **50 ReAct turns** per run (customizable via `--max-turns`). **No human plan-approval step.**
 - Agent tools: `list_files`, `read_file`, `grep_search`, `write_file`, `append_file`, `get_outline`, `read_symbol`, `replace_symbol`, `run_verification`. Cloud intelligence: `github_repo_survey`, `github_code_search`, `doc_fetcher`, `spec_inspector`, `knowledge_store`. No arbitrary shell.
 - Large files / test suites: for files >3KB, avoid single massive `write_file` calls (which risk LLM token output truncation). Write initial skeleton then chunk with `append_file` or `replace_symbol`.
 - `run_verification` whitelist: `cargo`, `npm|pnpm|yarn|bun`, `pytest`, `python -m`, `bundle exec`, `go test|vet`, `make test|check`; forbids `& | ; > < \ ` $` and newlines.
@@ -117,7 +118,7 @@ Morning: Princess syncs and reviews `git log`; each task is one squash commit, r
 - [ ] Acceptance command given (also passed as `--verify`) and is on the whitelist.
 - [ ] Out-of-scope stated ("do not touch X").
 - [ ] Single repo; no big-bang refactor; no secrets/config files needed.
-- [ ] Anything failing the above → split it, or use PVE agy (`pve-dispatch`) / local dev (`dev-manager`).
+- [ ] Anything failing the above → split it, or use PVE Remote Agent / PVE agy (`pve-dispatch`) or local dev (`dev-manager`).
 
 **Bad**: "Refactor the auth system and make it cleaner, update everything that uses it."
 **Good**: "In `src/auth/token.py`, add `refresh_token(token: str) -> str` that reuses `decode()` and `encode()` in the same file; add 3 pytest cases in `tests/test_token.py` (valid, expired, malformed). Do NOT modify other modules or `pyproject.toml`. Done when `pytest tests/test_token.py` passes."

@@ -86,3 +86,42 @@
     - `training/data/knowledge_dataset.py` (BicameralClauseChainDataset with grounded prompt/knowledge parser & non-cheating candidate pool)
     - `training/train_phase5_mamba_flow_cuda.py` (Stage 2/3 MultiStreamRightBrain training & closed-loop dual-brain rollout pipeline)
     - `training/train_translator_cuda.py` (clean 100% vector default, deblur_weight=0.0, translator_moss_s32_clean prefix)
+
+## 2026-11-07: Git Push Phase 5 Clean Lookback Source, gate_lb Anti-Saturation BCE & Radially Decoupled anti_stag (#041)
+- **Commit**: `b79fdad` (`b79fdad0429c3cfd226825435e0a6b0325bd0f39`)
+- **Branch**: `origin/main` (`catclever/HollyShit`)
+- **Command**:
+  ```bash
+  rm -f /Users/kael/workbench/HollyShit/model/bicameral_right_brain.bak.py
+  git add model/bicameral_right_brain.py
+  git commit -m "fix(phase5): decouple clean lookback source, add gate_lb anti-saturation BCE, and radially decouple anti_stag (#041)"
+  git push origin main
+  ```
+- **Files**:
+  - `model/bicameral_right_brain.py`: Decoupled clean lookback source (`Z_lookback_source`), added `gate_lb` anti-saturation BCE supervision (`loss_gate_lb`), and radially decoupled `loss_anti_stag` on normalized direction (`v_pred_dir`).
+
+## 2026-11-07: Git Remote Backup Phase 5 Right-Brain v2 Polar + Lookback (#041)
+- **Commit**: `b79fdad` (`b79fdad0429c3cfd226825435e0a6b0325bd0f39`)
+- **Remote Branch**: `origin/phase5-right-brain-v2-polar` (`refs/heads/phase5-right-brain-v2-polar`, no local backup branch created)
+- **Command**:
+  ```bash
+  git push origin HEAD:refs/heads/phase5-right-brain-v2-polar
+  ```
+
+## 2026-11-07: Git Push Phase 5 Right-Brain v3 32x32 Spatial-Slot Flow & Rolling Continuation Stream (#042, #043)
+- **Commit**: `42662d8` (`42662d8ce5469ce0caf26babcc8e50146b93accc`)
+- **Branch**: `origin/main` (`catclever/HollyShit`)
+- **Verification**:
+  - `PYTHONPATH=. .venv/bin/python3 model/bicameral_right_brain.py`: `[Self-Test PASS] flow_version=3 iso_err=(2.41e-06, 1.79e-06) loss=15.2280 z_hat=(2, 1024)`
+  - `import training.train_phase5_right_brain_stage1` & `import training.data.clause_stream_dataset`: `IMPORTS_OK`
+- **Command**:
+  ```bash
+  rm -f model/bicameral_right_brain.bak.py training/data/clause_stream_dataset.bak.py
+  git add model/bicameral_right_brain.py training/data/clause_stream_dataset.py
+  git commit -m "feat(phase5): refactor Right-Brain v3 to 32x32 spatial-slot flow and restore rolling continuation stream (#042, #043)"
+  git push origin main
+  ```
+- **Files**:
+  - `model/bicameral_right_brain.py`: Refactored Right-Brain v3 to 32x32 spatial-slot flow with Legendre isometric transform (`flow_version=3`).
+  - `training/data/clause_stream_dataset.py`: Restored rolling continuation stream and multi-domain balance.
+

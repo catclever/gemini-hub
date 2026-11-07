@@ -14,3 +14,4 @@
 
 ## Plugin Config Management
 - **Source Mapping**: The MusicFree plugin source identifiers (e.g. `qq`, `qq音乐`, `netease`, `网易云`) must be explicitly mapped to the respective `API_CONFIG` objects to ensure custom panels can correctly match the current song's origin.
+- [QQ 音乐本地 9503 代理与播放上报架构规范](qq_9503.md): QQ 音乐本地 9503 代理常驻守护与播放上报 (Scrobble) 拦截规范
