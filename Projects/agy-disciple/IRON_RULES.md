@@ -6,7 +6,15 @@ This document is the Single Source of Truth (SSOT) for absolute, non-negotiable 
 
 ## [Global]
 
-- **Project Environment**: Dual-Topology support (`standalone` local-first by default; `server-centralized` for remote compute hosts).
+- **Project**: agy-disciple
+- **Project-Environment**: Pure-Remote
+- **GitHub-Repo**: catclever/agy-disciple
+- **Theme-Color**: #6366F1
+- **Local-Workspace**: None (Migrated to Cloud-Only /workspace/agy-disciple)
+- **PVE-Test-Dir**: None
+- **PVE-Dev-Server-Cmd**: None
+- **Centralized Metadata**: `/workspace/gemini-hub/Projects/agy-disciple` (or `~/.gemini/Projects/agy-disciple`)
+- **Single Source of Truth**: The GitHub repository (`catclever/agy-disciple`) is the sole authoritative codebase. Do NOT create local source clones on Mac.
 - **Default Dev Engine Rule (默认研发引擎铁律)**:
   - **始终调度 Native Dev / agy**：在开源版 `agy-disciple` 中，所有模式与技能默认必须调用本地或服务器的原生 `dev` / `agy` 智能体，不依赖外部专有云端代理，确保开源用户零外部依赖、零门槛开箱即用。
 - **Upstream Migration & Sync Rule (上游迁移铁律)**:

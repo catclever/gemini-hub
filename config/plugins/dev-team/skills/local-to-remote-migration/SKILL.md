@@ -48,12 +48,22 @@ Ensure all project knowledge, tasks, and IDE identity settings are preserved in 
    ```
 2. **Migrate Any Legacy `.agent/` Metadata**:
    - If `<local_project_dir>/.agent/` exists, migrate any `.agent/kb/` or `.agent/docs/` files into `$META_DIR/kb/` and `$META_DIR/docs/`, then remove `<local_project_dir>/.agent/`.
-3. **Harvest Peacock / Window Theme Color (`.vscode/settings.json`)**:
-   - If `<local_project_dir>/.vscode/settings.json` exists, copy it into `$META_DIR/.vscode/settings.json` and record the theme color hex code (e.g., `peacock.color` or `workbench.colorCustomizations`) inside `$META_DIR/IRON_RULES.md` so the project's visual identity is preserved.
+3. **Harvest & Dual-Track Preserve Theme Color (`.vscode/settings.json` & `IRON_RULES.md`)**:
+   - **A. Central Metadata Archive (For Local TaiChi / `antigravity_theme_sync.js`)**:
+     If `<local_project_dir>/.vscode/settings.json` exists, copy it into `$META_DIR/.vscode/settings.json` (`~/.gemini/Projects/<project_name>/.vscode/settings.json`):
+     ```bash
+     mkdir -p "$META_DIR/.vscode"
+     cp "<local_project_dir>/.vscode/settings.json" "$META_DIR/.vscode/settings.json"
+     ```
+   - **B. Explicit `Theme-Color` Rule in `IRON_RULES.md`**:
+     Extract the primary hex code (from `peacock.color` or `workbench.colorCustomizations["titleBar.activeBackground"]`) and record `- **Theme-Color**: #<HEX>` under `## [Global]` inside `$META_DIR/IRON_RULES.md` (and `$META_DIR/kb/knowledge.md` if applicable).
+   - **C. In-Repo Preservation (For Cloud Sandbox IDE)**:
+     Ensure `<local_project_dir>/.vscode/settings.json` remains committed and pushed inside `catclever/<project_name>` (verified in Stage 1) so the Cloud Remote Project workspace (`/workspace/<project_name>`) retains its native window theme color when opened in Antigravity IDE.
 4. **Update `IRON_RULES.md` & `git_status.md` to `Pure-Remote`**:
    - Update `$META_DIR/IRON_RULES.md` under `## [Global]` to set:
      - `Project-Environment: Pure-Remote`
      - `GitHub-Repo: catclever/<project_name>`
+     - `Theme-Color: #<HEX>` *(harvested in Step 3)*
      - `Local-Workspace: None (Migrated to Cloud-Only /workspace/<project_name>)`
      - `PVE-Test-Dir: /root/Projects/<project_name>` *(if keeping PVE test clone, or `None`)*
      - `PVE-Dev-Server-Cmd: <command binding 0.0.0.0>` *(if applicable)*

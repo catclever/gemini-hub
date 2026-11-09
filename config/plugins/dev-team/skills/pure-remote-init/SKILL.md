@@ -49,6 +49,7 @@ Create `${META_DIR}/IRON_RULES.md` with the strict 4-namespace structure require
 - **Project**: <project_name>
 - **Project-Environment**: Pure-Remote
 - **GitHub-Repo**: catclever/<project_name>
+- **Theme-Color**: #<HEX>
 - **Local-Workspace**: None (Cloud-Only via Google Antigravity Remote Project `/workspace/<project_name>`)
 - **PVE-Test-Dir**: None (or `/root/Projects/<project_name>` if an on-demand PVE test clone is enabled)
 - **PVE-Dev-Server-Cmd**: `<dev_server_command_binding_0.0.0.0>`
@@ -70,8 +71,8 @@ Create `${META_DIR}/IRON_RULES.md` with the strict 4-namespace structure require
 - **Git & PR Delivery**: Commit all verified changes to feature/task branches and push directly to `origin` (`catclever/<project_name>`).
 ```
 
-### Step 3: Initialize `git_status.md` & Knowledge Indexes
-Create `${META_DIR}/git_status.md`, `${META_DIR}/kb/knowledge.md`, and `${META_DIR}/kb/graveyard/grave.md`:
+### Step 3: Initialize `git_status.md`, Theme Color (`.vscode/settings.json`), & Knowledge Indexes
+Create `${META_DIR}/git_status.md`, `${META_DIR}/.vscode/settings.json` (for local TaiChi theme sync), `${META_DIR}/kb/knowledge.md`, and `${META_DIR}/kb/graveyard/grave.md`:
 
 1. **`${META_DIR}/git_status.md`**:
    ```markdown
@@ -83,11 +84,21 @@ Create `${META_DIR}/git_status.md`, `${META_DIR}/kb/knowledge.md`, and `${META_D
    - **Local Mac Path**: None (Pure-Remote)
    - **PVE Test Path (Optional On-Demand)**: None (or `/root/Projects/<project_name>` managed via `pve_test_sync.sh`)
    ```
-2. **`${META_DIR}/kb/knowledge.md`**:
+2. **`${META_DIR}/.vscode/settings.json`** *(so local TaiChi `antigravity_theme_sync.js` picks up the project color with zero local source clone)*:
+   ```json
+   {
+       "workbench.colorCustomizations": {
+           "titleBar.activeBackground": "#<HEX>",
+           "statusBar.background": "#<HEX>"
+       },
+       "peacock.color": "#<HEX>"
+   }
+   ```
+3. **`${META_DIR}/kb/knowledge.md`**:
    ```markdown
    # Knowledge Base Index
    ```
-3. **`${META_DIR}/kb/graveyard/grave.md`**:
+4. **`${META_DIR}/kb/graveyard/grave.md`**:
    ```markdown
    # The Graveyard (Negative Knowledge Index)
 

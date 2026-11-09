@@ -10,9 +10,15 @@ description: 'SOP and Meta-Prompt for synchronizing local dev-team updates to th
 
 ## 🧭 核心路径定位
 
-* **私有上游源 (Upstream Private)**: `~/.gemini/config/plugins/dev-team/`
-* **开源发布端 (Downstream Public)**: `/Users/kael/Projects/agy-disciple/`
-* **元数据集中目录 (Metadata)**: `~/.gemini/Projects/agy-disciple/`
+### 1. 云端沙盒环境 (Pure-Remote 在 Antigravity Remote Project 容器内)
+* **私有上游源 (Upstream Private)**: `/workspace/gemini-hub/config/plugins/dev-team/` 与 `/workspace/gemini-hub/config/scripts/`
+* **开源发布端 (Downstream Public)**: `/workspace/agy-disciple/`
+* **元数据集中目录 (Metadata)**: `/workspace/gemini-hub/Projects/agy-disciple/`
+
+### 2. Mac/本地环境 (若有本地中枢)
+* **私有上游源 (Upstream Private)**: `~/.gemini/config/plugins/dev-team/` 与 `~/.gemini/config/scripts/`
+* **开源发布端 (Downstream Public)**: `catclever/agy-disciple` (通过 `remote_watchdog.sh` 远程派发或挂载至云沙盒)
+* **元数据集中目录 (Metadata)**: `~/.gemini/Projects/agy-disciple/` (已纳入 `catclever/gemini-hub` 统一版本管理)
 
 ---
 
