@@ -1,26 +1,27 @@
 {
-  "id":  "32679b8d-ff04-4c78-8a3b-b66a04fddb16",
-  "name":  "HollyShit",
-  "projectResources":  {
-    "resources":  [
+  "id": "32679b8d-ff04-4c78-8a3b-b66a04fddb16",
+  "name": "HollyShit",
+  "projectResources": {
+    "resources": [
       {
-        "gitFolder":  {
-          "folderUri":  "file:///Users/kael/workbench/HollyShit",
-          "defaultBranch":  "main",
-          "allowWrite":  true
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/HollyShit",
+          "defaultBranch": "main",
+          "allowWrite": true
         }
       }
     ]
   },
-  "permissionGrants":  {
-    "permissionGrants":  {
-      "allow":  [
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
         "read_file(/Users/kael/Library/XDG_Exile/gemini/config/plugins/chrome-devtools-plugin/skills/chrome-devtools/SKILL.md)",
         "read_file(/Users/kael/Library/XDG_Exile/gemini/Projects/HollyShit/)",
         "command(python3 ~/.gemini/Projects/agy_meta.py /Users/kael/workbench/HollyShit)"
       ]
     },
-    "v2Migrated":  true
+    "v2Migrated": true
   },
-  "updatedAt":  "2026-07-06T14:55:30.014303Z"
+  "updatedAt": "2026-11-09T09:47:49.701Z",
+  "taichiProjectPermissionsEnabled": true
 }

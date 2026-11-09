@@ -1,19 +1,19 @@
 {
-  "id":  "7c754d14-983d-4941-b6a7-0758a37f4e6f",
-  "name":  "Illmined",
-  "projectResources":  {
-    "resources":  [
+  "id": "7c754d14-983d-4941-b6a7-0758a37f4e6f",
+  "name": "Illmined",
+  "projectResources": {
+    "resources": [
       {
-        "gitFolder":  {
-          "folderUri":  "file:///Users/kael/workbench/Illmined",
-          "defaultBranch":  "main"
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/workbench/Illmined",
+          "defaultBranch": "main"
         }
       }
     ]
   },
-  "permissionGrants":  {
-    "permissionGrants":  {
-      "allow":  [
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
         "write_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/brain/daa5c432-cd12-4b84-822f-2edaea4784fd/task.md)",
         "write_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/brain/daa5c432-cd12-4b84-822f-2edaea4784fd/implementation_plan.md)",
         "write_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/brain/5db5c644-e426-4bc4-b952-62137377f73d/task.md)",
@@ -23,7 +23,8 @@
         "write_file(/Users/kael/Library/XDG_Exile/gemini/antigravity/brain/5db5c644-e426-4bc4-b952-62137377f73d/walkthrough.md)"
       ]
     },
-    "v2Migrated":  true
+    "v2Migrated": true
   },
-  "updatedAt":  "2026-05-25T15:58:11.681480Z"
+  "updatedAt": "2026-11-09T09:47:49.702Z",
+  "taichiProjectPermissionsEnabled": true
 }

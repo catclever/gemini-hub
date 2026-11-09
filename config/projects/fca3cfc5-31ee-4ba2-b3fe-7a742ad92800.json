@@ -17,5 +17,7 @@
     "v2Migrated": true
   },
   "settings": {},
-  "isWorkspaceOnly": false
+  "isWorkspaceOnly": false,
+  "taichiProjectPermissionsEnabled": true,
+  "updatedAt": "2026-11-09T09:47:49.708Z"
 }

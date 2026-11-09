@@ -32,5 +32,6 @@
     "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS",
     "permissionPreset": "AGENT_PERMISSION_PRESET_AUTO"
   },
-  "updatedAt": "2026-06-04T02:30:20.727266Z"
+  "updatedAt": "2026-11-09T09:47:49.702Z",
+  "taichiProjectPermissionsEnabled": true
 }

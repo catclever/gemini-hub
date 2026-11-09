@@ -1,22 +1,22 @@
 {
-  "id":  "7eaf4d8b-4464-47a8-b4eb-ad1798743316",
-  "name":  "antigravity-leviosa",
-  "projectResources":  {
-    "resources":  [
+  "id": "7eaf4d8b-4464-47a8-b4eb-ad1798743316",
+  "name": "antigravity-leviosa",
+  "projectResources": {
+    "resources": [
       {
-        "gitFolder":  {
-          "folderUri":  "file:///Users/kael/Projects/antigravity-leviosa",
-          "defaultBranch":  "main"
+        "gitFolder": {
+          "folderUri": "file:///Users/kael/Projects/antigravity-leviosa",
+          "defaultBranch": "main"
         }
       },
       {
-        "folderUri":  "file:///Users/kael/Library/Services/taichi/apps/com.google.antigravity"
+        "folderUri": "file:///Users/kael/Library/Services/taichi/apps/com.google.antigravity"
       }
     ]
   },
-  "permissionGrants":  {
-    "permissionGrants":  {
-      "allow":  [
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
         "write_file(/Users/kael/Library/Services/taichi/apps/com.google.antigravity)",
         "write_file(/Users/kael/Projects/antigravity-leviosa/)",
         "read_file(/Users/kael/.gemini/Projects/antigravity-leviosa)",
@@ -26,15 +26,16 @@
         "read_file(/Users/kael/Projects/antigravity-leviosa/)"
       ]
     },
-    "v2Migrated":  true
+    "v2Migrated": true
   },
-  "settings":  {
-    "fileAccessPolicy":  "AGENT_SETTING_POLICY_ASK",
-    "internetPolicy":  "AGENT_SETTING_POLICY_ASK",
-    "sandboxMode":  true,
-    "autoExecutionPolicy":  "CASCADE_COMMANDS_AUTO_EXECUTION_AUTO",
-    "artifactReviewMode":  "ARTIFACT_REVIEW_MODE_ALWAYS",
-    "permissionPreset":  "AGENT_PERMISSION_PRESET_AUTO"
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "sandboxMode": true,
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_AUTO",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS",
+    "permissionPreset": "AGENT_PERMISSION_PRESET_AUTO"
   },
-  "updatedAt":  "2026-06-17T08:23:06.451510Z"
+  "updatedAt": "2026-11-09T09:47:49.703Z",
+  "taichiProjectPermissionsEnabled": true
 }

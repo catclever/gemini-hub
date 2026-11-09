@@ -16,5 +16,6 @@
     "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
     "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
   },
-  "updatedAt": "2026-07-09T06:51:27.989662Z"
+  "updatedAt": "2026-11-09T09:47:49.703Z",
+  "taichiProjectPermissionsEnabled": true
 }
