@@ -1,14 +1,28 @@
 ---
 name: dev-manager
-description: "SOP for delegating tasks to LOCAL sub-agents. Use this for standard Mac projects. Do NOT use for PVE-Native projects."
+description: "SOP for delegating tasks to LOCAL sub-agents (and direct Mac-to-Cloud Remote Agent dispatch). Use this for standard Mac projects. Do NOT use for PVE-Native projects."
 ---
 # Dev Manager SOP
 
-This skill defines how the Lead Architect (Main Agent) should orchestrate its sub-agents for coding tasks. 
+This skill defines how the Lead Architect (Main Agent) should orchestrate its sub-agents for coding tasks on local Mac projects.
 
 ## Host Boundary & Invocation Standard
 > [!CRITICAL]
-> **Native Subagent Only**: When delegating tasks on the local Mac (inside the Antigravity client), you MUST exclusively use the native `invoke_subagent` tool to spawn subagents directly in the IDE conversation tree. You are **STRICTLY FORBIDDEN** from running the CLI command `agy` in the local terminal.
+> - **Local Subagents (`invoke_subagent` Only)**: When delegating tasks to local `dev` or `merger` subagents on Mac (inside the Antigravity client), you MUST exclusively use the native `invoke_subagent` tool to spawn subagents directly in the IDE conversation tree. You are **STRICTLY FORBIDDEN** from running raw `agy` for local workspace execution.
+> - **Cloud Remote Agent Dispatch from Main Conversation (No PVE Hop Needed)**: When the user asks in a local Mac project conversation to offload a task to a Google Cloud Remote Agent (`agy --remote-agent`) using the current Mac account, run `remote_watchdog.sh` directly on Mac without SSHing into PVE:
+>   ```bash
+>   nohup bash ~/.gemini/config/scripts/remote_watchdog.sh \
+>     -t "<Task_ID>" \
+>     -r "catclever/<project>" \
+>     -d "$PWD" \
+>     -b "main" \
+>     --tier "dev" \
+>     --autonomous \
+>     --auto-merge \
+>     -p "<Distilled Prompt + Acceptance Criteria>" \
+>     > /dev/null 2>&1 &
+>   ```
+>   *(If `-a <account>` multi-account switching or overnight lid-close queue execution is requested, route through the `pve-dispatch` skill Mode B2 via `ssh Antigravity` instead.)*
 
 ## Available Sub-Agents (Located in `agents/`)
 

@@ -1,22 +1,24 @@
 ---
 name: pve-dispatch
-description: "SOP for delegating tasks to REMOTE agents on the PVE server. Use this ONLY when the project is tagged as PVE-Native or requested by the user."
+description: "SOP for delegating tasks to REMOTE agents (PVE compute engines or Google Cloud Remote Agents). Use this for PVE-Native projects, or when dispatching any GitHub-backed project to Cloud Remote Agents (Mode B)."
 ---
-# PVE Remote Dispatch SOP
+# Remote & PVE Dispatch SOP
 
-This skill defines how the Lead Architect (Main Agent) should orchestrate agents (like `dev` or `ops`) for projects running on the remote PVE server, while the Main Agent itself is running on the local Mac.
+This skill defines how the Lead Architect (Main Agent) should orchestrate remote execution engines (`descartes_watchdog.sh`, `remote_watchdog.sh`, and `pve_watchdog.sh`) across Mac, PVE, and Google Cloud Remote Agents.
 
 ## When to use this skill
-Use this skill whenever delegating tasks to remote PVE compute resources (`Project-Environment: PVE-Native` or explicitly requested by the user).
+Use this skill whenever:
+1. Delegating tasks to remote PVE compute resources (`Project-Environment: PVE-Native`), OR
+2. Delegating heavy/autonomous coding tasks on **any GitHub-backed project** (`Local`, `PVE-Native`, or `Pure-Remote`) to Google Cloud Remote Agents (`Mode B`).
 
 ## Dispatch Routing Strategy
 
-Before dispatching, evaluate the scope, GitHub backing, and interactivity requirements of the task across three execution modes:
+Before dispatching, evaluate the scope, GitHub backing, account requirements, and interactivity of the task across three execution modes:
 
 | Mode | Watchdog Script | Engine | Best For |
 | :--- | :--- | :--- | :--- |
-| **Mode A** | `descartes_watchdog.sh` | Descartes + EnginEdge (`deepseek-v4.1-flash`) | Well-scoped, single-module tasks (≤50 turns), worktree-isolated, **no GitHub needed** |
-| **Mode B** | `remote_watchdog.sh` | Google Cloud Remote Agent (`agy --remote-agent`) | Heavy/multi-file tasks on **GitHub-backed** projects with `flock` multi-account rotation & PR delivery |
+| **Mode A** | `descartes_watchdog.sh` | Descartes + EnginEdge (`deepseek-v4.1-flash`) | Well-scoped, single-module tasks (≤50 turns) on PVE, worktree-isolated, **no GitHub needed** |
+| **Mode B** | `remote_watchdog.sh` | Google Cloud Remote Agent (`agy --remote-agent`) | Heavy/multi-file tasks on **GitHub-backed** projects (supports **Option B1 Direct Mac-to-Cloud** & **Option B2 PVE Multi-Account/Lid-Close**) |
 | **Mode C** | `pve_watchdog.sh` | Bifrost PVE Local `agy` (Zellij TUI) | Interactive/open-ended PVE-Native tasks requiring local PVE toolchains, databases, or services |
 
 ---
@@ -35,18 +37,35 @@ Before dispatching, evaluate the scope, GitHub backing, and interactivity requir
 ---
 
 ### Mode B: Google Remote Agent Watchdog (`remote_watchdog.sh` — Heavy / Multi-File GitHub Tasks)
-Use this mode for heavy coding or multi-file refactoring tasks on GitHub-backed projects where PVE dispatches an isolated Google Cloud Remote Agent (`agy --remote-agent`) using `flock`-guarded account switching (`agy-account switch`).
+Use this mode for heavy coding or multi-file refactoring tasks on GitHub-backed projects. `remote_watchdog.sh` is a **Dual-Host** script that can run either directly on Mac (Option B1) or on PVE with `flock`-guarded multi-account switching (Option B2).
 
 1. **Mandatory Pre-Dispatch Context Distillation Checklist**:
    Because the Cloud Remote Agent executes in an isolated cloud sandbox, you MUST prepare its context before dispatching:
    - [ ] Log the task in Kanban via `kanban-task-manager` MCP (`create_task` / `update_task_status`).
    - [ ] Query project knowledge via `kb_search(project="<project>", query="...")` and distill key architectural rules and caveats directly into `<Prompt>`.
-   - [ ] `remote_watchdog.sh` automatically appends `[Global]` and `[Dev Agent]` from `~/.gemini/Projects/<project>/IRON_RULES.md` on PVE if not already present in `<Prompt>`.
-2. **Account Selection (`--account`)**:
-   - PVE supports multi-account token switching via `/usr/local/bin/agy-account switch <account>`, protected by `/tmp/agy_account_switch.lock` (`flock` mutex with 8-second OAuth token binding hold):
-     - `kaelina1029@gmail.com` (or substring `kaelina1029`)
-     - `saint.archangel.satan@gmail.com` (or substring `saint.archangel`)
-3. **Dispatch on PVE via SSH**:
+   - [ ] `remote_watchdog.sh` automatically appends `[Global]` and `[Dev Agent]` from `~/.gemini/Projects/<project>/IRON_RULES.md` if not already present in `<Prompt>`.
+
+2. **Choose Between Option B1 (Mac Direct) and Option B2 (PVE Routed)**:
+
+   #### Option B1: Direct Mac-to-Cloud Dispatch (No PVE Hop — Default when using current Mac account)
+   When running in a local Mac project conversation and using the currently logged-in Mac Google account (no `-a` account switch needed and Mac remains awake):
+   ```bash
+   nohup bash ~/.gemini/config/scripts/remote_watchdog.sh \
+     -t "<Task_ID>" \
+     -r "catclever/<project>" \
+     -d "$PWD" \
+     -b "main" \
+     --tier "dev" \
+     --autonomous \
+     --auto-merge \
+     -p "<Distilled Prompt + Acceptance Criteria>" \
+     > /dev/null 2>&1 &
+   ```
+   - **How it works on Mac**: Performs Stage 0 Git sync in `$PWD`, spawns `agy --remote-agent` locally via a background PTY + FIFO (`/tmp/remote_<Task_ID>.stdin`) for autonomous Defenses 2 & 3, squash-merges the PR upon completion, and automatically runs `git -C "$PWD" pull --rebase origin main` so your local Mac workspace immediately receives the merged cloud commits!
+   - **Monitor locally**: Check `/tmp/<Task_ID>.signal` and `/tmp/remote_<Task_ID>.log`.
+
+   #### Option B2: PVE-Routed Multi-Account / Lid-Close Dispatch (`ssh Antigravity`)
+   Use this option when switching Google accounts (`-a kaelina1029@gmail.com` or `-a saint.archangel.satan@gmail.com`), dispatching parallel multi-account queues, or running overnight with the Mac lid closed:
    ```bash
    ssh Antigravity 'bash -s' << 'EOF'
    nohup bash ~/.gemini/config/scripts/remote_watchdog.sh \
@@ -62,8 +81,8 @@ Use this mode for heavy coding or multi-file refactoring tasks on GitHub-backed 
      > /dev/null 2>&1 &
    EOF
    ```
-   - Omit `-d` if dispatching a Pure-Remote repository that has no `/root/Projects/<project>` clone on PVE.
-   - Monitor progress via `/tmp/<Task_ID>.signal`, `/tmp/remote_<Task_ID>.log`, or attach to the Zellij session `ssh Antigravity -t "zellij a '[<project>] remote-<Task_ID>'"`.
+   - **Optional `-d` on PVE**: If the project does not have a `/root/Projects/<project>` clone on PVE (e.g., a Mac-local-only or Pure-Remote repo), simply omit `-d "/root/Projects/<project>"`. Once `/tmp/<Task_ID>.signal` on PVE reports `DONE: PR Merged`, run `git pull --rebase origin main` in your Mac workspace if applicable.
+   - **Monitor on PVE**: Check `/tmp/<Task_ID>.signal`, `/tmp/remote_<Task_ID>.log`, or attach to the Zellij session `ssh Antigravity -t "zellij a '[<project>] remote-<Task_ID>'"`.
 
 ---
 

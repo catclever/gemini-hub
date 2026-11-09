@@ -1,10 +1,10 @@
 ---
 name: local-to-remote-migration
-description: "5-stage SOP for migrating an existing local repository on Mac into a Pure-Remote Project (Mode B), preserving metadata/theme colors in gemini-hub, terminating Mutagen sync, and safely deleting the local source directory."
+description: "5-stage SOP for migrating an existing local repository on Mac into a Pure-Remote Project (Mode B), preserving metadata/theme colors in gemini-hub, terminating Mutagen sync, optionally retaining an on-demand PVE test environment, and safely deleting the local Mac source directory."
 ---
 # Local-to-Remote Project Migration SOP (`Local` $\rightarrow$ `Pure-Remote`)
 
-This skill defines the strict, zero-data-loss 5-stage procedure for converting an existing local repository on Mac into a **Pure-Remote Project (Mode B)** and safely reclaiming local disk space.
+This skill defines the strict, zero-data-loss 5-stage procedure for converting an existing local repository on Mac into a **Pure-Remote Project (Mode B)** and safely reclaiming local Mac disk space (while optionally retaining `/root/Projects/<project_name>` on PVE as a strictly on-demand test environment).
 
 > [!CAUTION]
 > **Zero Data Loss Gate**: Never execute Stage 5 (`rm -rf <local_project_dir>`) unless Stage 1 (Git Cleanliness & Remote Push Audit) and Stage 3 (Metadata Sync to `catclever/gemini-hub`) have both succeeded with zero errors.
@@ -55,7 +55,9 @@ Ensure all project knowledge, tasks, and IDE identity settings are preserved in 
      - `Project-Environment: Pure-Remote`
      - `GitHub-Repo: catclever/<project_name>`
      - `Local-Workspace: None (Migrated to Cloud-Only /workspace/<project_name>)`
-   - Update `$META_DIR/git_status.md` to record the migration date, the GitHub repository URL, and `Local-Workspace: Deleted (Pure-Remote)`.
+     - `PVE-Test-Dir: /root/Projects/<project_name>` *(if keeping PVE test clone, or `None`)*
+     - `PVE-Dev-Server-Cmd: <command binding 0.0.0.0>` *(if applicable)*
+   - Update `$META_DIR/git_status.md` to record the migration date, the GitHub repository URL, `Local-Workspace: Deleted (Pure-Remote)`, and the optional `PVE-Test-Dir`.
 
 ---
 
@@ -72,16 +74,22 @@ git push origin HEAD
 
 ---
 
-## Stage 4: Terminate Mutagen Sync (If Any)
+## Stage 4: Terminate Mutagen Sync & Configure Optional PVE Test Environment
 
-Check whether an active or paused Mutagen sync session exists for `<project_name>` and terminate it cleanly:
-
-```bash
-mutagen sync list
-# If a session matching <project_name> exists:
-mutagen sync terminate "<session_name>"
-```
-*(If the project also had a `/root/Projects/<project_name>` clone on PVE and the user wants Pure-Remote only, ask whether to keep or remove the PVE clone as well.)*
+1. **Terminate Mutagen Sync (If Any)**:
+   Check whether an active or paused Mutagen sync session exists for `<project_name>` and terminate it cleanly:
+   ```bash
+   mutagen sync list
+   # If a session matching <project_name> exists:
+   mutagen sync terminate "<session_name>"
+   ```
+2. **Optional PVE On-Demand Test Clone (`/root/Projects/<project_name>`)**:
+   - Terminating Mutagen and deleting the Mac local folder does **NOT** require deleting `/root/Projects/<project_name>` on PVE if the user wants to keep PVE as an on-demand test environment!
+   - If preserving `/root/Projects/<project_name>` on PVE for on-demand preview testing (managed via `dev-server` / `pve_test_sync.sh`), ensure `/root/Projects/<project_name>` has its `origin` set to `https://github.com/catclever/<project_name>.git` (or SSH equivalent) and optionally start the lightweight on-demand tag watcher on PVE:
+     ```bash
+     ssh Antigravity "antiverse-run --name '[<project_name>] pve-sync-watch' --cwd '/root/Projects/<project_name>' --force -- bash ~/.gemini/config/scripts/pve_test_sync.sh -p '<project_name>' -a watch"
+     ```
+   - *(If the user explicitly wants zero PVE clone as well, remove `/root/Projects/<project_name>` on PVE only after verifying `origin` has all commits.)*
 
 ---
 

@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Google Antigravity Remote Agent Watchdog for PVE (remote_watchdog.sh)
+# Google Antigravity Remote Agent Watchdog (remote_watchdog.sh)
+# Dual-Host Architecture: Mac Direct-to-Cloud Mode & PVE Multi-Account Antiverse Mode
 # ==============================================================================
 # Replaces the retired jules_watchdog.sh using Google Antigravity Remote Agents
-# (`agy --remote-agent`) + PVE multi-account switching (`agy-account switch`)
-# guarded by `flock` mutex locking.
+# (`agy --remote-agent`). Supports two host environments seamlessly:
+#   1. PVE Host (`antiverse-run` installed):
+#      Uses `flock` mutex locking (/tmp/agy_account_switch.lock) + multi-account
+#      OAuth switching (`agy-account switch`) + Zellij session management.
+#   2. Mac Host (Direct Mac-to-Cloud Mode):
+#      Dispatches `agy --remote-agent` directly from Mac using the current logged-in
+#      Mac account via a local PTY wrapper with FIFO stdin (/tmp/remote_<Task_ID>.stdin),
+#      streaming logs to /tmp/antiverse_remote_<Task_ID>.log and automatically
+#      pulling merged changes back into the Mac workspace.
 #
 # Core Capabilities:
-#   - Stage 0: Pre-flight Git auto-commit, rebase & push sync check on PVE.
+#   - Stage 0: Pre-flight Git auto-commit, rebase & push sync check (Mac or PVE).
 #   - Stage 1: Prompt construction with automatic IRON_RULES.md ([Global] +
 #              [Dev Agent]) fallback injection and Defense 1 (autonomous mode).
-#   - Stage 2: flock-guarded account switching (/tmp/agy_account_switch.lock)
-#              with 8s token-binding hold window before releasing mutex.
-#   - Stage 3: Watchdog polling loop with Defenses 2 & 3 (Zellij auto-reply),
+#   - Stage 2: Dual-Host Session Launch (PVE flock + antiverse-run vs Mac PTY + FIFO).
+#   - Stage 3: Watchdog polling loop with Defenses 2 & 3 (Zellij or FIFO auto-reply),
 #              GitHub branch/PR detection, fallback PR creation, and optional
-#              --auto-merge + local PVE branch pull.
+#              --auto-merge + local branch pull (--rebase).
 # ==============================================================================
 
 set -eo pipefail
@@ -47,9 +54,9 @@ Required:
   -p, --prompt <Prompt>           Task instructions for the Remote Agent
 
 Options:
-  -d, --dir <Project_Dir>         Optional PVE git clone path (e.g., /root/Projects/Finnegan)
+  -d, --dir <Project_Dir>         Optional local/PVE git clone path (e.g., \$PWD or /root/Projects/Finnegan)
   -b, --branch <branch>           Base branch (default: main)
-  -a, --account <account>         Account email/substring for agy-account switch
+  -a, --account <account>         Account email/substring for agy-account switch (PVE only)
                                   (e.g., kaelina1029@gmail.com or saint.archangel.satan@gmail.com)
       --project <remote_project>  Remote project name/ID for agy --remote-agent (default: repo basename)
       --tier <dev|ops|pro>        Compute tier (default: dev)
@@ -92,6 +99,12 @@ if [[ -z "$REMOTE_PROJECT" ]]; then
 fi
 PROJECT_NAME="${REMOTE_PROJECT:-${REPO##*/}}"
 
+# Detect Host Mode (PVE Antiverse vs Mac Direct)
+IS_PVE_HOST=false
+if command -v antiverse-run >/dev/null 2>&1; then
+    IS_PVE_HOST=true
+fi
+
 # Resolve Tier Settings (Default to flash models to preserve 3.1 Pro quota)
 case "$TIER" in
     pro|max)
@@ -123,25 +136,49 @@ fi
 SIGNAL_FILE="/tmp/${TASK_ID}.signal"
 LOG_FILE="/tmp/remote_${TASK_ID}.log"
 AGENT_LOG="/tmp/antiverse_remote_${TASK_ID}.log"
+PID_FILE="/tmp/remote_${TASK_ID}.pid"
+STDIN_FIFO="/tmp/remote_${TASK_ID}.stdin"
 SESSION_NAME="[${PROJECT_NAME}] remote-${TASK_ID}"
 REMOTE_BRANCH="remote/${TASK_ID}"
 
-rm -f "$SIGNAL_FILE" "$AGENT_LOG"
+cleanup_local_proc() {
+    if [[ "$IS_PVE_HOST" == "false" ]]; then
+        if [[ -f "$PID_FILE" ]]; then
+            LOCAL_PID=$(cat "$PID_FILE" 2>/dev/null || true)
+            if [[ -n "$LOCAL_PID" ]] && kill -0 "$LOCAL_PID" 2>/dev/null; then
+                kill "$LOCAL_PID" 2>/dev/null || true
+            fi
+            rm -f "$PID_FILE"
+        fi
+        rm -f "$STDIN_FIFO"
+    fi
+}
+trap cleanup_local_proc EXIT
+
+rm -f "$SIGNAL_FILE" "$AGENT_LOG" "$PID_FILE" "$STDIN_FIFO"
 echo "IN_PROGRESS: Initializing Remote Agent Watchdog for ${TASK_ID}" > "$SIGNAL_FILE"
 
 echo "=== Antigravity Remote Agent Watchdog Initialized ===" | tee "$LOG_FILE"
+echo "Host Mode: $([[ "$IS_PVE_HOST" == "true" ]] && echo "PVE (Antiverse + Zellij)" || echo "Mac Local (Direct-to-Cloud PTY)")" | tee -a "$LOG_FILE"
 echo "Task ID: $TASK_ID" | tee -a "$LOG_FILE"
 echo "Target Repo: $REPO (Base Branch: $BRANCH -> Head Branch: $REMOTE_BRANCH)" | tee -a "$LOG_FILE"
 echo "Remote Project: $REMOTE_PROJECT" | tee -a "$LOG_FILE"
-echo "Account Override: ${ACCOUNT:-'(Current active PVE account)'}" | tee -a "$LOG_FILE"
+echo "Account Override: ${ACCOUNT:-'(Current active host account)'}" | tee -a "$LOG_FILE"
 echo "Tier: $TIER | Model: $MODEL | Effort: $EFFORT" | tee -a "$LOG_FILE"
 echo "Project Dir: ${PROJECT_DIR:-'(Not specified, checking PWD)'}" | tee -a "$LOG_FILE"
 echo "Autonomous Mode (Defenses 1,2,3): $AUTONOMOUS" | tee -a "$LOG_FILE"
 echo "Auto Merge: $AUTO_MERGE | Timeout: ${TIMEOUT}s" | tee -a "$LOG_FILE"
 
+# Validate account switching compatibility on Mac
+if [[ "$IS_PVE_HOST" == "false" && -n "$ACCOUNT" && ! -x "/usr/local/bin/agy-account" ]]; then
+    echo "FAILED: Multi-account switching (-a '$ACCOUNT') requires PVE ('/usr/local/bin/agy-account' not found on Mac). Please dispatch via 'ssh Antigravity ...' or omit '-a' to use your current Mac account." | tee -a "$LOG_FILE"
+    echo "FAILED: ACCOUNT_SWITCH_REQUIRES_PVE" > "$SIGNAL_FILE"
+    exit 1
+fi
+
 # ------------------------------------------------------------------------------
 # Stage 0: Git Pre-Flight Synchronization
-# Ensures local Git state on PVE matches remote origin before Remote Agent runs.
+# Ensures local Git state (Mac or PVE) matches remote origin before Remote Agent runs.
 # ------------------------------------------------------------------------------
 TARGET_GIT_DIR=""
 if [[ -n "$PROJECT_DIR" ]]; then
@@ -152,7 +189,11 @@ if [[ -n "$PROJECT_DIR" ]]; then
     fi
     TARGET_GIT_DIR="$PROJECT_DIR"
 elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    TARGET_GIT_DIR="$PWD"
+    # Avoid accidentally treating ~/.gemini as the target code repo unless REPO matches gemini-hub
+    CURRENT_TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null || true)
+    if [[ "${REPO##*/}" == "gemini-hub" || "${REPO##*/}" == "gemini" || "$CURRENT_TOPLEVEL" != *"/XDG_Exile/gemini" ]]; then
+        TARGET_GIT_DIR="$PWD"
+    fi
 fi
 
 if [[ -n "$TARGET_GIT_DIR" ]]; then
@@ -233,7 +274,7 @@ if [[ -n "$TARGET_GIT_DIR" ]]; then
 
     echo "[Stage 0] Git pre-flight sync successful: HEAD aligned with origin/${BRANCH} ($LOCAL_REV)." | tee -a "$LOG_FILE"
 else
-    echo "[Stage 0] No local PVE Git workspace specified or detected. Proceeding in Pure-Remote / GitHub mode." | tee -a "$LOG_FILE"
+    echo "[Stage 0] No local Git workspace specified or detected. Proceeding in Pure-Remote / GitHub mode." | tee -a "$LOG_FILE"
 fi
 
 # ------------------------------------------------------------------------------
@@ -272,7 +313,7 @@ ${PROMPT}
 3. Push the branch to GitHub: git push -u origin ${REMOTE_BRANCH} --force-with-lease.
 4. Create a Pull Request via GitHub CLI if gh is authenticated:
    gh pr create --repo ${REPO} --base ${BRANCH} --head ${REMOTE_BRANCH} --title \"feat(remote): ${TASK_ID}\" --body \"Automated Remote Agent deliverable for task ${TASK_ID}\"
-   (If gh is unavailable in your sandbox, pushing 'origin ${REMOTE_BRANCH}' is sufficient; the PVE Watchdog will create the PR automatically.)
+   (If gh is unavailable in your sandbox, pushing 'origin ${REMOTE_BRANCH}' is sufficient; the Watchdog will create the PR automatically.)
 5. STRICT BOUNDARY: You are STRICTLY FORBIDDEN from modifying any task metadata files in 'tasks/'.
 6. When finished and pushed, output the exact completion token on its own line:
    [REMOTE_TASK_DONE]
@@ -288,30 +329,10 @@ ${IRON_RULES_SNIPPET}"
 fi
 
 # ------------------------------------------------------------------------------
-# Stage 2: flock Mutex Account Switch & Session Launch
-# Prevents concurrent watchdogs from clobbering antigravity-oauth-token during
-# startup. Holds lock for 8s after launch so agy binds its cloud session.
+# Stage 2: Dual-Host Session Launch
+#   - PVE Host: flock Mutex Account Switch + antiverse-run (Zellij) + 8s hold
+#   - Mac Host: Local PTY + FIFO runner streaming to $AGENT_LOG
 # ------------------------------------------------------------------------------
-LOCK_FILE="/tmp/agy_account_switch.lock"
-echo "[Stage 2] Acquiring account switch mutex lock ($LOCK_FILE)..." | tee -a "$LOG_FILE"
-
-exec 200>"$LOCK_FILE"
-if ! flock -x -w 120 200; then
-    echo "FAILED: Timed out waiting for account switch lock ($LOCK_FILE)" | tee -a "$LOG_FILE"
-    echo "FAILED: ACCOUNT_LOCK_TIMEOUT" > "$SIGNAL_FILE"
-    exit 1
-fi
-
-if [[ -n "$ACCOUNT" ]]; then
-    echo "[Stage 2] Switching PVE Antigravity account to '$ACCOUNT'..." | tee -a "$LOG_FILE"
-    if ! /usr/local/bin/agy-account switch "$ACCOUNT" 2>&1 | tee -a "$LOG_FILE"; then
-        echo "FAILED: /usr/local/bin/agy-account switch '$ACCOUNT' failed" | tee -a "$LOG_FILE"
-        echo "FAILED: ACCOUNT_SWITCH_FAILED" > "$SIGNAL_FILE"
-        flock -u 200 || true
-        exit 1
-    fi
-fi
-
 PROMPT_FILE="/tmp/prompt_${TASK_ID}.txt"
 RUNNER_SCRIPT="/tmp/run_remote_${TASK_ID}.sh"
 
@@ -321,31 +342,106 @@ cat > "$RUNNER_SCRIPT" <<RUNNER_EOF
 #!/usr/bin/env bash
 [ -f /etc/profile ] && source /etc/profile 2>/dev/null || true
 [ -f /root/.bashrc ] && source /root/.bashrc 2>/dev/null || true
+[ -f "\$HOME/.zshrc" ] && source "\$HOME/.zshrc" 2>/dev/null || true
 [ -f /etc/environment ] && export \$(grep -v '^#' /etc/environment | xargs) 2>/dev/null || true
 PROMPT_CONTENT=\$(cat "${PROMPT_FILE}")
 exec agy --remote-agent --project "${REMOTE_PROJECT}" --dangerously-skip-permissions --model "${MODEL}" --effort "${EFFORT}" -i "\$PROMPT_CONTENT"
 RUNNER_EOF
 chmod +x "$RUNNER_SCRIPT"
 
-echo "[Stage 2] Launching Remote Agent in Zellij session '${SESSION_NAME}'..." | tee -a "$LOG_FILE"
-if ! antiverse-run \
-    --name "${SESSION_NAME}" \
-    --tier "${TIER}" \
-    --cwd "${TARGET_GIT_DIR:-/root}" \
-    --log "${AGENT_LOG}" \
-    --force \
-    -- "${RUNNER_SCRIPT}" 2>&1 | tee -a "$LOG_FILE"; then
-    echo "FAILED: antiverse-run failed to launch session '${SESSION_NAME}'" | tee -a "$LOG_FILE"
-    echo "FAILED: ANTIVERSE_LAUNCH_FAILED" > "$SIGNAL_FILE"
-    flock -u 200 || true
-    exit 1
-fi
+if [[ "$IS_PVE_HOST" == "true" ]]; then
+    LOCK_FILE="/tmp/agy_account_switch.lock"
+    echo "[Stage 2] Acquiring PVE account switch mutex lock ($LOCK_FILE)..." | tee -a "$LOG_FILE"
 
-echo "[Stage 2] Holding mutex lock for 8s to guarantee OAuth token binding..." | tee -a "$LOG_FILE"
-sleep 8
-flock -u 200 || true
-echo "[Stage 2] Mutex lock released. Session '${SESSION_NAME}' is running." | tee -a "$LOG_FILE"
-echo "IN_PROGRESS: Session ${SESSION_NAME} running (Repo: ${REPO}, Branch: ${REMOTE_BRANCH})" > "$SIGNAL_FILE"
+    exec 200>"$LOCK_FILE"
+    if ! flock -x -w 120 200; then
+        echo "FAILED: Timed out waiting for account switch lock ($LOCK_FILE)" | tee -a "$LOG_FILE"
+        echo "FAILED: ACCOUNT_LOCK_TIMEOUT" > "$SIGNAL_FILE"
+        exit 1
+    fi
+
+    if [[ -n "$ACCOUNT" ]]; then
+        echo "[Stage 2] Switching PVE Antigravity account to '$ACCOUNT'..." | tee -a "$LOG_FILE"
+        if ! /usr/local/bin/agy-account switch "$ACCOUNT" 2>&1 | tee -a "$LOG_FILE"; then
+            echo "FAILED: /usr/local/bin/agy-account switch '$ACCOUNT' failed" | tee -a "$LOG_FILE"
+            echo "FAILED: ACCOUNT_SWITCH_FAILED" > "$SIGNAL_FILE"
+            flock -u 200 || true
+            exit 1
+        fi
+    fi
+
+    echo "[Stage 2] Launching Remote Agent in PVE Zellij session '${SESSION_NAME}'..." | tee -a "$LOG_FILE"
+    if ! antiverse-run \
+        --name "${SESSION_NAME}" \
+        --tier "${TIER}" \
+        --cwd "${TARGET_GIT_DIR:-/root}" \
+        --log "${AGENT_LOG}" \
+        --force \
+        -- "${RUNNER_SCRIPT}" 2>&1 | tee -a "$LOG_FILE"; then
+        echo "FAILED: antiverse-run failed to launch session '${SESSION_NAME}'" | tee -a "$LOG_FILE"
+        echo "FAILED: ANTIVERSE_LAUNCH_FAILED" > "$SIGNAL_FILE"
+        flock -u 200 || true
+        exit 1
+    fi
+
+    echo "[Stage 2] Holding mutex lock for 8s to guarantee OAuth token binding..." | tee -a "$LOG_FILE"
+    sleep 8
+    flock -u 200 || true
+    echo "[Stage 2] Mutex lock released. Session '${SESSION_NAME}' is running." | tee -a "$LOG_FILE"
+    echo "IN_PROGRESS: Session ${SESSION_NAME} running (Repo: ${REPO}, Branch: ${REMOTE_BRANCH})" > "$SIGNAL_FILE"
+else
+    echo "[Stage 2] Launching Remote Agent directly from Mac via local PTY wrapper..." | tee -a "$LOG_FILE"
+    mkfifo "$STDIN_FIFO"
+
+    python3 -u - "$RUNNER_SCRIPT" "$AGENT_LOG" "$STDIN_FIFO" "${TARGET_GIT_DIR:-$HOME}" >/dev/null 2>&1 <<'PY_EOF' &
+import os
+import pty
+import select
+import sys
+
+runner_script, agent_log, stdin_fifo, cwd_dir = sys.argv[1:5]
+if os.path.isdir(cwd_dir):
+    os.chdir(cwd_dir)
+
+pid, master_fd = pty.fork()
+if pid == 0:
+    os.execv(runner_script, [runner_script])
+
+fifo_fd = os.open(stdin_fifo, os.O_RDWR | os.O_NONBLOCK)
+with open(agent_log, "ab", buffering=0) as log_f:
+    try:
+        while True:
+            rlist, _, _ = select.select([master_fd, fifo_fd], [], [], 1.0)
+            if master_fd in rlist:
+                try:
+                    data = os.read(master_fd, 4096)
+                    if not data:
+                        break
+                    log_f.write(data)
+                except OSError:
+                    break
+            if fifo_fd in rlist:
+                try:
+                    cmd_data = os.read(fifo_fd, 4096)
+                    if cmd_data:
+                        os.write(master_fd, cmd_data)
+                except OSError:
+                    pass
+    finally:
+        try:
+            os.close(fifo_fd)
+        except OSError:
+            pass
+        try:
+            os.close(master_fd)
+        except OSError:
+            pass
+PY_EOF
+    BG_PID=$!
+    echo "$BG_PID" > "$PID_FILE"
+    echo "[Stage 2] Mac PTY Remote Agent process started (PID: $BG_PID, Log: $AGENT_LOG, Stdin FIFO: $STDIN_FIFO)." | tee -a "$LOG_FILE"
+    echo "IN_PROGRESS: Mac Direct Remote Agent (PID ${BG_PID}) running (Repo: ${REPO}, Branch: ${REMOTE_BRANCH})" > "$SIGNAL_FILE"
+fi
 
 # ------------------------------------------------------------------------------
 # Stage 3: Watchdog Polling Loop (Defenses 2 & 3, PR Extraction, Auto-Merge)
@@ -412,7 +508,7 @@ while [[ "$ELAPSED" -lt "$TIMEOUT" ]]; do
             echo "Merge output: $MERGE_OUT" >> "$LOG_FILE"
 
             if [[ -n "$TARGET_GIT_DIR" && -d "$TARGET_GIT_DIR" ]]; then
-                echo "[Stage 3] Pulling merged changes into PVE workspace ($TARGET_GIT_DIR)..." | tee -a "$LOG_FILE"
+                echo "[Stage 3] Pulling merged changes into local workspace ($TARGET_GIT_DIR)..." | tee -a "$LOG_FILE"
                 git -C "$TARGET_GIT_DIR" pull --rebase origin "$BRANCH" 2>&1 | tee -a "$LOG_FILE" || true
             fi
 
@@ -434,8 +530,12 @@ while [[ "$ELAPSED" -lt "$TIMEOUT" ]]; do
                 AUTO_REPLY_COUNT=$((AUTO_REPLY_COUNT + 1))
                 echo "[$(date '+%Y-%m-%d %H:%M:%S')] [Defense 2/3] Detected interactive prompt in log. Sending autonomous continuation ($AUTO_REPLY_COUNT/$MAX_AUTO_REPLIES)..." | tee -a "$LOG_FILE"
                 AUTO_MSG="Please proceed autonomously with your recommended best-practice solution, push branch ${REMOTE_BRANCH}, and output [REMOTE_TASK_DONE]."
-                zellij --session "${SESSION_NAME}" action write-chars "$AUTO_MSG" 2>/dev/null || true
-                zellij --session "${SESSION_NAME}" action write 13 2>/dev/null || true
+                if [[ "$IS_PVE_HOST" == "true" ]] && command -v zellij >/dev/null 2>&1; then
+                    zellij --session "${SESSION_NAME}" action write-chars "$AUTO_MSG" 2>/dev/null || true
+                    zellij --session "${SESSION_NAME}" action write 13 2>/dev/null || true
+                elif [[ -p "$STDIN_FIFO" ]]; then
+                    printf "%s\r" "$AUTO_MSG" > "$STDIN_FIFO" 2>/dev/null || true
+                fi
             else
                 echo "[$(date '+%Y-%m-%d %H:%M:%S')] [Defense 2/3] Max auto-replies ($MAX_AUTO_REPLIES) reached. Continuing to monitor..." >> "$LOG_FILE"
             fi

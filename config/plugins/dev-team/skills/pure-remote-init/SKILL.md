@@ -1,10 +1,10 @@
 ---
 name: pure-remote-init
-description: "SOP for initializing the centralized knowledge & task management environment (Projects/<project_name>/) for a Pure-Remote Project (Mode B) backed by GitHub and Google Antigravity Remote Agents."
+description: "SOP for initializing the centralized knowledge & task management environment (Projects/<project_name>/) for a Pure-Remote Project (Mode B) backed by GitHub and Google Antigravity Remote Agents, with optional on-demand PVE test environment support."
 ---
 # Pure-Remote Project Knowledge Environment Initialization SOP
 
-This skill defines the standard operating procedure for initializing the centralized knowledge and task management environment (`~/.gemini/Projects/<project_name>/`) for a **Pure-Remote Project (Mode B)** — a cloud-only project with zero local source code clones on Mac or PVE.
+This skill defines the standard operating procedure for initializing the centralized knowledge and task management environment (`~/.gemini/Projects/<project_name>/`) for a **Pure-Remote Project (Mode B)** — a cloud-first project developed in Google Antigravity Remote Projects (`/workspace/<project_name>`) with zero Mac local source clones (and an optional on-demand PVE test clone at `/root/Projects/<project_name>`).
 
 ## 1. Responsibility Boundary (User vs. Agent)
 
@@ -40,7 +40,7 @@ mkdir -p \
 ```
 
 ### Step 2: Generate `IRON_RULES.md` (Pure-Remote Template)
-Create `${META_DIR}/IRON_RULES.md` with the strict 4-namespace structure required by `project-manager`:
+Create `${META_DIR}/IRON_RULES.md` with the strict 4-namespace structure required by `project-manager` (including optional PVE on-demand test environment fields):
 
 ```markdown
 # Project Iron Rules: <project_name>
@@ -50,12 +50,15 @@ Create `${META_DIR}/IRON_RULES.md` with the strict 4-namespace structure require
 - **Project-Environment**: Pure-Remote
 - **GitHub-Repo**: catclever/<project_name>
 - **Local-Workspace**: None (Cloud-Only via Google Antigravity Remote Project `/workspace/<project_name>`)
+- **PVE-Test-Dir**: None (or `/root/Projects/<project_name>` if an on-demand PVE test clone is enabled)
+- **PVE-Dev-Server-Cmd**: `<dev_server_command_binding_0.0.0.0>`
 - **Centralized Metadata**: `/workspace/gemini-hub/Projects/<project_name>` (or `~/.gemini/Projects/<project_name>`)
-- **Single Source of Truth**: The GitHub repository (`catclever/<project_name>`) is the sole authoritative codebase. Do NOT create or expect local source clones on Mac or PVE unless explicitly migrating topology.
+- **Single Source of Truth**: The GitHub repository (`catclever/<project_name>`) is the sole authoritative codebase. Do NOT create local source clones on Mac.
 
 ## [Main Agent]
 - **Cloud-First Execution**: When running inside the Antigravity Remote Project (`/workspace/<project_name>`), execute tasks via the cloud sandbox or sub-agents and manage `kb/` and `tasks/` in `/workspace/gemini-hub/Projects/<project_name>`.
-- **PVE Watchdog Dispatch (Optional)**: When dispatching unattended tasks from Mac/PVE via `remote_watchdog.sh`, pass `-r "catclever/<project_name>"` without `-d` (Pure-Remote mode) and specify `--account <account>`.
+- **On-Demand PVE Test Sync (`dev-server`)**: Never trigger PVE test sync on normal commits. Only when the user explicitly requests syncing/starting/stopping the PVE test environment, follow the `dev-server` skill (`pve_test_sync.sh` or `pve-env-<sync|start|restart|stop|status>` Git tag trigger).
+- **Watchdog Dispatch (Optional)**: When dispatching unattended tasks from Mac/PVE via `remote_watchdog.sh`, pass `-r "catclever/<project_name>"`.
 - **Metadata Sync**: Whenever `kb/`, `tasks/`, or `IRON_RULES.md` are updated inside `/workspace/gemini-hub`, commit and push `catclever/gemini-hub` so Mac, PVE, and future cloud sandboxes stay synchronized.
 
 ## [Dev Agent]
@@ -78,7 +81,7 @@ Create `${META_DIR}/git_status.md`, `${META_DIR}/kb/knowledge.md`, and `${META_D
    - **GitHub Repository**: `https://github.com/catclever/<project_name>`
    - **Cloud Sandbox Path**: `/workspace/<project_name>`
    - **Local Mac Path**: None (Pure-Remote)
-   - **PVE Server Path**: None (Pure-Remote)
+   - **PVE Test Path (Optional On-Demand)**: None (or `/root/Projects/<project_name>` managed via `pve_test_sync.sh`)
    ```
 2. **`${META_DIR}/kb/knowledge.md`**:
    ```markdown

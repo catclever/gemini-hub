@@ -31,9 +31,9 @@ Every registered project operates under one of three explicit environment topolo
 
 | Topology | Source Code Location | Execution & Dispatch Skills | Metadata Location |
 | :--- | :--- | :--- | :--- |
-| **`Local`** | Local Mac directory | `dev-manager`, `ops-manager` | `~/.gemini/Projects/<project_name>/` |
+| **`Local`** | Local Mac directory (optional PVE test clone at `/root/Projects/<project_name>`) | `dev-manager`, `ops-manager`, or `remote_watchdog.sh` (Direct Mac-to-Cloud Option B1 / PVE Option B2); PVE test sync via `dev-server` (`pve_test_sync.sh`) | `~/.gemini/Projects/<project_name>/` |
 | **`PVE-Native`** | `/root/Projects/<project_name>` on PVE (mirrored to Mac via Mutagen) | `pve-dispatch` (Mode A `descartes_watchdog.sh`, Mode B `remote_watchdog.sh`, Mode C `pve_watchdog.sh`) | `~/.gemini/Projects/<project_name>/` |
-| **`Pure-Remote`** | GitHub-only (`catclever/<project_name>`), mounted at `/workspace/<project_name>` in Antigravity Cloud Sandbox (zero local clones) | Cloud Remote Project UI or `remote_watchdog.sh` (without `-d`); initialize via **`pure-remote-init`**, migrate from local via **`local-to-remote-migration`** | `/workspace/gemini-hub/Projects/<project_name>/` (synced via `catclever/gemini-hub`) |
+| **`Pure-Remote`** | GitHub-authoritative (`catclever/<project_name>`), mounted at `/workspace/<project_name>` in Antigravity Cloud Sandbox (zero Mac clones; optional on-demand PVE test clone at `/root/Projects/<project_name>`) | Cloud Remote Project UI or `remote_watchdog.sh`; on-demand PVE test env via `dev-server` (`pve_test_sync.sh` / `pve-env-*` tags); initialize via **`pure-remote-init`**, migrate from local via **`local-to-remote-migration`** | `/workspace/gemini-hub/Projects/<project_name>/` (synced via `catclever/gemini-hub`) |
 
 - **Initializing a New Pure-Remote Project**: Read and execute the `pure-remote-init` skill (`~/.gemini/config/plugins/dev-team/skills/pure-remote-init/SKILL.md`).
 - **Migrating an Existing Local Repo to Pure-Remote**: Read and execute the `local-to-remote-migration` skill (`~/.gemini/config/plugins/dev-team/skills/local-to-remote-migration/SKILL.md`).
@@ -43,16 +43,19 @@ Every registered project operates under one of three explicit environment topolo
 ### Git Status Management (`git_status.md`)
 - Whenever a new working directory is introduced, check for a `.git` repository (or parent).
 - If no Git repository is found, STOP and check if the project is a `PVE-Native` or `Pure-Remote` project. If not, ask the user how to handle it.
-- Record the final decision for each working directory in `git_status.md`.
+- Record the final decision for each working directory in `git_status.md` (including `PVE-Test-Dir: /root/Projects/<project_name>` or `None` for projects using PVE as an on-demand test environment).
 
 ### Ironclad Rules (`IRON_RULES.md`)
 - This file contains absolute, non-negotiable rules for the project.
 - **PVE-Native Initialization**: If the user mentions the project is synced to a PVE server, you MUST inject the following exact block into the `## [Global]` section of `IRON_RULES.md`:
   > **Environment**: **PVE-Native**. All heavy development tasks MUST be delegated to PVE remote agents using the `pve-dispatch` skill.
   > **Thin-Client Git**: The local Mac is a "Dumb Editor" mirrored to the PVE. Do NOT force initialize `git init` locally. All Git operations (status, commit, history) MUST be delegated exclusively to the remote PVE sub-agents.
-- **Pure-Remote Initialization**: If the project is a cloud-only GitHub project with no local clone, follow the `pure-remote-init` skill to set `Project-Environment: Pure-Remote` and `GitHub-Repo: catclever/<project_name>` in `IRON_RULES.md`.
+- **Pure-Remote Initialization**: If the project is a cloud-first GitHub project with no local Mac clone, follow the `pure-remote-init` skill to set `Project-Environment: Pure-Remote`, `GitHub-Repo: catclever/<project_name>`, and optional `PVE-Test-Dir` / `PVE-Dev-Server-Cmd` in `IRON_RULES.md`.
+- **Optional On-Demand PVE Test Fields (`[Global]`)**: Any `Local` or `Pure-Remote` project that maintains an on-demand test clone on PVE can declare:
+  - `PVE-Test-Dir: /root/Projects/<project_name>` (or `None`)
+  - `PVE-Dev-Server-Cmd: <command binding 0.0.0.0>` (used automatically by `pve_test_sync.sh -a start|restart`)
 - **Namespace Architecture**: To prevent context pollution and role confusion, `IRON_RULES.md` MUST be divided into specific headings:
-  - `## [Global]`: Project-wide context (e.g., dual-repo setup, language versions).
+  - `## [Global]`: Project-wide context (e.g., dual-repo setup, language versions, `PVE-Test-Dir`, `PVE-Dev-Server-Cmd`).
   - `## [Main Agent]`: Orchestration rules (e.g., "After local verification, you must trigger ops to sync").
   - `## [Dev Agent]`: Strict coding and directory constraints (e.g., "Only write code to the local folder, use Swift 5").
   - `## [Ops Agent]`: Execution commands (e.g., "Use `xcodebuild`, run `git push`").
